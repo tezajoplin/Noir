@@ -143,21 +143,24 @@ import heroImage from '../../../images/perngabong-jersey-cutout.png';
 			min-height: auto;
 		}
 
+		/* Keep the headline and CTA inside the first screen on phones. */
 		.hero-media {
 			position: relative;
-			height: min(58svh, 34rem);
+			height: min(44svh, 26rem);
 		}
 
 		.hero-image {
-			top: -2%;
-			right: 0;
-			height: 104%;
+			top: 2%;
+			right: auto;
+			left: 50%;
+			height: 100%;
+			transform: translateX(-50%);
 		}
 
 		.hero-content {
 			min-height: auto;
-			padding-top: 2rem;
-			padding-bottom: 4rem;
+			padding-top: 1.25rem;
+			padding-bottom: 3rem;
 		}
 
 		.hero-content h1 {

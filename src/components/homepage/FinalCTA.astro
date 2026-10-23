@@ -1,12 +1,19 @@
 ---
 import SectionMarker from './SectionMarker.astro';
 
+interface Props {
+	// Homepage numbers its chapters; project pages reuse the close without one.
+	number?: string;
+}
+
+const { number = '08' } = Astro.props;
+
 const whatsapp = 'https://wa.me/628977200741';
 ---
 
 <section id="final-cta" class="final-cta" aria-labelledby="final-cta-heading">
 	<div class="container final-cta-inner">
-		<SectionMarker number="08" label="Let's Build It" />
+		<SectionMarker number={number} label="Let's Build It" />
 
 		<h2 id="final-cta-heading">Your team.<br />Your identity.<br />Let's build it.</h2>
 

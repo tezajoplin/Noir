@@ -1,5 +1,5 @@
 ---
-interface Props { number: string; label: string; }
+interface Props { number?: string; label: string; }
 const { number, label } = Astro.props;
 ---
-<p class="eyebrow"><span>{number}</span><span class="eyebrow-rule" aria-hidden="true"></span>{label}</p>
+<p class="eyebrow">{number && <span>{number}</span>}<span class="eyebrow-rule" aria-hidden="true"></span>{label}</p>
