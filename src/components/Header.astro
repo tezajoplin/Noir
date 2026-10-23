@@ -1,4 +1,6 @@
 ---
+import Wordmark from '../assets/noir-wordmark.svg';
+
 const navItems = [
 	{ label: 'Home', href: '/#hero' },
 	{ label: 'Products', href: '/#what-we-make' },
@@ -10,7 +12,7 @@ const quoteHref = 'https://wa.me/628977200741';
 
 <header class="site-header">
 	<div class="site-header-inner container">
-		<a href="/" class="wordmark">NOIR</a>
+		<a href="/" class="wordmark" aria-label="NOIR — home"><Wordmark aria-hidden="true" /></a>
 
 		<nav class="primary-nav" aria-label="Primary">
 			<ul>
@@ -110,9 +112,13 @@ const quoteHref = 'https://wa.me/628977200741';
 	}
 
 	.wordmark {
-		font-size: 1.125rem;
-		font-weight: 800;
-		letter-spacing: 0.06em;
+		display: inline-flex;
+		color: var(--color-ink);
+	}
+
+	.wordmark :global(svg) {
+		width: auto;
+		height: 1.5rem;
 	}
 
 	.primary-nav ul {
