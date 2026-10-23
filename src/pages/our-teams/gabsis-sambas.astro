@@ -33,14 +33,6 @@ import FinalCTA from '../../components/homepage/FinalCTA.astro';
 					<img src="/images/gabsis/gallery/01-team.webp" alt="The Gabsis Sambas squad in yellow NOIR home kits lining up behind a Liga 4 2024/2025 banner" width="1290" height="1054" loading="lazy" />
 					<figcaption>Gabsis Sambas · Liga 4 2024/2025</figcaption>
 				</figure>
-				<figure class="pitch-photo pitch-duel">
-					<img src="/images/gabsis/gallery/02-grand-final.webp" alt="A Gabsis Sambas player in the yellow home kit shielding the ball from an opponent in red" width="1069" height="945" loading="lazy" />
-					<figcaption>Home yellow, in play</figcaption>
-				</figure>
-				<figure class="pitch-photo pitch-ball">
-					<img src="/images/gabsis/gallery/03-matchday.webp" alt="A Gabsis Sambas player in the yellow home kit controlling the ball during a match" width="840" height="670" loading="lazy" />
-					<figcaption>Matchday</figcaption>
-				</figure>
 			</div>
 		</section>
 
@@ -126,9 +118,7 @@ import FinalCTA from '../../components/homepage/FinalCTA.astro';
 	.pitch-photo { min-width: 0; margin: 0; }
 	.pitch-photo img { display: block; width: 100%; height: auto; }
 	.pitch-photo figcaption { margin-top: .7rem; color: var(--color-ink-faint); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
-	.pitch-team { grid-column: 1 / span 7; }
-	.pitch-duel { grid-column: 8 / span 5; margin-top: clamp(2.5rem, 6vw, 6rem); }
-	.pitch-ball { grid-column: 3 / span 7; }
+	.pitch-team { grid-column: 3 / span 8; }
 	.kit-section { padding-top: clamp(4rem, 7vw, 6.5rem); }
 	.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(2rem, 4vw, 4rem); }
 	.section-heading h2 { margin-top: 1.4rem; font-size: clamp(2.5rem, 5.5vw, 5.5rem); line-height: .92; letter-spacing: var(--tracking-display); text-transform: uppercase; }
@@ -168,7 +158,7 @@ import FinalCTA from '../../components/homepage/FinalCTA.astro';
 		.section-heading { align-items: start; flex-direction: column; }
 		.section-note { max-width: 32rem; }
 		.pitch-grid { grid-template-columns: 1fr; gap: 2.25rem; max-width: 38rem; }
-		.pitch-team, .pitch-duel, .pitch-ball { grid-column: 1; margin-top: 0; }
+		.pitch-team { grid-column: 1; }
 		.kit-notes { grid-template-columns: 1fr; gap: 1.4rem; }
 		.design-board-intro { align-items: start; flex-direction: column; gap: .7rem; }
 		.design-board-grid { grid-template-columns: 1fr; gap: 2rem; }
