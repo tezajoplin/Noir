@@ -3,8 +3,8 @@ import { Image } from 'astro:assets';
 import bigreds from '../../assets/jersey-bigreds-studio-v3.png';
 import blackGold from '../../assets/jersey-black-gold-studio-v3.png';
 import red from '../../assets/jersey-red-cutout-v5.png';
-import badminton from '../../assets/jersey-badminton-studio-render.png';
-import basketball from '../../assets/jersey-basketball-studio-render.png';
+import badminton from '../../assets/jersey-badminton-studio-v2.png';
+import basketball from '../../assets/jersey-basketball-studio-v2.png';
 ---
 
 <figure class="jersey-composition" aria-label="Five NOIR jersey product renders arranged as one studio composition">
@@ -19,10 +19,10 @@ import basketball from '../../assets/jersey-basketball-studio-render.png';
    <Image src={red} alt="Red Budak Gang football jersey with white polo collar, marbled artwork and AKG sponsor." widths={[480,768,1086]} sizes="(min-width: 1440px) 390px, (min-width: 900px) 34vw, 58vw" loading="lazy" />
   </div>
   <div class="jersey jersey-badminton">
-   <Image src={badminton} alt="Studio-rendered navy Efrayn Badminton Club jersey with white graphics and collar." widths={[320,640,1198]} sizes="(min-width: 1440px) 210px, (min-width: 900px) 19vw, 31vw" loading="lazy" />
+   <Image src={badminton} alt="Studio-rendered navy Efrayn Badminton Club jersey with white graphics and collar." widths={[320,640,1245]} sizes="(min-width: 1440px) 210px, (min-width: 900px) 19vw, 31vw" loading="lazy" />
   </div>
   <div class="jersey jersey-basketball">
-   <Image src={basketball} alt="Studio-rendered white and teal sleeveless basketball jersey." widths={[320,640,1198]} sizes="(min-width: 1440px) 210px, (min-width: 900px) 19vw, 31vw" loading="lazy" />
+   <Image src={basketball} alt="Studio-rendered white and teal sleeveless basketball jersey." widths={[320,640,903]} sizes="(min-width: 1440px) 180px, (min-width: 900px) 14vw, 24vw" loading="lazy" />
   </div>
  </div>
 </figure>
@@ -80,8 +80,8 @@ import basketball from '../../assets/jersey-basketball-studio-render.png';
  }
  .jersey-basketball {
   z-index: 4;
-  width: 41%;
-  right: 7%;
+  width: 29%;
+  right: 10%;
   bottom: 0;
   transform: rotate(4deg);
  }
@@ -92,6 +92,6 @@ import basketball from '../../assets/jersey-basketball-studio-render.png';
   .jersey-black-gold { width: 40%; right: 7%; top: 1%; }
   .jersey-red { width: 54%; left: 17%; top: 12%; }
   .jersey-badminton { width: 42%; left: 3%; bottom: 0; }
-  .jersey-basketball { width: 41%; right: 3%; bottom: 0; }
+  .jersey-basketball { width: 29%; right: 7%; bottom: 0; }
  }
 </style>
