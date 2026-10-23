@@ -15,11 +15,12 @@
 	--color-border-inverse: rgba(250, 249, 249, 0.18);
 	--color-accent: #8a6a2c;
 
-	/* A restrained editorial grotesk stack: Helvetica Neue on Apple
-	   platforms, with dependable system fallbacks everywhere else. */
-	--font-sans: 'Helvetica Neue', Arial, sans-serif;
+	/* One self-hosted family for the whole site. Archivo's width axis gives
+	   headlines a semi-condensed, athletic cut while text stays at normal width. */
+	--font-sans: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
 	--font-display: var(--font-sans);
-	--tracking-display: -0.045em;
+	--stretch-display: 84%;
+	--tracking-display: -0.025em;
 	--tracking-label: 0.14em;
 
 	--container-max: 1440px;
@@ -69,6 +70,7 @@ h1,
 h2,
 h3 {
 	font-family: var(--font-display);
+	font-stretch: var(--stretch-display);
 	font-kerning: normal;
 	text-wrap: balance;
 }
@@ -152,12 +154,13 @@ ul {
 .eyebrow {
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
-	font-size: 0.8125rem;
-	font-weight: 600;
+	gap: 1rem;
+	font-size: 0.6875rem;
+	line-height: 1.5;
+	font-weight: 500;
 	letter-spacing: var(--tracking-label);
 	text-transform: uppercase;
-	color: var(--color-ink-muted);
+	color: var(--color-ink-faint);
 }
 
 .section-dark .eyebrow {
@@ -165,11 +168,10 @@ ul {
 }
 
 .eyebrow-rule {
-	width: 28px;
+	width: 2.75rem;
 	height: 1px;
-	background: currentColor;
+	background: #ccc;
 	flex-shrink: 0;
-	opacity: 0.7;
 }
 
 .btn {

@@ -42,8 +42,6 @@ import basketball from '../../assets/jersey-basketball-studio-render.png';
   width: 100%;
   aspect-ratio: .96;
   isolation: isolate;
-  animation: studio-drape 9s ease-in-out infinite;
-  transform-origin: 50% 48%;
  }
  .jersey {
   position: absolute;
@@ -86,13 +84,6 @@ import basketball from '../../assets/jersey-basketball-studio-render.png';
   right: 7%;
   bottom: 0;
   transform: rotate(4deg);
- }
- @keyframes studio-drape {
-  0%, 100% { transform: translateY(0) scale(1); }
-  50% { transform: translateY(-5px) scale(1.008); }
- }
- @media (prefers-reduced-motion: reduce) {
-  .studio-stage { animation: none; }
  }
  @media (max-width: 899px) {
   .jersey-composition { width: min(100%, 34rem); margin-inline: auto; }

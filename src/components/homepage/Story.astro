@@ -1,13 +1,16 @@
-<section class="story" aria-labelledby="story-heading">
+---
+import SectionMarker from './SectionMarker.astro';
+---
+<section id="story" class="story" aria-labelledby="story-heading">
 	<div class="story-copy">
-		<p class="eyebrow">
-			<span class="eyebrow-rule" aria-hidden="true"></span>
-			<span class="accent-index">02</span> — The Story
-		</p>
+		<SectionMarker number="02" label="The Story" />
 
-		<div class="story-message">
-			<h2 id="story-heading">A jersey can carry a name.</h2>
-		</div>
+		<h2 id="story-heading">Every team<br />has a story.</h2>
+
+		<p class="story-message">
+			<span>A jersey can carry a name.</span>
+			<span>But the right jersey carries something more.</span>
+		</p>
 
 		<div class="story-signoff">
 			<p class="story-payoff">
@@ -24,47 +27,69 @@
 	.story {
 		position: relative;
 		color: var(--color-ink);
+		scroll-margin-top: var(--header-h);
 	}
 
+	/* Typography only: the headline carries the section, the message steps
+	   diagonally down and to the right, and the payoff closes it. */
 	.story-copy {
 		width: min(var(--container-max), 100%);
 		margin-inline: auto;
-		padding: clamp(3rem, 6vw, 5.25rem) var(--gutter);
+		padding: clamp(4.5rem, 9vw, 8.5rem) var(--gutter);
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(12rem, 0.55fr);
+		grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr);
 		align-items: end;
-		column-gap: clamp(2rem, 7vw, 7rem);
-		row-gap: clamp(1.75rem, 3vw, 2.75rem);
+		column-gap: clamp(2rem, 4vw, 4rem);
 	}
 
-	.eyebrow {
+	.story-copy > :global(.eyebrow) {
 		grid-column: 1 / -1;
-		white-space: nowrap;
 	}
 
 	.story-copy h2 {
-		max-width: 13ch;
-		font-family: var(--font-display);
-		font-size: clamp(2.25rem, 5.3vw, 5rem);
-		font-weight: 600;
-		line-height: 1.02;
+		grid-column: 1 / -1;
+		margin-top: clamp(1.75rem, 3vw, 2.5rem);
+		font-size: clamp(3.25rem, 9.2vw, 9.25rem);
+		font-weight: 700;
+		line-height: 0.9;
 		letter-spacing: var(--tracking-display);
+		text-transform: uppercase;
+	}
+
+	.story-message {
+		grid-column: 2;
+		margin-top: clamp(3rem, 6vw, 5.5rem);
+		font-size: clamp(1.375rem, 2.2vw, 2rem);
+		font-weight: 500;
+		line-height: 1.25;
+		letter-spacing: -0.02em;
+	}
+
+	.story-message span {
+		display: block;
+	}
+
+	.story-message span + span {
+		margin-top: 0.35em;
+		color: var(--color-ink-muted);
+	}
+
+	.story-signoff {
+		grid-column: 3;
 	}
 
 	.story-payoff {
 		border-left: 1px solid var(--color-accent);
-		padding-left: clamp(1.25rem, 2.5vw, 2.5rem);
-		font-family: var(--font-display);
-		font-size: clamp(1.25rem, 2vw, 1.75rem);
+		padding-left: clamp(1.25rem, 2vw, 2rem);
+		font-size: clamp(1.25rem, 1.8vw, 1.625rem);
 		font-weight: 600;
-		line-height: 1.45;
-		letter-spacing: -0.02em;
+		line-height: 1.4;
+		letter-spacing: -0.015em;
 		color: var(--color-accent);
 	}
 
 	.story-tagline {
 		margin-top: 1.25rem;
-		font-family: var(--font-sans);
 		font-size: 0.75rem;
 		font-weight: 600;
 		letter-spacing: 0.16em;
@@ -72,14 +97,23 @@
 		color: var(--color-ink-muted);
 	}
 
-	@media (max-width: 699px) {
+	@media (max-width: 899px) {
 		.story-copy {
 			grid-template-columns: 1fr;
-			row-gap: 1.5rem;
 		}
 
-		.story-payoff {
-			margin-top: 0.25rem;
+		.story-message,
+		.story-signoff {
+			grid-column: 1;
+		}
+
+		.story-message {
+			margin-top: 2.5rem;
+			max-width: 22ch;
+		}
+
+		.story-signoff {
+			margin-top: 2.5rem;
 		}
 	}
 </style>

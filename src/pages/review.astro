@@ -20,12 +20,12 @@ const sections = [['hero','01 Hero'],['story','02 Story'],['built','03 Built Wit
   </div></details>
  </aside>
  <Hero />
- <div id="story"><Story /></div>
- <div id="built"><BuiltWithNoir /></div>
+ <Story />
+ <BuiltWithNoir />
  <EditorialCanvas>
   <Community /><Lifestyle /><WhatWeMake /><HowItWorks /><FinalCTA />
  </EditorialCanvas>
 </BaseLayout>
 <style>
-.review-tools{background:white;padding:.75rem var(--gutter);position:relative;z-index:10;border-bottom:1px solid #eee}.review-tools nav{display:flex;flex-wrap:wrap;gap:.45rem 1.25rem}.review-tools a{font-size:.68rem;padding:.35rem 0;color:#555}.review-tools a:hover{text-decoration:underline;text-underline-offset:4px}details{margin-top:.5rem;font-size:.7rem;color:#555}summary{cursor:pointer;width:fit-content;padding:.35rem 0}.notes{max-width:70rem;line-height:1.7;padding:1rem 0}.notes ul{list-style:disc;padding-left:1.2rem;margin-top:.5rem}.notes li{margin-top:.35rem}:global(section[id]),#story,#built{scroll-margin-top:calc(var(--header-h) + 1rem)}
+.review-tools{background:white;padding:.75rem var(--gutter);position:relative;z-index:10;border-bottom:1px solid #eee}.review-tools nav{display:flex;flex-wrap:wrap;gap:.45rem 1.25rem}.review-tools a{font-size:.68rem;padding:.35rem 0;color:#555}.review-tools a:hover{text-decoration:underline;text-underline-offset:4px}details{margin-top:.5rem;font-size:.7rem;color:#555}summary{cursor:pointer;width:fit-content;padding:.35rem 0}.notes{max-width:70rem;line-height:1.7;padding:1rem 0}.notes ul{list-style:disc;padding-left:1.2rem;margin-top:.5rem}.notes li{margin-top:.35rem}:global(section[id]) {scroll-margin-top:calc(var(--header-h) + 1rem)}
 </style>
