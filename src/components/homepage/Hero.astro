@@ -1,0 +1,193 @@
+---
+ import { Image } from 'astro:assets';
+import heroImage from '../../../images/perngabong-jersey-cutout.png';
+---
+<section id="hero" class="hero" aria-label="Introduction">
+	<div class="hero-media">
+		<Image
+			class="hero-image"
+			src={heroImage}
+			widths={[480, 768, 1024]}
+            sizes="100vw"
+            quality={85}
+			alt="Studio mockup of Perngabong’s green-and-white jersey, with the collar, patterned fabric and trim visible."
+			width="1086"
+			height="1448"
+			loading="eager"
+			fetchpriority="high"
+		/>
+	</div>
+
+	<div class="hero-content">
+		<p class="eyebrow">
+			<span class="eyebrow-rule" aria-hidden="true"></span>
+			Premium Custom Sportswear
+		</p>
+
+		<h1>
+			WE BUILD TEAM<br />
+			IDENTITIES,<br />
+			NOT JUST JERSEYS.
+		</h1>
+
+		<p class="hero-subhead">
+			Custom sportswear built around your team's identity.
+		</p>
+
+		<div class="hero-actions">
+			<a class="btn" href="https://wa.me/628977200741">
+				Start a Project
+				<span class="btn-arrow" aria-hidden="true">→</span>
+			</a>
+
+			<a class="hero-secondary-link" href="#built">
+				Our Work
+			</a>
+		</div>
+
+		<p class="hero-mark">
+			NOIR / <span class="accent-index">01</span>
+		</p>
+	</div>
+</section>
+
+<style>
+	.hero {
+		position: relative;
+		min-height: calc(100svh - var(--header-h));
+		overflow: hidden;
+		background: transparent;
+	}
+
+	.hero-media {
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+	}
+
+	.hero-image {
+		position: absolute;
+		top: -6%;
+		right: -2%;
+		width: auto;
+		height: 120%;
+		max-width: none;
+		/* Keep the whole cutout visible, including the collar and sleeves. */
+		object-fit: contain !important;
+		object-position: center !important;
+	}
+
+	.hero-content {
+		position: relative;
+		z-index: 2;
+
+		min-height: calc(100svh - var(--header-h));
+		max-width: 46rem;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+
+		padding-block: clamp(3rem, 8vw, 6rem);
+		padding-left: var(--gutter);
+		padding-right: 2rem;
+	}
+
+	.hero-content .eyebrow {
+		margin-bottom: 0.5rem;
+	}
+
+	.hero-content h1 {
+		max-width: 22ch;
+		font-family: var(--font-display);
+		font-size: clamp(2.5rem, 4.2vw, 4rem);
+		font-weight: 700;
+		line-height: 1.04;
+		letter-spacing: var(--tracking-display);
+	}
+
+	.hero-subhead {
+		max-width: 30ch;
+		margin-top: 1rem;
+		font-size: 0.9375rem;
+		line-height: 1.65;
+		color: var(--color-ink-muted);
+	}
+
+	.hero-actions {
+		display: flex;
+		align-items: center;
+		gap: 1.25rem;
+        flex-wrap: wrap;
+		margin-top: 1.5rem;
+	}
+
+	.hero-content .btn {
+		align-self: flex-start;
+	}
+
+	.hero-secondary-link {
+		padding-bottom: 0.3em;
+		border-bottom: 1px solid var(--color-ink);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+	}
+
+	.hero-secondary-link:hover,
+	.hero-secondary-link:focus-visible {
+		opacity: 0.65;
+	}
+
+	.hero-mark {
+		width: min(28rem, 100%);
+		margin-top: clamp(3rem, 9vw, 6rem);
+		padding-top: 0.875rem;
+		border-top: 1px solid var(--color-border);
+
+		font-size: 0.6875rem;
+		font-weight: 500;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
+	}
+
+	@media (max-width: 899px) {
+		.hero {
+			min-height: auto;
+		}
+
+		.hero-media {
+			position: relative;
+			height: min(58svh, 34rem);
+		}
+
+		.hero-image {
+			top: -2%;
+			right: 0;
+			height: 104%;
+		}
+
+		.hero-content {
+			min-height: auto;
+			padding-top: 2rem;
+			padding-bottom: 4rem;
+		}
+
+		.hero-content h1 {
+			font-size: clamp(2.15rem, 9vw, 3.5rem);
+		}
+	}
+
+	@media (min-width: 900px) {
+		.hero-image {
+			top: 0;
+			right: 7%;
+			height: 104%;
+			-webkit-mask-image: none !important;
+			mask-image: none !important;
+		}
+	}
+</style>

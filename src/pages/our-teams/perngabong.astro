@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const gallery = [
+	{ src: '/images/perngabong/gallery/01-community.jpg', alt: 'Perngabong players together in their yellow, navy and black-and-white kits', className: 'gallery-community', caption: 'Perngabong, together' },
+	{ src: '/images/perngabong/gallery/02-match-action.jpg', alt: 'Perngabong players competing in the black-and-white home kit and yellow-and-navy away kit', className: 'gallery-duel', caption: 'A weekly game, always lively' },
+	{ src: '/images/perngabong/gallery/03-matchday.jpg', alt: 'Perngabong player striking the ball in the black-and-white striped home kit', className: 'gallery-strike', caption: 'Home stripes in play' },
+	{ src: '/images/perngabong/gallery/04-weekly-game.jpg', alt: 'Perngabong community gathered after a weekly football game', className: 'gallery-weekly', caption: 'The community behind the kits' },
+];
+---
+
+<BaseLayout
+	title="Perngabong — NOIR"
+	description="A closer look at Perngabong’s home and away kit directions by NOIR."
+>
+	<article class="project-page">
+		<header class="project-intro container">
+			<a class="back-link" href="/#built"><span aria-hidden="true">←</span> All projects</a>
+			<div class="intro-grid">
+				<div class="intro-copy">
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Kit project <span class="project-index">/ Perngabong</span></p>
+					<h1>Perngabong.</h1>
+					<p class="project-summary">Two distinct matchday looks: classic black-and-white stripes at home, and bold yellow with navy accents away.</p>
+					<div class="project-meta">
+						<span>Home & away</span>
+						<span>Custom football kits</span>
+					</div>
+				</div>
+				<figure class="intro-photo">
+					<img src="/images/projects/perngabong-studio-pair-cutout.png" alt="Transparent mockup of Perngabong’s black-and-white striped home jersey and yellow-and-navy away jersey featuring Komodo" loading="eager" />
+					<figcaption>Perngabong · Home & away kit</figcaption>
+				</figure>
+			</div>
+		</header>
+
+		<section class="kit-section container" aria-labelledby="kit-heading">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Two kit directions</p>
+					<h2 id="kit-heading">Same team.<br /><span>Different energy.</span></h2>
+				</div>
+				<p class="section-note">The black-and-white home shirt features SANT Production, while Komodo appears on the yellow-and-navy away kit.</p>
+			</div>
+			<div class="kit-notes">
+				<article><span>01 / HOME</span><h3>Black & white</h3><p>Vertical stripes give the home kit its unmistakable, matchday look.</p><div class="swatches" aria-label="Black and white kit colors"><i class="swatch-black"></i><i class="swatch-white"></i></div></article>
+				<article><span>02 / AWAY</span><h3>Yellow, navy & Komodo</h3><p>Horizontal color bands bring a stronger, brighter contrast to the away shirt.</p><div class="swatches" aria-label="Yellow and navy kit colors"><i class="swatch-yellow"></i><i class="swatch-navy"></i></div></article>
+			</div>
+			<div class="design-board-intro">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> NOIR design mockups</p>
+				<p>Full kit layouts show the chosen colours, nameset, and sponsor placement before production.</p>
+			</div>
+			<div class="design-board-grid">
+				<figure class="design-board">
+					<img src="/images/projects/perngabong-home.jpeg" alt="NOIR design mockup for Perngabong's black-and-white striped home kit, including front and back views" loading="lazy" />
+					<figcaption><span>01</span> Home kit · Black & white</figcaption>
+				</figure>
+				<figure class="design-board">
+					<img src="/images/projects/perngabong-away.jpeg" alt="NOIR design mockup for Perngabong's yellow-and-navy away kit, including front and back views" loading="lazy" />
+					<figcaption><span>02</span> Away kit · Yellow & navy</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="story-section" aria-labelledby="story-heading">
+			<div class="container story-intro">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> The people behind the name</p>
+				<h2 id="story-heading">Persatuan Ngap<br /><span>Ngap Baong.</span></h2>
+				<div class="community-copy">
+					<p>After COVID restrictions eased, Perngabong brought event organizers, café owners and people from Pontianak’s creative scene onto the same pitch. Its playful name expands to <em>Persatuan Ngap Ngap Baong</em>—a good fit for a crew known for local familiar faces and a sharp sense of humor.</p>
+					<p>Five or six years on, they still meet to play every week. Perngabong has also returned to NOIR for two or three kit orders; the pair shown here is their latest.</p>
+				</div>
+				<div class="story-facts">
+					<div><span>01</span><strong>Weekly games</strong></div>
+					<div><span>02</span><strong>2–3 kit orders with NOIR</strong></div>
+				</div>
+			</div>
+
+			<div class="container story-grid">
+				{gallery.map((photo) => (
+					<figure class={`story-photo ${photo.className}`}>
+						<div class="photo-frame">
+							<img src={photo.src} alt={photo.alt} loading="lazy" />
+							{photo.className !== 'gallery-community' && <span class="badge-cleanup" aria-hidden="true"></span>}
+						</div>
+						<figcaption>{photo.caption}</figcaption>
+					</figure>
+				))}
+			</div>
+			<p class="container gallery-note">The kits shown here are Perngabong’s latest NOIR order.</p>
+		</section>
+
+		<footer class="project-outro container">
+			<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Made with NOIR</p>
+			<a class="outro-link" href="/#built">Explore more projects <span aria-hidden="true">→</span></a>
+		</footer>
+	</article>
+</BaseLayout>
+
+<style>
+	.project-page { overflow: clip; }
+	.container { width: min(100% - 2 * var(--gutter), var(--container-max)); margin-inline: auto; }
+	.project-intro { padding-top: clamp(2rem, 4vw, 4rem); }
+	.back-link { display: inline-flex; gap: .65rem; align-items: center; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-muted); }
+	.back-link span { font-size: 1rem; }
+	.intro-grid { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: clamp(2rem, 7vw, 7rem); align-items: center; margin-top: clamp(2.25rem, 5vw, 5rem); }
+	.intro-copy { padding-block: 1rem; }
+	.eyebrow { display: flex; align-items: center; gap: .8rem; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--color-ink-muted); }
+	.eyebrow-rule { width: 2rem; height: 1px; background: var(--color-accent); }
+	.project-index { color: var(--color-ink-faint); }
+	h1 { margin-top: 1.5rem; font-size: clamp(3rem, 4.1vw, 4.5rem); line-height: .9; letter-spacing: -.075em; font-weight: 700; }
+	.project-summary { max-width: 25rem; margin-top: 2rem; font-size: clamp(1.05rem, 1.5vw, 1.35rem); line-height: 1.5; color: var(--color-ink-muted); }
+	.project-meta { display: flex; flex-wrap: wrap; gap: .65rem 1.6rem; margin-top: 2rem; padding-top: 1.1rem; border-top: 1px solid var(--color-border); font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-faint); }
+	.intro-photo { position: relative; margin: 0; overflow: hidden; background: transparent; }
+	.intro-photo img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: contain; }
+	.intro-photo figcaption { position: absolute; inset: auto 1.2rem 1rem; color: #fff; font-size: .65rem; letter-spacing: .13em; text-transform: uppercase; text-shadow: 0 1px 12px #0008; }
+	.kit-section { padding-top: clamp(6rem, 11vw, 11rem); }
+	.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(2rem, 4vw, 4rem); }
+	.section-heading h2 { margin-top: 1.4rem; font-size: clamp(2.5rem, 5.5vw, 5.5rem); line-height: .95; letter-spacing: -.06em; }
+	.section-heading h2 span { color: var(--color-ink-faint); }
+	.section-note { max-width: 20rem; padding-bottom: .4rem; color: var(--color-ink-muted); font-size: .95rem; }
+	.kit-notes { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: clamp(2rem, 4vw, 4rem); border-top: 1px solid var(--color-border); }
+	.kit-notes article { padding-top: 1.2rem; }
+	.kit-notes article > span { color: var(--color-accent); font-size: .65rem; letter-spacing: .14em; }
+	.kit-notes h3 { margin-top: .9rem; font-size: clamp(1.3rem, 2vw, 1.8rem); letter-spacing: -.04em; }
+	.kit-notes p { max-width: 25rem; margin-top: .6rem; color: var(--color-ink-muted); font-size: .9rem; }
+	.design-board-intro { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-top: clamp(3.5rem, 7vw, 7rem); padding-top: 1.1rem; border-top: 1px solid var(--color-border); }
+	.design-board-intro > p:last-child { max-width: 24rem; color: var(--color-ink-muted); font-size: .88rem; line-height: 1.6; }
+	.design-board-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.6vw, 2.5rem); margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+	.design-board { min-width: 0; margin: 0; }
+	.design-board img { display: block; width: 100%; height: auto; background: #f1f3f2; }
+	.design-board figcaption { display: flex; gap: .9rem; padding-top: .8rem; color: var(--color-ink-muted); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+	.design-board figcaption span { color: var(--color-accent); }
+	.swatches { display: flex; gap: .4rem; margin-top: 1.1rem; }
+	.swatches i { width: 2.6rem; height: .38rem; }
+	.swatch-black { background: #171719; }
+	.swatch-white { background: #deddd7; }
+	.swatch-yellow { background: #e8d432; }
+	.swatch-navy { background: #163a72; }
+	.story-section { padding-top: clamp(7rem, 13vw, 13rem); }
+	.story-intro h2 { margin-top: 1.4rem; font-size: clamp(2.5rem, 5.5vw, 5.5rem); line-height: .95; letter-spacing: -.06em; }
+	.story-intro h2 span { color: var(--color-ink-faint); }
+	.community-copy { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 5vw, 5rem); margin-top: 2rem; }
+	.community-copy p { max-width: 34rem; color: var(--color-ink-muted); font-size: clamp(1rem, 1.35vw, 1.15rem); line-height: 1.65; }
+	.community-copy em { color: var(--color-ink); font-style: normal; }
+	.story-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: clamp(2rem, 4vw, 4rem); border-top: 1px solid var(--color-border); }
+	.story-facts div { display: flex; align-items: baseline; gap: 1rem; padding-top: 1.1rem; }
+	.story-facts span { color: var(--color-accent); font-size: .65rem; letter-spacing: .12em; }
+	.story-facts strong { font-size: .9rem; font-weight: 600; }
+	.story-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: clamp(1rem, 3vw, 3rem); row-gap: clamp(2.25rem, 5vw, 5rem); align-items: start; margin-top: clamp(3rem, 6vw, 6rem); }
+	.story-photo { min-width: 0; margin: 0; }
+	.photo-frame { position: relative; overflow: hidden; background: #171819; }
+	.story-photo img { display: block; width: 100%; height: auto; }
+	.badge-cleanup { position: absolute; right: .2rem; bottom: .2rem; width: 3rem; aspect-ratio: 1; pointer-events: none; backdrop-filter: blur(10px) brightness(1.45) saturate(1.1); mask-image: radial-gradient(circle, #000 28%, transparent 76%); }
+	.story-photo figcaption { margin-top: .7rem; color: var(--color-ink-faint); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
+	.gallery-community { grid-column: 1 / span 7; }
+	.gallery-duel { grid-column: 8 / span 5; margin-top: clamp(2.5rem, 6vw, 6rem); }
+	.gallery-strike { grid-column: 1 / span 5; margin-top: clamp(1rem, 3vw, 3rem); }
+	.gallery-weekly { grid-column: 6 / span 7; }
+	.gallery-note { margin-top: 1.5rem; color: var(--color-ink-faint); font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; }
+	.project-outro { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding-block: clamp(4rem, 8vw, 8rem); border-top: 1px solid var(--color-border); margin-top: clamp(5rem, 10vw, 10rem); }
+	.outro-link { display: flex; align-items: center; gap: 1rem; font-size: clamp(1.2rem, 2vw, 1.8rem); letter-spacing: -.03em; }
+	.outro-link span { color: var(--color-accent); transition: transform .2s ease; }
+	.outro-link:hover span { transform: translateX(.3rem); }
+	@media (max-width: 760px) {
+		.intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+		.intro-copy { padding: 0; }
+		h1 { font-size: clamp(3.3rem, 12vw, 5rem); }
+		.section-heading { align-items: start; flex-direction: column; }
+		.section-note { max-width: 32rem; }
+		.kit-notes { grid-template-columns: 1fr; gap: 1.4rem; }
+		.design-board-intro { align-items: start; flex-direction: column; gap: .7rem; }
+		.design-board-grid { grid-template-columns: 1fr; gap: 2rem; }
+		.community-copy, .story-facts { grid-template-columns: 1fr; gap: 1rem; }
+		.story-grid { grid-template-columns: 1fr; gap: 2.5rem; max-width: 38rem; }
+		.gallery-community, .gallery-duel, .gallery-strike, .gallery-weekly { grid-column: 1; margin-top: 0; }
+		.project-outro { align-items: start; flex-direction: column; }
+	}
+</style>

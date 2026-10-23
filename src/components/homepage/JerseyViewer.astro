@@ -1,0 +1,261 @@
+<div class="viewer" data-jersey-viewer>
+	<canvas
+		tabindex="0"
+		aria-label="Interactive three-dimensional red NOIR jersey. Drag sideways or use the arrow keys to rotate it."
+		aria-describedby="jersey-viewer-hint"
+	></canvas>
+	<div class="viewer-footer">
+		<p id="jersey-viewer-hint">Drag to rotate · 360° view</p>
+		<div class="viewer-views" aria-label="Jersey view">
+			<button type="button" data-angle="0" aria-pressed="false">Front</button>
+			<button type="button" data-angle="90" aria-pressed="false">Side</button>
+			<button type="button" data-angle="180" aria-pressed="false">Back</button>
+		</div>
+	</div>
+	<p class="viewer-status" role="status">Loading 3D view…</p>
+</div>
+
+<style>
+	.viewer {
+		background: rgba(247, 246, 243, 0.92);
+		min-width: 0;
+		padding: clamp(0.75rem, 1.25vw, 1.1rem);
+	}
+
+	canvas {
+		display: block;
+		width: 100%;
+		height: var(--jersey-canvas-height, clamp(17rem, 25vw, 22rem));
+		touch-action: pan-y;
+		cursor: grab;
+	}
+
+	canvas:active { cursor: grabbing; }
+
+	canvas:focus-visible,
+	button:focus-visible {
+		outline: 2px solid var(--color-ink);
+		outline-offset: 3px;
+	}
+
+	.viewer-footer {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-top: 0.75rem;
+	}
+
+	.viewer-footer p,
+	.viewer-status {
+		font-size: 0.58rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
+	}
+
+	.viewer-views { display: flex; gap: 0.2rem; }
+
+	button {
+		border: 0;
+		background: transparent;
+		color: var(--color-ink-muted);
+		font: inherit;
+		font-size: 0.58rem;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		padding: 0.45rem 0.55rem;
+		cursor: pointer;
+	}
+
+	button[aria-pressed='true'] {
+		background: var(--color-ink);
+		color: #fff;
+	}
+
+	.viewer-status { margin-top: 0.45rem; }
+
+	@media (max-width: 899px) {
+		canvas { height: var(--jersey-canvas-height-mobile, min(76vw, 23rem)); }
+		.viewer-footer { align-items: flex-start; flex-direction: column; }
+	}
+</style>
+
+<script>
+	const root = document.querySelector('[data-jersey-viewer]');
+	if (root) {
+		const canvas = root.querySelector('canvas');
+		const status = root.querySelector('.viewer-status');
+		const buttons = root.querySelectorAll('[data-angle]');
+		let yaw = 20 * Math.PI / 180;
+		let pitch = 0.02;
+		let gl;
+		let program;
+		let texture;
+		let ready = false;
+		const parts = [];
+
+		const vertex = `#version 300 es
+		in vec3 position;in vec3 normal;in vec2 uv;uniform float yaw;uniform float pitch;uniform float aspect;out vec3 n;out vec3 world;out vec2 tex;
+		vec3 rotate(vec3 v){float c=cos(yaw),s=sin(yaw);v=vec3(c*v.x+s*v.z,v.y,-s*v.x+c*v.z);c=cos(pitch);s=sin(pitch);return vec3(v.x,c*v.y-s*v.z,s*v.y+c*v.z);}
+		void main(){vec3 p=rotate(position);world=p;n=rotate(normal);tex=uv;p.z-=2.15;float f=min(3.2,aspect*3.0);gl_Position=vec4(p.x*f/aspect,p.y*f,-1.002*p.z-.2002,-p.z);}`;
+		const fragment = `#version 300 es
+		precision highp float;in vec3 n;in vec3 world;in vec2 tex;uniform sampler2D atlas;uniform int material;out vec4 color;
+		void main(){
+		 vec3 normal=normalize(n);if(!gl_FrontFacing)normal=-normal;
+		 vec3 base=material==0?texture(atlas,tex).rgb:(material==1?vec3(.965,.962,.95):vec3(.43,.10,.12));
+		 // Fine, filtered textile weave adds surface response without changing artwork.
+		 vec2 thread=world.xy*1100.;vec2 fade=1.-smoothstep(vec2(.35),vec2(1.5),fwidth(thread));
+		 vec2 weave=sin(thread*6.28318)*fade*.025;
+		 normal=normalize(normal+vec3(weave,0.));
+		 base=pow(base,vec3(2.2));
+		 vec3 keyDir=normalize(vec3(-.7,1.,1.5));
+		 float key=max(0.,dot(normal,keyDir));float fill=max(0.,dot(normal,normalize(vec3(.8,.3,1.))));
+		 float rim=max(0.,dot(normal,normalize(vec3(.3,1.,-1.))));
+		 float light=.39+.49*key+.16*fill+.10*rim;
+		 vec3 view=normalize(vec3(0.,0.,2.15)-world);
+		 float spec=pow(max(0.,dot(normal,normalize(keyDir+view))),24.)*.022;
+		 float sheen=pow(1.-abs(dot(normal,view)),4.)*.018;
+		 vec3 shaded=base*light+vec3(spec+sheen);
+		 color=vec4(pow(shaded,vec3(1./2.2)),1.);
+		}`;
+
+		function shader(kind, source) {
+			const item = gl.createShader(kind);
+			gl.shaderSource(item, source);
+			gl.compileShader(item);
+			if (!gl.getShaderParameter(item, gl.COMPILE_STATUS)) throw Error(gl.getShaderInfoLog(item));
+			return item;
+		}
+
+		function draw() {
+			if (!ready) return;
+			const dpr = Math.min(devicePixelRatio, 2);
+			const width = Math.round(canvas.clientWidth * dpr);
+			const height = Math.round(canvas.clientHeight * dpr);
+			if (canvas.width !== width || canvas.height !== height) { canvas.width = width; canvas.height = height; }
+			gl.viewport(0, 0, width, height);
+			gl.clearColor(0.969, 0.965, 0.953, 1);
+			gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+			gl.useProgram(program);
+			gl.uniform1f(gl.getUniformLocation(program, 'yaw'), yaw);
+			gl.uniform1f(gl.getUniformLocation(program, 'pitch'), pitch);
+			gl.uniform1f(gl.getUniformLocation(program, 'aspect'), width / height);
+			gl.activeTexture(gl.TEXTURE0);
+			gl.bindTexture(gl.TEXTURE_2D, texture);
+			gl.uniform1i(gl.getUniformLocation(program, 'atlas'), 0);
+			for (const part of parts) {
+				gl.bindVertexArray(part.vao);
+				gl.uniform1i(gl.getUniformLocation(program, 'material'), part.material);
+				if (part.material === 1) gl.disable(gl.CULL_FACE); else gl.enable(gl.CULL_FACE);
+				gl.drawElements(gl.TRIANGLES, part.count, gl.UNSIGNED_INT, 0);
+			}
+		}
+
+		function sync() {
+			const degrees = ((Math.round(yaw * 180 / Math.PI) % 360) + 360) % 360;
+			buttons.forEach((button) => button.setAttribute('aria-pressed', String(Number(button.dataset.angle) === degrees)));
+			draw();
+		}
+
+		try {
+			// Load the garment only when the below-the-fold section approaches view.
+			await new Promise<void>((resolve) => {
+				const observer = new IntersectionObserver((entries) => {
+					if (entries.some((entry) => entry.isIntersecting)) {
+						observer.disconnect();
+						resolve();
+					}
+				}, { rootMargin: '250px' });
+				observer.observe(root);
+			});
+			gl = canvas.getContext('webgl2', { antialias: true, alpha: false });
+			if (!gl) throw Error('3D view is not supported in this browser.');
+			program = gl.createProgram();
+			gl.attachShader(program, shader(gl.VERTEX_SHADER, vertex));
+			gl.attachShader(program, shader(gl.FRAGMENT_SHADER, fragment));
+			gl.linkProgram(program);
+			if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw Error(gl.getProgramInfoLog(program));
+			gl.enable(gl.DEPTH_TEST);
+
+			const response = await fetch('/models/noir-jersey-v2.glb');
+			if (!response.ok) throw Error('The 3D model could not be loaded.');
+			const file = await response.arrayBuffer();
+			const view = new DataView(file);
+			const jsonLength = view.getUint32(12, true);
+			const document3d = JSON.parse(new TextDecoder().decode(new Uint8Array(file, 20, jsonLength)));
+			const binaryStart = 20 + jsonLength + 8;
+			const imageView = document3d.bufferViews[document3d.images[0].bufferView];
+			const bitmap = await createImageBitmap(new Blob([new Uint8Array(file, binaryStart + imageView.byteOffset, imageView.byteLength)], { type: 'image/jpeg' }));
+			texture = gl.createTexture();
+			gl.bindTexture(gl.TEXTURE_2D, texture);
+			gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, bitmap);
+			gl.generateMipmap(gl.TEXTURE_2D);
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+			gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+			bitmap.close();
+
+			const bytes = (index) => {
+				const accessor = document3d.accessors[index];
+				const bufferView = document3d.bufferViews[accessor.bufferView];
+				return new Uint8Array(file, binaryStart + bufferView.byteOffset + (accessor.byteOffset || 0), bufferView.byteLength);
+			};
+
+			for (const primitive of document3d.meshes[0].primitives) {
+				const vao = gl.createVertexArray();
+				gl.bindVertexArray(vao);
+				for (const [attribute, location, size] of [['POSITION', 'position', 3], ['NORMAL', 'normal', 3], ['TEXCOORD_0', 'uv', 2]]) {
+					const buffer = gl.createBuffer();
+					gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+					gl.bufferData(gl.ARRAY_BUFFER, bytes(primitive.attributes[attribute]), gl.STATIC_DRAW);
+					const index = gl.getAttribLocation(program, location);
+					gl.enableVertexAttribArray(index);
+					gl.vertexAttribPointer(index, size, gl.FLOAT, false, 0, 0);
+				}
+				const indexBuffer = gl.createBuffer();
+				gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+				gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, bytes(primitive.indices), gl.STATIC_DRAW);
+				parts.push({ vao, material: primitive.material, count: document3d.accessors[primitive.indices].count });
+			}
+
+			ready = true;
+			status.textContent = 'Ready · rotate the jersey';
+			sync();
+		} catch (error) {
+			status.textContent = error instanceof Error ? error.message : 'The 3D view could not be loaded.';
+			console.error(error);
+		}
+
+		buttons.forEach((button) => button.addEventListener('click', () => {
+			yaw = Number(button.dataset.angle) * Math.PI / 180;
+			pitch = 0.02;
+			sync();
+		}));
+
+		let drag = null;
+		canvas.addEventListener('pointerdown', (event) => {
+			if (!ready) return;
+			drag = { x: event.clientX, id: event.pointerId };
+			canvas.setPointerCapture(event.pointerId);
+		});
+		canvas.addEventListener('pointermove', (event) => {
+			if (!drag) return;
+			yaw += (event.clientX - drag.x) * 0.009;
+			drag.x = event.clientX;
+			sync();
+		});
+		for (const eventName of ['pointerup', 'pointercancel', 'lostpointercapture']) canvas.addEventListener(eventName, () => { drag = null; });
+		canvas.addEventListener('keydown', (event) => {
+			if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home'].includes(event.key)) return;
+			event.preventDefault();
+			if (event.key === 'Home') { yaw = 0; pitch = 0.02; }
+			else if (event.key === 'ArrowLeft') yaw -= Math.PI / 18;
+			else if (event.key === 'ArrowRight') yaw += Math.PI / 18;
+			else pitch = Math.max(-0.35, Math.min(0.35, pitch + (event.key === 'ArrowUp' ? 0.05 : -0.05)));
+			sync();
+		});
+		new ResizeObserver(draw).observe(canvas);
+	}
+</script>

@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import JerseyViewer from '../../components/homepage/JerseyViewer.astro';
+---
+<BaseLayout title="NOIR — 3D Reconstruction Review" noindex={true}>
+ <section class="model-review container">
+  <a href="/review/#what-we-make">← Homepage review</a>
+  <h1>3D reconstruction review</h1>
+  <p>This artwork-based model remains an unfinished reconstruction. Its garment geometry, cloth drape and material finish do not yet match the approved studio concept.</p>
+  <JerseyViewer />
+ </section>
+</BaseLayout>
+<style>
+ .model-review{padding-block:3rem;max-width:60rem;--jersey-canvas-height:36rem}h1{font-size:2rem;margin-top:2rem}p{max-width:40rem;margin-block:1rem 2rem;line-height:1.6;color:var(--color-ink-muted)}a{text-decoration:underline;text-underline-offset:4px}
+</style>

@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/homepage/Hero.astro';
+import Story from '../components/homepage/Story.astro';
+import BuiltWithNoir from '../components/homepage/BuiltWithNoir.astro';
+import Community from '../components/homepage/Community.astro';
+import Lifestyle from '../components/homepage/Lifestyle.astro';
+import WhatWeMake from '../components/homepage/WhatWeMake.astro';
+import HowItWorks from '../components/homepage/HowItWorks.astro';
+import FinalCTA from '../components/homepage/FinalCTA.astro';
+import EditorialCanvas from '../components/homepage/EditorialCanvas.astro';
+const sections = [['hero','01 Hero'],['story','02 Story'],['built','03 Built With NOIR'],['community','04 Community'],['lifestyle','05 Lifestyle'],['what-we-make','06 What We Make'],['how-it-works','07 How It Works'],['final-cta',"08 Let's Build It"]];
+---
+<BaseLayout title="NOIR — Homepage Review 01–08" noindex={true}>
+ <aside class="review-tools" aria-label="Homepage review tools">
+  <nav aria-label="Jump to section">{sections.map(([id,label])=><a href={`#${id}`}>{label}</a>)}</nav>
+  <details><summary>Catatan review</summary><div class="notes">
+   <p>Preview alur lengkap 01–08, dengan transisi Lifestyle hingga penutup pada satu latar terang.</p>
+   <ul><li>Community, Lifestyle, Football dan Basketball memakai foto pilihan terbaru.</li><li>Teks promosi pada foto Futsal dibersihkan; tulisan pada jersey dipertahankan.</li><li>Tiga jersey di Section 06 adalah konsep studio statis berdasarkan desain yang diberikan. Detail artwork perlu dibandingkan dengan sumber saat review sebelum publikasi. Model 360° belum mencapai kualitas yang disetujui dan tersedia di <a href="/review/jersey-3d/">review model 3D terpisah</a>.</li><li>Tujuan tautan produk, proyek dan quote belum dibangun.</li></ul>
+  </div></details>
+ </aside>
+ <Hero />
+ <div id="story"><Story /></div>
+ <div id="built"><BuiltWithNoir /></div>
+ <EditorialCanvas>
+  <Community /><Lifestyle /><WhatWeMake /><HowItWorks /><FinalCTA />
+ </EditorialCanvas>
+</BaseLayout>
+<style>
+.review-tools{background:white;padding:.75rem var(--gutter);position:relative;z-index:10;border-bottom:1px solid #eee}.review-tools nav{display:flex;flex-wrap:wrap;gap:.45rem 1.25rem}.review-tools a{font-size:.68rem;padding:.35rem 0;color:#555}.review-tools a:hover{text-decoration:underline;text-underline-offset:4px}details{margin-top:.5rem;font-size:.7rem;color:#555}summary{cursor:pointer;width:fit-content;padding:.35rem 0}.notes{max-width:70rem;line-height:1.7;padding:1rem 0}.notes ul{list-style:disc;padding-left:1.2rem;margin-top:.5rem}.notes li{margin-top:.35rem}:global(section[id]),#story,#built{scroll-margin-top:calc(var(--header-h) + 1rem)}
+</style>

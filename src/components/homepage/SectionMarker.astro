@@ -1,0 +1,9 @@
+---
+interface Props { number: string; label: string; }
+const { number, label } = Astro.props;
+---
+<p class="section-marker"><span>{number}</span><span class="rule" aria-hidden="true"></span>{label}</p>
+<style>
+.section-marker{display:flex;align-items:center;gap:1rem;font-size:.68rem;line-height:1.5;font-weight:500;letter-spacing:var(--tracking-label);text-transform:uppercase;color:var(--color-ink-faint)}
+.rule{width:2.75rem;height:1px;background:#ccc}
+</style>

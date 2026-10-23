@@ -1,0 +1,106 @@
+---
+import { Image } from 'astro:assets';
+import bigreds from '../../assets/jersey-bigreds-studio-v3.png';
+import blackGold from '../../assets/jersey-black-gold-studio-v3.png';
+import red from '../../assets/jersey-red-cutout-v5.png';
+import badminton from '../../assets/jersey-badminton-studio-render.png';
+import basketball from '../../assets/jersey-basketball-studio-render.png';
+---
+
+<figure class="jersey-composition" aria-label="Five NOIR jersey product renders arranged as one studio composition">
+ <div class="studio-stage">
+  <div class="jersey jersey-bigreds">
+   <Image src={bigreds} alt="White BIGREDS football jersey with teal side panels and red artwork." widths={[320,640,1197]} sizes="(min-width: 1440px) 280px, (min-width: 900px) 24vw, 42vw" loading="lazy" />
+  </div>
+  <div class="jersey jersey-black-gold">
+   <Image src={blackGold} alt="Black Budak Gang football jersey with gold pinstripes and SCA artwork." widths={[320,640,1213]} sizes="(min-width: 1440px) 270px, (min-width: 900px) 23vw, 40vw" loading="lazy" />
+  </div>
+  <div class="jersey jersey-red">
+   <Image src={red} alt="Red Budak Gang football jersey with white polo collar, marbled artwork and AKG sponsor." widths={[480,768,1086]} sizes="(min-width: 1440px) 390px, (min-width: 900px) 34vw, 58vw" loading="lazy" />
+  </div>
+  <div class="jersey jersey-badminton">
+   <Image src={badminton} alt="Studio-rendered navy Efrayn Badminton Club jersey with white graphics and collar." widths={[320,640,1198]} sizes="(min-width: 1440px) 210px, (min-width: 900px) 19vw, 31vw" loading="lazy" />
+  </div>
+  <div class="jersey jersey-basketball">
+   <Image src={basketball} alt="Studio-rendered white and teal sleeveless basketball jersey." widths={[320,640,1198]} sizes="(min-width: 1440px) 210px, (min-width: 900px) 19vw, 31vw" loading="lazy" />
+  </div>
+ </div>
+</figure>
+
+<style>
+ .jersey-composition {
+  display: grid;
+  grid-template-rows: auto auto;
+  gap: clamp(.35rem, 1.5vw, 1.25rem);
+  width: 100%;
+  max-width: 38rem;
+  margin: 0;
+  justify-self: end;
+ }
+ .studio-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: .96;
+  isolation: isolate;
+  animation: studio-drape 9s ease-in-out infinite;
+  transform-origin: 50% 48%;
+ }
+ .jersey {
+  position: absolute;
+  transform-origin: center;
+  filter: drop-shadow(0 .8rem 1rem rgba(17,17,17,.12));
+ }
+ .jersey :global(img) { display: block; width: 100%; height: auto; }
+ .jersey-bigreds {
+  z-index: 1;
+  width: 41%;
+  left: 9%;
+  top: 1%;
+  transform: rotate(-6deg);
+ }
+ .jersey-black-gold {
+  z-index: 2;
+  width: 40%;
+  right: 8%;
+  top: 1%;
+  transform: rotate(6deg);
+ }
+ .jersey-red {
+  z-index: 3;
+  width: 54%;
+  left: 19%;
+  top: 12%;
+  transform: rotate(1deg);
+  filter: drop-shadow(0 1rem 1rem rgba(17,17,17,.15));
+ }
+ .jersey-badminton {
+  z-index: 4;
+  width: 42%;
+  left: 6%;
+  bottom: 0;
+  transform: rotate(-5deg);
+ }
+ .jersey-basketball {
+  z-index: 4;
+  width: 41%;
+  right: 7%;
+  bottom: 0;
+  transform: rotate(4deg);
+ }
+ @keyframes studio-drape {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-5px) scale(1.008); }
+ }
+ @media (prefers-reduced-motion: reduce) {
+  .studio-stage { animation: none; }
+ }
+ @media (max-width: 899px) {
+  .jersey-composition { width: min(100%, 34rem); margin-inline: auto; }
+  .studio-stage { aspect-ratio: .94; }
+  .jersey-bigreds { width: 41%; left: 7%; top: 1%; }
+  .jersey-black-gold { width: 40%; right: 7%; top: 1%; }
+  .jersey-red { width: 54%; left: 17%; top: 12%; }
+  .jersey-badminton { width: 42%; left: 3%; bottom: 0; }
+  .jersey-basketball { width: 41%; right: 3%; bottom: 0; }
+ }
+</style>

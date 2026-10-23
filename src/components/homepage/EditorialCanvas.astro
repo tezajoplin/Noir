@@ -1,0 +1,19 @@
+<div class="editorial-canvas">
+ <slot />
+</div>
+
+<style>
+ .editorial-canvas {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background:
+   linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.03) 0%,
+    rgba(0, 0, 0, 0) 72%,
+    rgba(0, 0, 0, 0.12) 100%
+   ),
+   var(--color-bg);
+ }
+</style>

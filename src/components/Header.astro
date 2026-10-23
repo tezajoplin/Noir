@@ -1,0 +1,219 @@
+---
+const navItems = [
+	{ label: 'Home', href: '/#hero' },
+	{ label: 'Products', href: '/#what-we-make' },
+	{ label: 'Our Teams', href: '/#built' },
+	{ label: 'How It Works', href: '/#how-it-works' },
+];
+const quoteHref = 'https://wa.me/628977200741';
+---
+
+<header class="site-header">
+	<div class="site-header-inner container">
+		<a href="/" class="wordmark">NOIR</a>
+
+		<nav class="primary-nav" aria-label="Primary">
+			<ul>
+				{
+					navItems.map((item) => (
+						<li>
+							<a href={item.href}>{item.label}</a>
+						</li>
+					))
+				}
+			</ul>
+		</nav>
+
+		<div class="header-actions">
+			<a href={quoteHref} class="btn header-cta">Get a Quote</a>
+			<button
+				class="nav-toggle"
+				type="button"
+				aria-label="Toggle menu"
+				aria-expanded="false"
+				aria-controls="mobile-nav"
+			>
+				<span></span><span></span><span></span>
+			</button>
+		</div>
+	</div>
+
+	<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+		<ul>
+			{
+				navItems.map((item) => (
+					<li>
+						<a href={item.href}>{item.label}</a>
+					</li>
+				))
+			}
+			<li>
+				<a href={quoteHref} class="btn btn-mobile-cta">Get a Quote</a>
+			</li>
+		</ul>
+	</nav>
+</header>
+
+<script>
+	const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+	const mobileNav = document.getElementById('mobile-nav');
+
+	if (toggle && mobileNav) {
+		const closeMenu = () => {
+			mobileNav.setAttribute('hidden', '');
+			toggle.setAttribute('aria-expanded', 'false');
+			document.body.classList.remove('nav-open');
+		};
+
+		const openMenu = () => {
+			mobileNav.removeAttribute('hidden');
+			toggle.setAttribute('aria-expanded', 'true');
+			document.body.classList.add('nav-open');
+		};
+
+		toggle.addEventListener('click', () => {
+			if (mobileNav.hasAttribute('hidden')) {
+				openMenu();
+			} else {
+				closeMenu();
+			}
+		});
+
+		mobileNav.querySelectorAll('a').forEach((link) => {
+			link.addEventListener('click', closeMenu);
+		});
+
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && !mobileNav.hasAttribute('hidden')) {
+				closeMenu();
+				toggle.focus();
+			}
+		});
+	}
+</script>
+
+<style>
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 50;
+		background: var(--color-bg);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.site-header-inner {
+		height: var(--header-h);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.5rem;
+	}
+
+	.wordmark {
+		font-size: 1.125rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+	}
+
+	.primary-nav ul {
+		display: flex;
+		align-items: center;
+		gap: clamp(1rem, 2vw, 2rem);
+	}
+
+	.primary-nav a {
+		font-size: 0.8125rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		color: var(--color-ink-muted);
+		transition: color 0.2s ease;
+	}
+
+	.primary-nav a:hover,
+	.primary-nav a:focus-visible {
+		color: var(--color-ink);
+	}
+
+	.header-actions {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.header-cta {
+		padding: 0.65rem 1.25rem;
+		font-size: 0.6875rem;
+	}
+
+	.nav-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		width: 2.25rem;
+		height: 2.25rem;
+	}
+
+	.nav-toggle span {
+		display: block;
+		width: 100%;
+		height: 1px;
+		background: var(--color-ink);
+	}
+
+	.mobile-nav {
+		display: none;
+	}
+
+	@media (max-width: 900px) {
+		.primary-nav {
+			display: none;
+		}
+
+		.header-cta {
+			display: none;
+		}
+
+		.nav-toggle {
+			display: flex;
+		}
+
+		.mobile-nav {
+			position: fixed;
+			inset: var(--header-h) 0 0 0;
+			background: var(--color-bg);
+			padding: 2rem var(--gutter);
+			overflow-y: auto;
+		}
+
+		.mobile-nav[hidden] {
+			display: none;
+		}
+
+		.mobile-nav:not([hidden]) {
+			display: block;
+		}
+
+		.mobile-nav ul {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.mobile-nav a {
+			font-size: 1.25rem;
+			font-weight: 600;
+		}
+
+		.btn-mobile-cta {
+			margin-top: 1rem;
+			justify-content: center;
+			width: 100%;
+		}
+	}
+
+	:global(body.nav-open) {
+		overflow: hidden;
+	}
+</style>

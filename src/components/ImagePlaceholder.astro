@@ -1,0 +1,17 @@
+---
+// Elegant, honest stand-in for photography that doesn't exist yet.
+// Renders as a muted typographic panel rather than a broken-image icon,
+// so it reads as an intentional design choice until real photography
+// replaces it. Never fabricates a photo — no <img>, so no alt text lie.
+interface Props {
+	label?: string;
+	ratio?: string;
+	class?: string;
+}
+
+const { label, ratio = '4 / 5', class: className = '' } = Astro.props;
+---
+
+<div class:list={['image-placeholder', className]} style={`aspect-ratio: ${ratio};`}>
+	{label && <span class="image-placeholder-mark">{label}</span>}
+</div>

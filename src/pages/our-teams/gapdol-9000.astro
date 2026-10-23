@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const gallery = [
+	{ src: '/images/gapdol/gallery/02-linus-action.webp', alt: 'Gapdol player in the lime away kit during a match', className: 'gallery-action', cleanBadge: true },
+	{ src: '/images/gapdol/gallery/03-match-action.webp', alt: 'Gapdol player competing under the lights', className: 'gallery-duel', cleanBadge: true },
+	{ src: '/images/gapdol/gallery/05-team-together.webp', alt: 'Gapdol teammates walking together after a match', className: 'gallery-team' },
+	{ src: '/images/gapdol/gallery/04-matchday.webp', alt: 'Gapdol player carrying the ball in a night match', className: 'gallery-player', cleanBadge: true },
+];
+---
+
+<BaseLayout
+	title="Gapdol 9000 — NOIR"
+	description="From fun football in 2016 to one of Pontianak’s competitive clubs, meet Gapdol 9000."
+>
+	<article class="project-page">
+		<header class="project-intro container">
+			<a class="back-link" href="/#built"><span aria-hidden="true">←</span> All projects</a>
+			<div class="intro-grid">
+				<div class="intro-copy">
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Team story <span class="project-index">/ Gapdol 9000</span></p>
+					<h1>Gapdol<br />9000.</h1>
+					<p class="project-summary">What began as fun football in 2016 has grown into a competitive club with a strong name in Pontianak.</p>
+					<div class="project-meta">
+						<span>Founded 2016</span>
+						<span>Pontianak · West Kalimantan</span>
+					</div>
+				</div>
+				<figure class="intro-photo">
+					<img src="/images/gapdol/gallery/01-kuching-friendly.webp" alt="Two Gapdol players in their charcoal kit during a friendly match trip to Kuching, Sarawak" loading="eager" />
+					<figcaption>Kuching, Sarawak · Friendly match</figcaption>
+				</figure>
+			</div>
+		</header>
+
+		<section class="kit-section container" aria-labelledby="kit-heading">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> The kit</p>
+					<h2 id="kit-heading">Two looks.<br />One Gapdol.</h2>
+				</div>
+				<p class="section-note">Charcoal and olive home-and-away designs, made for the club’s next chapter.</p>
+			</div>
+			<figure class="kit-image">
+				<img src="/images/projects/gapdol-studio-pair.webp" alt="Gapdol 9000 charcoal and olive home and away jerseys in a studio mockup" loading="lazy" />
+				<figcaption>Gapdol 9000 · Home & away</figcaption>
+			</figure>
+			<div class="design-board-intro">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> NOIR design mockups</p>
+				<p>Full kit layouts, colours, nameset, and sponsor placement before production.</p>
+			</div>
+			<div class="design-board-grid">
+				<figure class="design-board">
+					<img src="/images/projects/gapdol-home.jpeg" alt="NOIR design mockup for Gapdol 9000's charcoal home kit, including front, back, shorts and socks" loading="lazy" />
+					<figcaption><span>01</span> Home kit · Charcoal</figcaption>
+				</figure>
+				<figure class="design-board">
+					<img src="/images/projects/gapdol-away.jpeg" alt="NOIR design mockup for Gapdol 9000's olive away kit, including front, back, shorts and socks" loading="lazy" />
+					<figcaption><span>02</span> Away kit · Olive</figcaption>
+				</figure>
+			</div>
+		</section>
+
+		<section class="story-section" aria-labelledby="story-heading">
+			<div class="container story-intro">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> A club in motion</p>
+				<h2 id="story-heading">From fun football<br /><span>to a Pontianak name.</span></h2>
+				<p>Gapdol grew more competitive year by year. Today the team regularly enters major tournaments around Pontianak and has become known as a tough side to face.</p>
+			</div>
+
+			<div class="container story-grid">
+				{gallery.map((photo, index) => (
+					<figure class={`story-photo ${photo.className}`}>
+						<div class="photo-frame">
+							<img src={photo.src} alt={photo.alt} loading="lazy" />
+							{photo.cleanBadge && <span class="badge-cleanup" aria-hidden="true"></span>}
+						</div>
+						<figcaption><span>0{index + 1}</span><span>{index === 2 ? 'Together after the match' : 'Matchday · Gapdol 9000'}</span></figcaption>
+					</figure>
+				))}
+			</div>
+
+			<div class="container story-footnote">
+				<span class="story-step">Built beyond the first team</span>
+				<p>Gapdol also runs a football school for children, giving the next generation a place to learn and play.</p>
+			</div>
+		</section>
+
+		<section class="results-section container" aria-labelledby="results-heading">
+			<div class="results-heading">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Still moving</p>
+				<h2 id="results-heading">Good seasons.<br /><span>More to come.</span></h2>
+			</div>
+			<div class="results-list">
+				<article class="result-row">
+					<span class="result-index">01</span>
+					<h3>Second place</h3>
+					<p>Liga Nusantara Futsal (LINUS), West Kalimantan regional.</p>
+				</article>
+				<article class="result-row">
+					<span class="result-index">02</span>
+					<h3>Kuching, Sarawak</h3>
+					<p>Runner-up in a four-team mini tournament during a friendly-match trip.</p>
+				</article>
+				<article class="result-row">
+					<span class="result-index">03</span>
+					<h3>Always in the mix</h3>
+					<p>In Pontianak’s minisoccer leagues, Gapdol often takes the title or reaches the semifinals.</p>
+				</article>
+			</div>
+			<p class="signoff">Let’s go, Gapdol.</p>
+		</section>
+
+		<footer class="project-outro container">
+			<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Made with NOIR</p>
+			<a class="outro-link" href="/#built">Explore more projects <span aria-hidden="true">→</span></a>
+		</footer>
+	</article>
+</BaseLayout>
+
+<style>
+	.project-page { overflow: clip; }
+	.container { width: min(100% - 2 * var(--gutter), var(--container-max)); margin-inline: auto; }
+	.project-intro { padding-top: clamp(2rem, 4vw, 4rem); }
+	.back-link { display: inline-flex; gap: .65rem; align-items: center; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-muted); }
+	.back-link span { font-size: 1rem; }
+	.intro-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(2rem, 7vw, 7rem); align-items: center; margin-top: clamp(2.25rem, 5vw, 5rem); }
+	.intro-copy { padding-block: 1rem; }
+	.eyebrow { display: flex; align-items: center; gap: .8rem; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--color-ink-muted); }
+	.eyebrow-rule { width: 2rem; height: 1px; background: var(--color-accent); }
+	.project-index { color: var(--color-ink-faint); }
+	h1 { margin-top: 1.5rem; font-size: clamp(4rem, 9vw, 9rem); line-height: .84; letter-spacing: -.075em; font-weight: 700; }
+	.project-summary { max-width: 25rem; margin-top: 2rem; font-size: clamp(1.05rem, 1.5vw, 1.35rem); line-height: 1.5; color: var(--color-ink-muted); }
+	.project-meta { display: flex; flex-wrap: wrap; gap: .65rem 1.6rem; margin-top: 2rem; padding-top: 1.1rem; border-top: 1px solid var(--color-border); font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-faint); }
+	.intro-photo { position: relative; margin: 0; overflow: hidden; background: #171819; }
+	.intro-photo img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: center; }
+	.intro-photo figcaption { position: absolute; inset: auto 1.2rem 1rem; color: white; font-size: .65rem; letter-spacing: .13em; text-transform: uppercase; text-shadow: 0 1px 12px #0008; }
+	.kit-section { padding-top: clamp(6rem, 11vw, 11rem); }
+	.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(2rem, 4vw, 4rem); }
+	.section-heading h2, .story-intro h2, .results-heading h2 { margin-top: 1.4rem; font-size: clamp(2.5rem, 5.5vw, 5.5rem); line-height: .95; letter-spacing: -.06em; }
+	.section-note { max-width: 20rem; padding-bottom: .4rem; color: var(--color-ink-muted); font-size: .95rem; }
+	.kit-image { margin: 0; }
+	.kit-image img { width: 100%; aspect-ratio: 1.5; object-fit: cover; }
+	.kit-image figcaption { margin-top: .75rem; color: var(--color-ink-faint); font-size: .65rem; letter-spacing: .13em; text-transform: uppercase; }
+	.design-board-intro { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; margin-top: clamp(3.5rem, 7vw, 7rem); padding-top: 1.1rem; border-top: 1px solid var(--color-border); }
+	.design-board-intro > p:last-child { max-width: 24rem; color: var(--color-ink-muted); font-size: .88rem; line-height: 1.6; }
+	.design-board-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.6vw, 2.5rem); margin-top: clamp(1.5rem, 3vw, 2.5rem); }
+	.design-board { min-width: 0; margin: 0; }
+	.design-board img { display: block; width: 100%; height: auto; background: #f1f3f2; }
+	.design-board figcaption { display: flex; gap: .9rem; padding-top: .8rem; color: var(--color-ink-muted); font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; }
+	.design-board figcaption span { color: var(--color-accent); }
+	.story-section { padding-top: clamp(7rem, 13vw, 13rem); }
+	.story-intro h2, .results-heading h2 { max-width: 60rem; }
+	.story-intro h2 span, .results-heading h2 span { color: var(--color-ink-faint); }
+	.story-intro > p:last-child { max-width: 36rem; margin-top: 1.5rem; color: var(--color-ink-muted); font-size: clamp(1rem, 1.4vw, 1.2rem); }
+	.story-grid { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); column-gap: clamp(1.5rem, 7vw, 7rem); row-gap: clamp(2.5rem, 6vw, 6rem); margin-top: clamp(3rem, 6vw, 6rem); align-items: start; }
+	.story-photo { min-width: 0; margin: 0; }
+	.photo-frame { position: relative; overflow: hidden; background: #111; }
+	.story-photo img { width: 100%; height: auto; object-fit: cover; }
+	.badge-cleanup { position: absolute; right: .12rem; bottom: .12rem; width: 3rem; aspect-ratio: 1; pointer-events: none; backdrop-filter: blur(10px) brightness(1.45) saturate(1.1); mask-image: radial-gradient(circle, #000 28%, transparent 76%); }
+	.story-photo figcaption { display: flex; gap: .85rem; margin-top: .7rem; color: var(--color-ink-faint); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; }
+	.story-photo figcaption span:first-child { color: var(--color-accent); }
+	.gallery-action { grid-column: 1; }
+	.gallery-action img { aspect-ratio: 1290 / 1595; }
+	.gallery-duel { grid-column: 2; margin-top: clamp(3rem, 8vw, 8rem); }
+	.gallery-duel img { aspect-ratio: 1290 / 1599; }
+	.gallery-team { grid-column: 1; width: 82%; justify-self: end; }
+	.gallery-team img { aspect-ratio: 1290 / 1269; }
+	.gallery-player { grid-column: 2; margin-top: clamp(2rem, 5vw, 5rem); }
+	.gallery-player img { aspect-ratio: 1290 / 1600; }
+	.story-footnote { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; margin-top: clamp(3rem, 6vw, 6rem); padding-top: 1.5rem; border-top: 1px solid var(--color-border); }
+	.story-step { color: var(--color-accent); font-size: .67rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+	.story-footnote p { max-width: 32rem; color: var(--color-ink-muted); font-size: clamp(1rem, 1.4vw, 1.2rem); }
+	.results-section { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2rem, 7vw, 7rem); padding-top: clamp(7rem, 13vw, 13rem); }
+	.results-list { border-top: 1px solid var(--color-border); }
+	.result-row { display: grid; grid-template-columns: 2rem minmax(8rem, .7fr) 1.3fr; gap: 1rem; align-items: baseline; padding: 1.4rem 0; border-bottom: 1px solid var(--color-border); }
+	.result-index { color: var(--color-accent); font-size: .65rem; letter-spacing: .12em; }
+	.result-row h3 { font-size: 1rem; letter-spacing: -.02em; }
+	.result-row p { max-width: 23rem; color: var(--color-ink-muted); font-size: .88rem; }
+	.signoff { grid-column: 2; margin-top: -1rem; color: var(--color-accent); font-size: clamp(1.7rem, 3vw, 2.7rem); letter-spacing: -.05em; }
+	.project-outro { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding-block: clamp(4rem, 8vw, 8rem); border-top: 1px solid var(--color-border); margin-top: clamp(5rem, 10vw, 10rem); }
+	.outro-link { display: flex; align-items: center; gap: 1rem; font-size: clamp(1.2rem, 2vw, 1.8rem); letter-spacing: -.03em; }
+	.outro-link span { color: var(--color-accent); transition: transform .2s ease; }
+	.outro-link:hover span { transform: translateX(.3rem); }
+	@media (max-width: 760px) {
+		.intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+		.intro-copy { padding: 0; }
+		.intro-photo img { aspect-ratio: 1 / 1; }
+		.section-heading { align-items: start; flex-direction: column; }
+		.section-note { max-width: 32rem; }
+		.kit-image img { aspect-ratio: 1.05; }
+		.design-board-intro { align-items: start; flex-direction: column; gap: .7rem; }
+		.design-board-grid { grid-template-columns: 1fr; gap: 2rem; }
+		.story-grid { grid-template-columns: 1fr; gap: 2.5rem; max-width: 36rem; }
+		.gallery-action, .gallery-duel, .gallery-team, .gallery-player { grid-column: 1; width: 100%; margin-top: 0; }
+		.gallery-action img { aspect-ratio: 1290 / 1595; }
+		.gallery-duel img { aspect-ratio: 1290 / 1599; }
+		.gallery-team img { aspect-ratio: 1290 / 1269; }
+		.gallery-player img { aspect-ratio: 1290 / 1600; }
+		.story-footnote { grid-template-columns: 1fr; gap: .8rem; }
+		.results-section { grid-template-columns: 1fr; gap: 2rem; }
+		.result-row { grid-template-columns: 1.5rem 1fr; gap: .6rem .9rem; }
+		.result-row h3 { grid-column: 2; }
+		.result-row p { grid-column: 2; }
+		.signoff { grid-column: 1; margin-top: 0; }
+		.project-outro { align-items: start; flex-direction: column; }
+	}
+</style>

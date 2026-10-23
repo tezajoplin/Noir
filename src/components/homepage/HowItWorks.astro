@@ -1,0 +1,109 @@
+---
+import SectionMarker from './SectionMarker.astro';
+const steps = [
+	{
+		index: '01',
+		name: 'Share your idea',
+		copy: 'Send a reference image or tell us what kind of design you have in mind.',
+	},
+	{
+		index: '02',
+		name: 'Design & revisions',
+		copy: 'The NOIR team prepares the design you requested. If you need revisions, let us know.',
+	},
+	{
+		index: '03',
+		name: 'Discuss timing',
+		copy: 'Production timing depends on current orders. Discuss your required date with the NOIR admin.',
+	},
+	{
+		index: '04',
+		name: 'Pick up your jerseys',
+		copy: 'Collect them at the NOIR booth at Jalan Paris 1, Gang Perwira No. 16 A, Pontianak, or arrange shipping. GoSend or Maxim delivery is available around Pontianak.',
+	},
+];
+---
+
+<section id="how-it-works" class="how-it-works" aria-labelledby="hiw-heading">
+	<div class="container">
+		<SectionMarker number="07" label="How It Works" />
+		<h2 id="hiw-heading">THE PROCESS</h2>
+
+		<ol class="process-list" role="list">
+			{
+				steps.map((step) => (
+					<li class="process-step">
+						<span class="process-index">{step.index}</span>
+						<h3 class="process-name">{step.name}</h3>
+						<p class="process-copy">{step.copy}</p>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>
+
+<style>
+	.how-it-works {
+		padding-block: calc(var(--chapter-gap) / 2);
+		scroll-margin-top: calc(var(--header-h) + 1rem);
+	}
+
+	.how-it-works h2 {
+		font-family: var(--font-display);
+		font-size: 0.72rem;
+		font-weight: 600;
+		letter-spacing: var(--tracking-label);
+		text-transform: uppercase;
+		margin-top: 1.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.process-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.process-step {
+		display: grid;
+		grid-template-columns: 2.5rem minmax(9rem, 0.65fr) minmax(0, 1.35fr);
+		align-items: baseline;
+		column-gap: clamp(1rem, 3vw, 2.5rem);
+		padding-block: 1rem;
+	}
+
+	.process-index {
+		font-size: 0.7rem;
+		font-weight: 500;
+		letter-spacing: 0.12em;
+		color: var(--color-ink-faint);
+	}
+
+	.process-name {
+		font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+		font-weight: 600;
+		letter-spacing: -0.025em;
+	}
+
+	.process-copy {
+		font-size: 0.9rem;
+		line-height: 1.5;
+		color: var(--color-ink-muted);
+		max-width: 54ch;
+	}
+
+	@media (max-width: 599px) {
+		.process-step {
+			grid-template-columns: 2rem minmax(0, 1fr);
+			column-gap: 0.75rem;
+			row-gap: 0.35rem;
+			padding-block: 0.85rem;
+		}
+
+		.process-copy {
+			grid-column: 2;
+			font-size: 0.875rem;
+		}
+	}
+</style>

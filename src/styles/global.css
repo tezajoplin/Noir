@@ -1,0 +1,256 @@
+/* NOIR — shared design tokens and utility classes.
+   Component-scoped <style> blocks handle layout; this file holds only
+   what genuinely repeats across sections. */
+
+:root {
+	--color-bg: #fafaf9;
+	--color-bg-deep: #111111;
+	--color-surface: #f1f0ec;
+	--color-ink: #111111;
+	--color-ink-inverse: #fafaf9;
+	--color-ink-muted: #4a4a4a;
+	--color-ink-muted-inverse: rgba(250, 249, 249, 0.72);
+	--color-ink-faint: #6b6b6b;
+	--color-border: rgba(17, 17, 17, 0.1);
+	--color-border-inverse: rgba(250, 249, 249, 0.18);
+	--color-accent: #8a6a2c;
+
+	/* A restrained editorial grotesk stack: Helvetica Neue on Apple
+	   platforms, with dependable system fallbacks everywhere else. */
+	--font-sans: 'Helvetica Neue', Arial, sans-serif;
+	--font-display: var(--font-sans);
+	--tracking-display: -0.045em;
+	--tracking-label: 0.14em;
+
+	--container-max: 1440px;
+	--gutter: clamp(1.5rem, 6vw, 5rem);
+	--section-pad-y: clamp(3rem, 6vw, 5.25rem);
+	--chapter-gap: clamp(2rem, 3.5vw, 3rem);
+	--header-h: 4.5rem;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+body {
+	font-family: var(--font-sans);
+	background: var(--color-bg);
+	color: var(--color-ink);
+	line-height: 1.5;
+	font-kerning: normal;
+	font-feature-settings: 'kern' 1, 'liga' 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+	font-family: var(--font-display);
+	font-kerning: normal;
+	text-wrap: balance;
+}
+
+img,
+svg {
+	max-width: 100%;
+	display: block;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	font: inherit;
+	color: inherit;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+ul {
+	list-style: none;
+}
+
+:focus-visible {
+	outline: 2px solid var(--color-ink);
+	outline-offset: 3px;
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.skip-link {
+	position: absolute;
+	left: 1rem;
+	top: -3rem;
+	background: var(--color-ink);
+	color: var(--color-ink-inverse);
+	padding: 0.75rem 1.25rem;
+	font-size: 0.875rem;
+	font-weight: 600;
+	z-index: 100;
+	transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+	top: 1rem;
+}
+
+.container {
+	max-width: var(--container-max);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+.section {
+	padding-block: var(--section-pad-y);
+}
+
+.section-tint {
+	background: var(--color-surface);
+}
+
+.section-dark {
+	background: var(--color-bg-deep);
+	color: var(--color-ink-inverse);
+}
+
+.eyebrow {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: var(--tracking-label);
+	text-transform: uppercase;
+	color: var(--color-ink-muted);
+}
+
+.section-dark .eyebrow {
+	color: var(--color-ink-muted-inverse);
+}
+
+.eyebrow-rule {
+	width: 28px;
+	height: 1px;
+	background: currentColor;
+	flex-shrink: 0;
+	opacity: 0.7;
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6em;
+	background: var(--color-ink);
+	color: var(--color-ink-inverse);
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	padding: 0.875rem 1.5rem;
+	transition:
+		background-color 0.25s ease,
+		transform 0.25s ease;
+}
+
+.btn:hover,
+.btn:focus-visible {
+	background: #2a2a2a;
+	transform: translateY(-1px);
+}
+
+.btn-invert {
+	background: var(--color-ink-inverse);
+	color: var(--color-ink);
+}
+
+.btn-invert:hover,
+.btn-invert:focus-visible {
+	background: #e4e2dc;
+}
+
+.btn-arrow {
+	transition: transform 0.25s ease;
+}
+
+.btn:hover .btn-arrow,
+.btn:focus-visible .btn-arrow {
+	transform: translateX(0.2em);
+}
+
+.link-arrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--color-ink);
+	border-bottom: 1px solid var(--color-border);
+	padding-bottom: 0.35em;
+	transition:
+		border-color 0.25s ease,
+		gap 0.25s ease;
+}
+
+.link-arrow:hover,
+.link-arrow:focus-visible {
+	border-color: var(--color-ink);
+	gap: 0.75em;
+}
+
+.image-placeholder {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	background: linear-gradient(155deg, #f1efe9, #e6e3db);
+	border: 1px solid var(--color-border);
+}
+
+.image-placeholder-mark {
+	font-size: clamp(1.125rem, 2.6vw, 1.75rem);
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: rgba(17, 17, 17, 0.5);
+	text-align: center;
+	padding: 1.5rem;
+}

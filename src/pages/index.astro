@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/homepage/Hero.astro';
+import Story from '../components/homepage/Story.astro';
+import BuiltWithNoir from '../components/homepage/BuiltWithNoir.astro';
+import Community from '../components/homepage/Community.astro';
+import Lifestyle from '../components/homepage/Lifestyle.astro';
+import WhatWeMake from '../components/homepage/WhatWeMake.astro';
+import HowItWorks from '../components/homepage/HowItWorks.astro';
+import FinalCTA from '../components/homepage/FinalCTA.astro';
+import EditorialCanvas from '../components/homepage/EditorialCanvas.astro';
+---
+
+<BaseLayout
+	title="NOIR — Premium Custom Sportswear"
+	description="NOIR builds custom team identities — premium sportswear for football, futsal, basketball, and badminton communities from Pontianak, West Kalimantan."
+>
+	<EditorialCanvas>
+		<Hero />
+		<Story />
+		<BuiltWithNoir />
+		<Community />
+		<Lifestyle />
+		<WhatWeMake />
+		<HowItWorks />
+		<FinalCTA />
+	</EditorialCanvas>
+</BaseLayout>

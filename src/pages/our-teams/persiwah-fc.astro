@@ -1,0 +1,229 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const designBoards = [
+	{ name: 'Player home · Green & yellow', image: '/images/projects/persiwah-player-home-design.jpg', alt: 'NOIR Persiwah player home design board with green jersey, yellow details, front and back views, shorts and socks' },
+	{ name: 'Player away · Black & turquoise', image: '/images/projects/persiwah-player-away-design.jpg', alt: 'NOIR Persiwah player away design board with black jersey, turquoise details, front and back views, shorts and socks' },
+	{ name: 'Keeper home · Yellow & green', image: '/images/projects/persiwah-keeper-home-design.jpg', alt: 'NOIR Persiwah keeper home design board with yellow jersey, green details, front and back views, shorts and socks' },
+	{ name: 'Keeper away · Red & turquoise', image: '/images/projects/persiwah-keeper-away-design.jpg', alt: 'NOIR Persiwah keeper away design board with red jersey, turquoise details, front and back views, shorts and socks' },
+];
+
+const kits = [
+	{ name: 'Player Home', image: '/images/persiwah/kits/player-home.png', alt: 'Green Persiwah player home jersey, front and back' },
+	{ name: 'Player Away', image: '/images/persiwah/kits/player-away.png', alt: 'Black Persiwah player away jersey, front and back' },
+	{ name: 'Keeper Home', image: '/images/persiwah/kits/keeper-home.png', alt: 'Yellow Persiwah keeper home jersey, front and back' },
+	{ name: 'Keeper Away', image: '/images/persiwah/kits/keeper-away.png', alt: 'Red Persiwah keeper away jersey, front and back' },
+];
+
+const moments = {
+	pitch: '/images/persiwah/gallery/01-player.jpg',
+	crowd: '/images/persiwah/gallery/02-crowd.jpg',
+	team: '/images/persiwah/gallery/03-team.jpg',
+	embrace: '/images/persiwah/gallery/04-teammates.jpg',
+	celebration: '/images/persiwah/gallery/05-match.jpg',
+};
+---
+
+<BaseLayout
+	title="Persiwah FC — NOIR"
+	description="A closer look at Persiwah FC's custom home, away and goalkeeper kits by NOIR."
+>
+	<article class="project-page">
+		<header class="project-intro container">
+			<a class="back-link" href="/#built"><span aria-hidden="true">←</span> All projects</a>
+			<div class="intro-grid">
+				<div class="intro-copy">
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Featured project <span class="project-index">/ 01</span></p>
+					<h1>Persiwah<br />FC.</h1>
+					<p class="project-summary">A kit made for the team, the town, and every person standing behind them.</p>
+					<div class="project-meta">
+						<span>Official Jersey Partner</span>
+						<span>Pontianak · 2026</span>
+					</div>
+				</div>
+				<figure class="champion-poster">
+					<img src="/images/persiwah-fc-champions.png" alt="Persiwah FC Champions poster for Liga 4 Kalbar 2026" loading="eager" />
+				</figure>
+			</div>
+		</header>
+
+		<section class="kit-section container" aria-labelledby="kit-heading">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> The collection</p>
+					<h2 id="kit-heading">Four kits.<br />One identity.</h2>
+				</div>
+				<p class="section-note">Home, away, and goalkeeper jerseys — shaped around Persiwah’s colours and crest.</p>
+			</div>
+			<div class="kit-grid kit-render-grid">
+				{kits.map((kit, index) => (
+					<figure class={`kit-item kit-${index + 1}`}>
+						<img src={kit.image} alt={kit.alt} loading="lazy" />
+						<figcaption><span class="kit-number">0{index + 1}</span><span>{kit.name}</span></figcaption>
+					</figure>
+				))}
+			</div>
+			<div class="render-overview">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> NOIR design mockups</p>
+				<h3>Details,<br /><span>in full.</span></h3>
+			</div>
+			<div class="kit-grid">
+				{designBoards.map((kit, index) => (
+					<figure class={`kit-item kit-${index + 1}`}>
+						<img src={kit.image} alt={kit.alt} loading="lazy" />
+						<figcaption><span class="kit-number">0{index + 1}</span><span>{kit.name}</span></figcaption>
+					</figure>
+				))}
+			</div>
+			<p class="render-note">Supplied NOIR design mockups for Persiwah’s complete player and goalkeeper kit collection.</p>
+		</section>
+
+		<section class="moments-section" aria-labelledby="moments-heading">
+			<div class="container moments-head">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Persiwah · Mempawah</p>
+				<h2 id="moments-heading">Made for their city.<br /><span>Worn through every challenge.</span></h2>
+				<p class="moments-intro">The Dayak motif and colours are chosen to represent Mempawah — the city Persiwah calls home.</p>
+			</div>
+			<div class="story-beats container">
+				<section class="story-beat story-pitch" aria-labelledby="story-pitch-heading">
+					<div class="story-copy">
+						<p class="story-step">01 <span>On the pitch</span></p>
+						<h3 id="story-pitch-heading">Rooted in Mempawah.</h3>
+						<p>Dayak-inspired patterning and the city’s colours give the kit a sense of place. It represents where the team comes from.</p>
+					</div>
+					<figure class="story-image story-image-pitch">
+						<img src={moments.pitch} alt="Persiwah player wearing the green home jersey during a match" loading="lazy" />
+						<figcaption>Persiwah FC · Matchday</figcaption>
+					</figure>
+				</section>
+
+				<section class="story-beat story-supporters" aria-labelledby="story-supporters-heading">
+					<figure class="story-image story-image-crowd">
+						<img src={moments.crowd} alt="Persiwah supporters celebrating together in the stands" loading="lazy" />
+					</figure>
+					<div class="supporters-caption">
+						<p class="story-step">02 <span>In the stands</span></p>
+						<h3 id="story-supporters-heading">A demanding road through Liga 4.</h3>
+						<p>Hot days, fierce matches, and opponents from across the region tested the team. Their spirit held through it all.</p>
+					</div>
+				</section>
+
+				<section class="story-beat story-together" aria-labelledby="story-together-heading">
+					<div class="together-copy">
+						<p class="story-step">03 <span>The final · Liga 4 Kalbar</span></p>
+						<h3 id="story-together-heading"><span>2–0</span><br />Champions.</h3>
+						<p>Persiwah beat PS Kubu Raya in the final. After hot days, fierce matches, and opponents from across the region, they finished their run as champions.</p>
+					</div>
+					<div class="together-images">
+						<figure class="story-image story-image-team">
+							<img src={moments.team} alt="Persiwah team lined up together on the pitch" loading="lazy" />
+						</figure>
+						<figure class="story-image story-image-embrace">
+							<img src={moments.embrace} alt="Persiwah teammates embracing on the pitch" loading="lazy" />
+						</figure>
+						<figure class="story-image story-image-celebration">
+							<img src={moments.celebration} alt="Persiwah players celebrating together on the pitch" loading="lazy" />
+						</figure>
+					</div>
+				</section>
+			</div>
+		</section>
+		<footer class="project-outro container">
+			<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Made with NOIR</p>
+			<a class="outro-link" href="/#built">Explore more projects <span aria-hidden="true">→</span></a>
+		</footer>
+	</article>
+</BaseLayout>
+
+<style>
+	.project-page { overflow: clip; }
+	.container { width: min(100% - 2 * var(--gutter), var(--container-max)); margin-inline: auto; }
+	.project-intro { padding-top: clamp(2rem, 4vw, 4rem); }
+	.back-link { display: inline-flex; gap: .65rem; align-items: center; font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-muted); }
+	.back-link span { font-size: 1rem; }
+	.intro-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: clamp(2rem, 7vw, 7rem); align-items: center; margin-top: clamp(2.25rem, 5vw, 5rem); }
+	.intro-copy { padding-block: 1rem; }
+	.eyebrow { display: flex; align-items: center; gap: .8rem; font-size: .7rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--color-ink-muted); }
+	.eyebrow-rule { width: 2rem; height: 1px; background: var(--color-accent); }
+	.project-index { color: var(--color-ink-faint); }
+	h1 { margin-top: 1.5rem; font-size: clamp(4rem, 9vw, 9rem); line-height: .84; letter-spacing: -.075em; font-weight: 700; }
+	.project-summary { max-width: 25rem; margin-top: 2rem; font-size: clamp(1.05rem, 1.5vw, 1.35rem); line-height: 1.5; color: var(--color-ink-muted); }
+	.project-meta { display: flex; flex-wrap: wrap; gap: .65rem 1.6rem; margin-top: 2rem; padding-top: 1.1rem; border-top: 1px solid var(--color-border); font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-faint); }
+	.champion-poster { margin: 0; max-height: min(75vh, 58rem); background: #18371d; overflow: hidden; }
+	.champion-poster img { width: 100%; height: 100%; max-height: min(75vh, 58rem); object-fit: contain; }
+	.kit-section { padding-top: clamp(6rem, 11vw, 11rem); }
+	.section-heading { display: flex; align-items: end; justify-content: space-between; gap: 2rem; margin-bottom: clamp(2rem, 4vw, 4rem); }
+	.section-heading h2, .moments-head h2 { margin-top: 1.4rem; font-size: clamp(2.5rem, 5.5vw, 5.5rem); line-height: .95; letter-spacing: -.06em; }
+	.section-note { max-width: 20rem; padding-bottom: .4rem; color: var(--color-ink-muted); font-size: .95rem; }
+	.kit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1rem, 2.6vw, 2.5rem); }
+	.kit-item { min-width: 0; margin: 0; }
+	.kit-item img { display: block; width: 100%; height: auto; background: #f1f0ec; }
+	.kit-item figcaption { display: flex; gap: 1rem; align-items: baseline; padding-top: .85rem; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; }
+	.kit-number { color: var(--color-accent); font-size: .65rem; }
+	.render-note { margin-top: 1.5rem; font-size: .7rem; letter-spacing: .05em; color: var(--color-ink-faint); }
+	.render-overview { margin-top: clamp(4rem, 8vw, 8rem); padding-top: 1.15rem; border-top: 1px solid var(--color-border); }
+	.render-overview h3 { margin-top: 1.25rem; font-size: clamp(2.5rem, 5.5vw, 5.5rem); line-height: .95; letter-spacing: -.06em; }
+	.render-overview h3 span { color: var(--color-ink-faint); }
+	.kit-render-grid { margin-top: clamp(2rem, 4vw, 4rem); }
+	.moments-section { padding-top: clamp(7rem, 13vw, 13rem); }
+	.moments-head h2 { max-width: 60rem; margin-bottom: 1.5rem; }
+	.moments-head h2 span { color: var(--color-ink-faint); }
+	.moments-intro { max-width: 35rem; color: var(--color-ink-muted); font-size: clamp(1rem, 1.4vw, 1.2rem); }
+	.story-beats { display: grid; gap: clamp(5rem, 10vw, 10rem); margin-top: clamp(3rem, 6vw, 6rem); }
+	.story-beat { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+	.story-copy { grid-column: 1 / span 4; }
+	.story-step { display: flex; gap: .8rem; align-items: center; color: var(--color-accent); font-size: .67rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+	.story-step span { color: var(--color-ink-faint); }
+	.story-copy h3, .supporters-caption h3 { max-width: 24rem; margin-top: 1.35rem; font-size: clamp(1.8rem, 3.3vw, 3.3rem); line-height: 1; letter-spacing: -.055em; }
+	.story-copy > p:last-child, .supporters-caption > p:last-child { max-width: 21rem; margin-top: 1.15rem; color: var(--color-ink-muted); font-size: .95rem; }
+	.story-image { min-width: 0; margin: 0; }
+	.story-image img { width: 100%; height: 100%; object-fit: cover; }
+	.story-image figcaption { margin-top: .75rem; color: var(--color-ink-faint); font-size: .65rem; letter-spacing: .13em; text-transform: uppercase; }
+	.story-image-pitch { grid-column: 7 / span 6; aspect-ratio: 1.14; }
+	.story-image-pitch img { object-position: center 34%; }
+	.story-supporters { align-items: end; }
+	.story-image-crowd { grid-column: 1 / span 7; aspect-ratio: 1.72; }
+	.story-image-crowd img { object-position: center 45%; }
+	.supporters-caption { grid-column: 9 / span 4; padding-bottom: .5rem; }
+	.supporters-caption h3 { font-size: clamp(1.7rem, 2.6vw, 2.65rem); }
+	.story-together { display: block; }
+	.together-copy { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 2rem); align-items: end; margin-bottom: clamp(2rem, 4vw, 4rem); }
+	.together-copy .story-step { grid-column: 1 / -1; }
+	.together-copy h3 { grid-column: 1 / span 6; max-width: none; margin: 0; font-size: clamp(3.6rem, 8vw, 7.5rem); line-height: .78; letter-spacing: -.075em; }
+	.together-copy h3 span { color: var(--color-accent); }
+	.together-copy > p:last-child { grid-column: 8 / span 5; max-width: 26rem; margin: 0 0 .2rem; color: var(--color-ink-muted); font-size: clamp(.95rem, 1.2vw, 1.1rem); }
+	.together-images { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(.6rem, 1.2vw, 1.2rem); align-items: stretch; }
+	.story-image-team { grid-column: 1 / span 8; grid-row: 1 / span 2; aspect-ratio: 1.23; }
+	.story-image-team img { object-position: center 44%; }
+	.story-image-embrace { grid-column: 9 / span 4; aspect-ratio: 1.1; }
+	.story-image-embrace img { object-position: center 42%; }
+	.story-image-celebration { grid-column: 9 / span 4; aspect-ratio: 1.39; }
+	.story-image-celebration img { object-position: center 45%; }
+	.project-outro { display: flex; justify-content: space-between; align-items: center; gap: 2rem; padding-block: clamp(4rem, 8vw, 8rem); border-top: 1px solid var(--color-border); margin-top: clamp(5rem, 10vw, 10rem); }
+	.outro-link { display: flex; align-items: center; gap: 1rem; font-size: clamp(1.2rem, 2vw, 1.8rem); letter-spacing: -.03em; }
+	.outro-link span { color: var(--color-accent); transition: transform .2s ease; }
+	.outro-link:hover span { transform: translateX(.3rem); }
+	@media (max-width: 760px) {
+		.intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+		.intro-copy { padding: 0; }
+		.champion-poster, .champion-poster img { max-height: 82vh; }
+		.section-heading { align-items: start; flex-direction: column; }
+		.section-note { max-width: 32rem; }
+		.kit-grid { grid-template-columns: 1fr; gap: 2rem; }
+		.story-beat { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.5rem; }
+		.story-copy, .story-image-pitch, .story-image-crowd, .supporters-caption, .together-images { grid-column: 1 / -1; }
+		.story-image-pitch { grid-row: 1; aspect-ratio: 1.08; }
+		.story-copy { grid-row: 2; }
+		.story-supporters { gap: 1.5rem; }
+		.supporters-caption { grid-row: 2; }
+		.story-together { display: block; }
+		.together-copy { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 1.2rem; margin-bottom: 1.5rem; }
+		.together-copy .story-step { grid-column: 1 / -1; }
+		.together-copy h3 { grid-column: 1 / -1; font-size: clamp(3.5rem, 16vw, 5.2rem); }
+		.together-copy > p:last-child { grid-column: 1 / -1; }
+		.together-images { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: .65rem; }
+		.story-image-team { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 1.3; }
+		.story-image-embrace, .story-image-celebration { grid-column: span 3; }
+		.project-outro { align-items: start; flex-direction: column; }
+	}
+</style>

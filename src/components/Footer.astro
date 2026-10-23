@@ -1,0 +1,122 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="container footer-top">
+		<div class="footer-brand">
+			<a href="/" class="wordmark">NOIR</a>
+			<p>We build team identities, not just jerseys.</p>
+		</div>
+
+		<nav aria-label="Products">
+			<p class="footer-col-title">Products</p>
+			<ul>
+				<li><a href="#noir-football">Football</a></li>
+				<li><a href="#noir-futsal">Futsal</a></li>
+				<li><a href="#noir-basketball">Basketball</a></li>
+				<li><a href="#what-we-make">More sports</a></li>
+			</ul>
+		</nav>
+
+		<nav aria-label="Company">
+			<p class="footer-col-title">Company</p>
+			<ul>
+				<li><a href="#built">Our Teams</a></li>
+				<li><a href="#how-it-works">How It Works</a></li>
+			</ul>
+		</nav>
+
+		<nav aria-label="Contact">
+			<p class="footer-col-title">Contact</p>
+			<ul>
+				<li><a href="https://wa.me/628977200741">Get a Quote</a></li>
+			</ul>
+		</nav>
+	</div>
+
+	<div class="container footer-bottom">
+		<p>&copy; {year} NOIR. All rights reserved.</p>
+	</div>
+</footer>
+
+<style>
+	.site-footer {
+		background: var(--color-bg);
+	}
+
+	.footer-top {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2.5rem;
+		padding-block: clamp(3rem, 6vw, 5rem);
+	}
+
+	.footer-brand .wordmark {
+		font-size: 1.125rem;
+		font-weight: 800;
+		letter-spacing: 0.06em;
+	}
+
+	.footer-brand p {
+		margin-top: 0.875rem;
+		font-size: 0.875rem;
+		line-height: 1.6;
+		color: var(--color-ink-muted);
+		max-width: 26ch;
+	}
+
+	.footer-col-title {
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.1em;
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
+		margin-bottom: 1rem;
+	}
+
+	.site-footer nav ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.site-footer nav a {
+		font-size: 0.875rem;
+		color: var(--color-ink-muted);
+		transition: color 0.2s ease;
+	}
+
+	.site-footer nav a:hover,
+	.site-footer nav a:focus-visible {
+		color: var(--color-ink);
+	}
+
+	.footer-bottom {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		padding-block: 1.5rem;
+		font-size: 0.8125rem;
+		color: var(--color-ink-faint);
+	}
+
+	.footer-legal {
+		display: flex;
+		gap: 1.5rem;
+	}
+
+	.footer-legal a:hover,
+	.footer-legal a:focus-visible {
+		color: var(--color-ink);
+	}
+
+	@media (min-width: 700px) {
+		.footer-top {
+			grid-template-columns: 1.4fr 1fr 1fr 1fr;
+			gap: 2rem;
+		}
+	}
+</style>
