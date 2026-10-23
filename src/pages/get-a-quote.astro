@@ -4,6 +4,12 @@ import SectionMarker from '../components/homepage/SectionMarker.astro';
 
 const whatsappNumber = '628977200741';
 const sports = ['Football', 'Futsal', 'Basketball', 'Badminton', 'Padel', 'Other'];
+// Supplied by NOIR (Oct 2026).
+const facts = [
+	{ label: 'Minimum order', value: '10 pcs' },
+	{ label: 'Production', value: '3–14 days' },
+	{ label: 'Price', value: 'From IDR 135K' },
+];
 const designOptions = [
 	{ value: 'design', label: 'Yes, we have a design' },
 	{ value: 'reference', label: 'We have references' },
@@ -20,6 +26,15 @@ const designOptions = [
 			<SectionMarker label="Get a Quote" />
 			<h1 id="quote-heading">Tell us<br />about your<br />team.</h1>
 			<p class="quote-lede">Five quick questions. When you send, the answers open as a WhatsApp message to the NOIR team, so you can add photos or references in the same chat.</p>
+
+			<dl class="quote-facts">
+				{facts.map((fact) => (
+					<div>
+						<dt>{fact.label}</dt>
+						<dd>{fact.value}</dd>
+					</div>
+				))}
+			</dl>
 
 			<dl class="quote-contact">
 				<div>
@@ -63,7 +78,7 @@ const designOptions = [
 						<span class="field-index">03</span>
 						Quantity
 					</label>
-					<input id="quantity" name="quantity" type="number" inputmode="numeric" min="1" placeholder="Approximate number of jerseys" required />
+					<input id="quantity" name="quantity" type="number" inputmode="numeric" min="10" placeholder="Minimum 10 pcs" required />
 				</div>
 
 				<div class="field">
@@ -177,11 +192,36 @@ const designOptions = [
 		color: var(--color-ink-muted);
 	}
 
+	.quote-facts {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.5rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.quote-facts dt {
+		font-size: 0.6875rem;
+		font-weight: 500;
+		letter-spacing: var(--tracking-label);
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
+	}
+
+	.quote-facts dd {
+		margin-top: 0.5rem;
+		font-size: clamp(1.125rem, 1.7vw, 1.5rem);
+		font-weight: 600;
+		letter-spacing: -0.015em;
+		white-space: nowrap;
+	}
+
 	.quote-contact {
 		display: grid;
 		grid-template-columns: auto 1fr;
 		gap: 2.5rem;
-		margin-top: clamp(2.5rem, 5vw, 4rem);
+		margin-top: 1.5rem;
 		padding-top: 1.5rem;
 		border-top: 1px solid var(--color-border);
 	}
@@ -352,6 +392,15 @@ const designOptions = [
 	}
 
 	@media (max-width: 559px) {
+		.quote-facts {
+			gap: 1rem;
+		}
+
+		.quote-facts dd {
+			font-size: 1.0625rem;
+			white-space: normal;
+		}
+
 		.field-row {
 			grid-template-columns: 1fr;
 		}
