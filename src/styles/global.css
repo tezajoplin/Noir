@@ -15,12 +15,12 @@
 	--color-border-inverse: rgba(250, 249, 249, 0.18);
 	--color-accent: #8a6a2c;
 
-	/* One self-hosted family for the whole site. Archivo's width axis gives
-	   headlines a semi-condensed, athletic cut while text stays at normal width. */
-	--font-sans: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+	/* One self-hosted family for the whole site. Instrument Sans's width axis
+	   tightens headlines slightly while text stays at normal width. */
+	--font-sans: 'Instrument Sans Variable', 'Helvetica Neue', Arial, sans-serif;
 	--font-display: var(--font-sans);
-	--stretch-display: 84%;
-	--tracking-display: -0.025em;
+	--stretch-display: 92%;
+	--tracking-display: -0.03em;
 	--tracking-label: 0.14em;
 
 	--container-max: 1440px;
