@@ -8,7 +8,7 @@ const sports = ['Football', 'Futsal', 'Basketball', 'Badminton', 'Padel', 'Other
 const facts = [
 	{ label: 'Minimum order', value: '10 pcs' },
 	{ label: 'Production', value: '3–14 days' },
-	{ label: 'Price', value: 'From IDR 135K' },
+	{ label: 'Price per set', value: 'From IDR 135K' },
 ];
 const designOptions = [
 	{ value: 'design', label: 'Yes, we have a design' },
@@ -35,6 +35,7 @@ const designOptions = [
 					</div>
 				))}
 			</dl>
+			<p class="quote-facts-note">Design included. Production time counts from the day your order comes in. Options such as long sleeves cost extra.</p>
 
 			<dl class="quote-contact">
 				<div>
@@ -215,6 +216,14 @@ const designOptions = [
 		font-weight: 600;
 		letter-spacing: -0.015em;
 		white-space: nowrap;
+	}
+
+	.quote-facts-note {
+		max-width: 44ch;
+		margin-top: 1rem;
+		font-size: 0.8125rem;
+		line-height: 1.55;
+		color: var(--color-ink-faint);
 	}
 
 	.quote-contact {
