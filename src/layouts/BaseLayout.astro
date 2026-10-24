@@ -1,4 +1,5 @@
 ---
+import '@fontsource-variable/instrument-sans/wdth.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -6,14 +7,19 @@ import Footer from '../components/Footer.astro';
 interface Props {
 	title: string;
 	description?: string;
+	image?: string;
     noindex?: boolean;
 }
 
 const {
 	title,
+	image = '/og-image.jpg',
     noindex = false,
 	description = 'NOIR — premium custom sportswear built around team identity.',
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
 ---
 
 <!doctype html>
@@ -23,6 +29,19 @@ const {
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<meta name="theme-color" content="#fafaf9" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="NOIR" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:image" content={ogImage} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta name="twitter:card" content="summary_large_image" />
         {noindex && <meta name="robots" content="noindex, nofollow" />}
 	</head>
 	<body>

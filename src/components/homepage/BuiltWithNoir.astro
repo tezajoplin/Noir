@@ -1,538 +1,286 @@
 ---
-import { getImage } from 'astro:assets';
-import gabsis from '../../../images/gabsis.jpg';
-import gapdol from '../../../images/gapdol.jpg';
-const gabsisPhoto = await getImage({src:gabsis,width:1290,format:'webp'});
-const gapdolPhoto = await getImage({src:gapdol,width:1290,format:'webp'});
-const slides = [
-	{
-		name: 'Persiwah FC',
-		role: 'Official Jersey Partner',
-		img: '/images/persiwah-featured.png',
-		ratio: 1076 / 1359,
-		alt: 'Persiwah FC players celebrating their Liga 4 Kalbar championship win',
-		tagHtml: 'Champions Liga 4<br>Piala Gubernur Kalbar 2026',
-		caption: 'Noir Apparel × Persiwah FC',
-		copy: 'Bersama Persiwah FC, NOIR merancang identitas yang merepresentasikan semangat juang, kebanggaan daerah, dan ambisi untuk terus melangkah lebih tinggi.',
-		href: '/our-teams/persiwah-fc/',
-		stats: true,
-	},
-	{
-		name: 'GABSIS Sambas',
-		role: 'Official Jersey Partner',
-		img: gabsisPhoto.src,
-		ratio: gabsisPhoto.width / gabsisPhoto.height,
-		alt: 'GABSIS Sambas team',
-		tagHtml: 'Custom Kit Project',
-		caption: 'Noir Apparel × GABSIS Sambas',
-		copy: 'Identitas baru untuk GABSIS Sambas, dirancang untuk merepresentasikan kebanggaan komunitas sepak bola lokal.',
-		href: '#built',
-		stats: false,
-	},
-	{
-		name: 'Gapdol FC',
-		role: 'Official Jersey Partner',
-		img: gapdolPhoto.src,
-		ratio: gapdolPhoto.width / gapdolPhoto.height,
-		alt: 'Gapdol FC team celebrating',
-		tagHtml: 'Custom Kit Project',
-		caption: 'Noir Apparel × Gapdol FC',
-		copy: 'Jersey yang dibangun untuk menemani perjalanan Gapdol FC di setiap pertandingan, hujan atau panas.',
-		href: '/our-teams/gapdol-9000/',
-		stats: false,
-	},
-];
+import { Image } from 'astro:assets';
+import SectionMarker from './SectionMarker.astro';
+import persiwah from '../../assets/projects/persiwah-liga4-team.jpg';
+import gapdol from '../../assets/projects/gapdol-team.webp';
+import perngabong from '../../assets/projects/perngabong-team.jpg';
+import budakGang from '../../assets/projects/budak-gang-team.jpg';
+import gabsis from '../../assets/projects/gabsis-team.jpg';
 
+// Supporting projects keep each photograph's own proportions: the columns are
+// sized by aspect ratio so the row shares one height without cropping anyone out.
 const moreProjects = [
-	{ name: 'Gapdol 9000', badge: 'G9', img: '/images/projects/gapdol-studio-pair.webp', alt: 'Gapdol 9000 charcoal and olive football jerseys in a soft studio mockup', role: 'Home & away kit', href: '/our-teams/gapdol-9000/' },
-	{ name: 'Perngabong', badge: 'P', img: '/images/projects/perngabong-studio-pair-yellow.webp', alt: 'Perngabong black and white home jersey paired with its yellow and navy Komodo away jersey in a soft studio mockup', role: 'Home & away kit', href: '/our-teams/perngabong/' },
-	{ name: 'Budak Gang FC', badge: 'BG', img: '/images/projects/budak-gang-studio-pair.webp', alt: 'Budak Gang FC white and red jerseys in a soft studio mockup', role: 'Home & away kit', href: '/our-teams/budak-gang-fc/' },
+	{ name: 'Gapdol 9000', image: gapdol, alt: 'Gapdol 9000 players in olive NOIR kits walking off the pitch together', role: 'Home & away kit', href: '/our-teams/gapdol-9000/' },
+	{ name: 'Perngabong', image: perngabong, alt: 'Perngabong squad in yellow and navy NOIR kits posing for a team photo', role: 'Home & away kit', href: '/our-teams/perngabong/' },
+	{ name: 'Budak Gang FC', image: budakGang, alt: 'Budak Gang FC squad in white and red NOIR kits behind a championship banner', role: 'Home & away kit', href: '/our-teams/budak-gang-fc/' },
+	{ name: 'Gabsis Sambas', image: gabsis, alt: 'Gabsis Sambas squad in yellow NOIR home kits lining up behind a Liga 4 banner', role: 'Liga 4 champions 2025', href: '/our-teams/gabsis-sambas/' },
 ];
-
-const featured = slides[0];
 ---
 
-<section id="built" class="built section" aria-labelledby="built-heading">
+<section id="built" class="built" aria-labelledby="built-heading">
 	<div class="container">
-		<p class="eyebrow">
-			<span class="eyebrow-rule" aria-hidden="true"></span>
-			<span class="accent-index">03</span> — Built With NOIR
-		</p>
-	</div>
+		<SectionMarker number="03" label="Built With NOIR" />
 
-	<div class="built-feature" id="built-feature">
-		<div class="built-media is-poster" id="built-media" style={`--built-media-ratio: ${featured.ratio}`}>
-			<span class="built-media-scrim-t" aria-hidden="true"></span>
-			<span class="built-media-scrim-b" aria-hidden="true"></span>
-			<img id="built-media-img" src={featured.img} alt={featured.alt} width="1076" height="1359" loading="lazy" />
-			<span class="built-media-tag tl" id="built-media-tag" set:html={featured.tagHtml} />
-			<span class="built-media-logo" aria-hidden="true">'N.</span>
-			<span class="built-media-caption" id="built-media-caption">{featured.caption}</span>
-		</div>
+		<div class="feature">
+			<figure class="feature-media">
+				<Image
+					src={persiwah}
+					alt="Persiwah FC starting eleven in green NOIR kits, with the goalkeeper in red, behind a Liga 4 2025/26 Piala Gubernur Kalbar banner"
+					widths={[640, 960, 1290]}
+					sizes="(min-width: 960px) 58vw, 100vw"
+					loading="lazy"
+				/>
+			</figure>
 
-		<div class="built-info">
-			<p class="built-kicker">Featured Project</p>
-			<h2 id="built-heading">
-				<span id="built-name">{featured.name}</span>
-			</h2>
-			<p class="built-role" id="built-role">{featured.role}</p>
-			<span class="built-rule" aria-hidden="true"></span>
+			<div class="feature-info">
+				<p class="feature-kicker">Featured project</p>
+				<h2 id="built-heading">Persiwah FC</h2>
+				<p class="feature-copy">Together with Persiwah FC, NOIR designed an identity that represents the club’s fighting spirit, regional pride, and ambition to keep climbing higher.</p>
 
-			<p class="built-copy" id="built-copy">{featured.copy}</p>
+				<dl class="feature-meta">
+					<div>
+						<dt>Partnership</dt>
+						<dd>Official Jersey Partner</dd>
+					</div>
+					<div>
+						<dt>Season</dt>
+						<dd>Champions, Liga 4<br />Piala Gubernur Kalbar 2026</dd>
+					</div>
+				</dl>
 
-			<div class="built-stats" id="built-stats">
-				<div class="built-stat">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0V4Z"/><path d="M7 5H4a3 3 0 0 0 3 5M17 5h3a3 3 0 0 1-3 5"/></svg>
-					<span>
-						<span class="built-stat-label">Champions</span>
-						<span class="built-stat-sub">Liga 4 Kalbar</span>
-					</span>
-				</div>
-				<div class="built-stat-divider" aria-hidden="true"></div>
-				<div class="built-stat">
-					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4.5" width="18" height="16" rx="1.5"/><path d="M3 9.5h18M8 3v3M16 3v3"/></svg>
-					<span>
-						<span class="built-stat-label">2026</span>
-						<span class="built-stat-sub">Season</span>
-					</span>
-				</div>
+				<a class="link-arrow" href="/our-teams/persiwah-fc/">
+					View Project
+					<span aria-hidden="true">→</span>
+				</a>
 			</div>
-
-			<a class="btn" href={featured.href} id="built-cta">
-				View Project
-				<span class="btn-arrow" aria-hidden="true">→</span>
-			</a>
 		</div>
 
-		<div class="built-pager">
-			<button type="button" id="pager-prev" aria-label="Previous project" disabled>‹</button>
-			<span class="built-pager-index"><span id="pager-current">01</span> / {String(slides.length).padStart(2, '0')}</span>
-			<button type="button" id="pager-next" aria-label="Next project">›</button>
+		<div class="more">
+			<h3 class="more-title">More projects</h3>
+			<ul class="more-list">
+				{
+					moreProjects.map((project) => (
+						<li style={`--ratio: ${project.image.width / project.image.height}`}>
+							<a href={project.href}>
+								<span class="more-photo">
+									<Image src={project.image} alt={project.alt} widths={[480, 800]} sizes="(min-width: 960px) 34vw, 100vw" loading="lazy" />
+								</span>
+								<span class="more-caption">
+									<span class="more-name">{project.name}</span>
+									<span class="more-role">{project.role}</span>
+								</span>
+							</a>
+						</li>
+					))
+				}
+			</ul>
 		</div>
-	</div>
-
-	<div class="built-more">
-		<div class="built-more-head">
-			<p class="built-kicker built-kicker-muted">More Projects</p>
-			<a class="link-arrow" href="#built">
-				View All Projects
-				<span aria-hidden="true">→</span>
-			</a>
-		</div>
-
-		<div class="built-cards">
-			{
-				moreProjects.map((project) => (
-					<a class="built-card" href={project.href ?? '#built'}>
-						<img src={project.img} alt={project.alt} loading="lazy" />
-						<span class="built-card-scrim" aria-hidden="true" />
-						<span class="built-card-body">
-							<span class="built-card-copy">
-								<span class="built-card-name">{project.name}</span>
-								<span class="built-card-descriptor">{project.role}</span>
-							</span>
-						</span>
-					</a>
-				))
-			}
-		</div>
+		<p class="tally">
+			<span class="tally-number">30,000+</span>
+			<span class="tally-copy">pieces made for hundreds of teams<br />since 2022.</span>
+		</p>
 	</div>
 </section>
 
 <style>
+	.built {
+		padding-block: 0 clamp(2.5rem, 4.5vw, 4rem);
+		scroll-margin-top: var(--header-h);
+	}
+
 	/* ---- Featured project ---- */
-	.built-feature {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		gap: 2.5rem;
-		margin-top: 2.5rem;
+	.feature {
+		display: grid;
+		grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+		column-gap: clamp(2rem, 5vw, 5rem);
+		align-items: end;
+		margin-top: clamp(1.75rem, 3vw, 2.5rem);
 	}
 
-	.built-media {
-		position: relative;
-		aspect-ratio: var(--built-media-ratio, 1076 / 1359);
-		overflow: hidden;
-		background: var(--color-surface);
-		margin-inline: var(--gutter);
-	}
-
-	.built-media img {
-		position: absolute;
-		inset: 0;
+	.feature-media :global(img) {
 		width: 100%;
-		height: 100%;
-		object-fit: contain;
-		object-position: center top;
+		height: auto;
 	}
 
-	.built-media-tag {
-		position: absolute;
-		z-index: 2;
-		font-size: 0.6875rem;
-		font-weight: 600;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: #fff;
-		line-height: 1.5;
-	}
-
-	.built-media-tag.tl {
-		top: 1.5rem;
-		left: 1.75rem;
-	}
-
-	.built-media-logo {
-		position: absolute;
-		z-index: 2;
-		top: 1.5rem;
-		right: 1.75rem;
-		font-size: 1.1rem;
-		font-weight: 700;
-		color: #fff;
-	}
-
-	.built-media-caption {
-		position: absolute;
-		z-index: 2;
-		bottom: 1.25rem;
-		left: 0;
-		right: 0;
-		text-align: center;
-		font-size: 0.6875rem;
-		font-weight: 600;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		color: rgba(255, 255, 255, 0.92);
-	}
-
-	.built-media-scrim-t,
-	.built-media-scrim-b {
-		position: absolute;
-		left: 0;
-		right: 0;
-		height: 5rem;
-		z-index: 1;
-		pointer-events: none;
-	}
-	.built-media-scrim-t {
-		top: 0;
-		background: linear-gradient(180deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
-	}
-	.built-media-scrim-b {
-		bottom: 0;
-		background: linear-gradient(0deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
-	}
-
-	/* Persiwah's supplied artwork is a complete championship poster; keep it unobstructed. */
-	.built-media.is-poster .built-media-scrim-t,
-	.built-media.is-poster .built-media-scrim-b,
-	.built-media.is-poster .built-media-tag,
-	.built-media.is-poster .built-media-logo,
-	.built-media.is-poster .built-media-caption {
-		display: none;
-	}
-
-	.built-info {
+	.feature-info {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 1.5rem;
-		padding-inline: var(--gutter);
+		padding-bottom: 0.25rem;
 	}
 
-	.built-kicker {
-		font-size: 0.75rem;
-		font-weight: 600;
-		letter-spacing: 0.12em;
-		text-transform: uppercase;
-		color: var(--color-accent);
-	}
-
-	.built-kicker-muted {
-		color: var(--color-ink-faint);
-	}
-
-	.built-info h2 {
-		font-family: var(--font-display);
-		font-size: clamp(2.25rem, 4.4vw, 3.5rem);
-		font-weight: 700;
-		letter-spacing: var(--tracking-display);
-		line-height: 1;
-	}
-
-	.built-role {
-		font-size: 1rem;
+	.feature-kicker {
+		font-size: 0.6875rem;
 		font-weight: 500;
-		color: var(--color-ink-muted);
-		margin-top: -0.5rem;
+		letter-spacing: var(--tracking-label);
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
 	}
 
-	.built-rule {
-		width: 2.5rem;
-		height: 2px;
-		background: var(--color-accent);
-	}
-
-	.built-copy {
-		font-size: 0.9375rem;
-		line-height: 1.7;
-		color: var(--color-ink-muted);
-		max-width: 38ch;
-	}
-
-	.built-stats {
-		display: flex;
-		align-items: center;
-		gap: 1.5rem;
-	}
-
-	.built-stat {
-		display: flex;
-		align-items: flex-start;
-		gap: 0.6rem;
-	}
-
-	.built-stat-divider {
-		width: 1px;
-		height: 2rem;
-		background: var(--color-border);
-	}
-
-	.built-stat svg {
-		width: 1.15rem;
-		height: 1.15rem;
-		flex-shrink: 0;
-		margin-top: 0.15rem;
-		color: var(--color-accent);
-	}
-
-	.built-stat-label {
-		display: block;
-		font-size: 0.9375rem;
+	.feature-info h2 {
+		margin-top: 1rem;
+		font-size: clamp(2.75rem, 4.4vw, 4.25rem);
 		font-weight: 700;
-		color: var(--color-ink);
-		line-height: 1.2;
-		white-space: nowrap;
+		line-height: 0.92;
+		letter-spacing: var(--tracking-display);
+		text-transform: uppercase;
 	}
 
-	.built-stat-sub {
-		display: block;
-		font-size: 0.8125rem;
-		font-weight: 400;
+	.feature-copy {
+		margin-top: 1.75rem;
+		max-width: 36ch;
+		font-size: 1rem;
+		line-height: 1.65;
+		color: var(--color-ink-muted);
+	}
+
+	.feature-meta {
+		width: 100%;
+		margin-block: 2rem 2.25rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.feature-meta div {
+		display: grid;
+		grid-template-columns: 7.5rem 1fr;
+		gap: 1rem;
+		padding-block: 0.875rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.feature-meta dt {
+		font-size: 0.6875rem;
+		font-weight: 500;
+		letter-spacing: var(--tracking-label);
+		text-transform: uppercase;
 		color: var(--color-ink-faint);
-		margin-top: 0.1rem;
-		white-space: nowrap;
+		padding-top: 0.15rem;
 	}
 
-	/* ---- Pager ---- */
-	.built-pager {
-		display: flex;
-		align-items: center;
-		gap: 1.1rem;
-		margin-top: 0.5rem;
-	}
-
-	.built-pager button {
-		background: none;
-		border: none;
-		padding: 0.25rem;
-		cursor: pointer;
-		color: var(--color-ink-faint);
-		font-size: 1.1rem;
-		line-height: 1;
-		transition: color 0.2s ease;
-	}
-	.built-pager button:hover {
-		color: var(--color-ink);
-	}
-	.built-pager button:disabled {
-		opacity: 0.3;
-		cursor: default;
-	}
-	.built-pager button:disabled:hover {
-		color: var(--color-ink-faint);
-	}
-
-	.built-pager-index {
-		font-size: 0.875rem;
+	.feature-meta dd {
+		font-size: 0.9375rem;
 		font-weight: 600;
-		letter-spacing: 0.04em;
-		color: var(--color-ink);
-		font-variant-numeric: tabular-nums;
-		position: relative;
-		padding-bottom: 0.35rem;
+		line-height: 1.4;
 	}
 
-	.built-pager-index::after {
-		content: '';
-		position: absolute;
-		left: 0;
-		bottom: 0;
-		width: 1.4rem;
-		height: 2px;
-		background: var(--color-ink);
+	/* ---- Tally ---- */
+	.tally {
+		display: flex;
+		align-items: baseline;
+		gap: clamp(1rem, 3vw, 2.5rem);
+		margin-top: clamp(3rem, 6vw, 4.5rem);
+		padding-top: clamp(1.5rem, 3vw, 2.25rem);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.tally-number {
+		font-size: clamp(3rem, 8vw, 7rem);
+		font-weight: 700;
+		font-stretch: var(--stretch-display);
+		line-height: 0.9;
+		letter-spacing: var(--tracking-display);
+	}
+
+	.tally-copy {
+		font-size: clamp(1rem, 1.5vw, 1.25rem);
+		line-height: 1.4;
+		letter-spacing: -0.01em;
+		color: var(--color-ink-muted);
 	}
 
 	/* ---- More projects ---- */
-	.built-more {
-		margin-top: clamp(3.5rem, 7vw, 6rem);
-		padding-top: clamp(2rem, 3.5vw, 2.75rem);
-		border-top: 1px solid var(--color-border);
-		padding-inline: var(--gutter);
+	.more {
+		margin-top: clamp(3rem, 6vw, 4.5rem);
 	}
 
-	.built-more-head {
+	.more-title {
+		font-size: 0.6875rem;
+		font-weight: 500;
+		font-stretch: 100%;
+		letter-spacing: var(--tracking-label);
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
+	}
+
+	.more-list {
 		display: flex;
-		align-items: baseline;
-		justify-content: space-between;
-		gap: 1.5rem;
+		gap: clamp(1rem, 2vw, 1.75rem);
+		margin-top: 1.5rem;
 	}
 
-	.built-cards {
-		margin-top: 1.75rem;
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1.1rem;
+	.more-list li {
+		flex: var(--ratio) 1 0;
+		min-width: 0;
 	}
 
-	.built-card {
-		position: relative;
-		aspect-ratio: 1.5;
-		overflow: hidden;
-		background: var(--color-bg-deep);
+	.more-list a {
 		display: block;
-		text-decoration: none;
-		box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.12);
 	}
 
-	.built-card > img {
-		position: absolute;
-		inset: 0;
+	.more-photo {
+		display: block;
+		aspect-ratio: var(--ratio);
+		overflow: hidden;
+	}
+
+	.more-photo :global(img) {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		object-position: center 42%;
-		transition: transform 0.5s ease;
+		transition: transform 0.6s ease;
 	}
 
-	.built-card:hover > img {
-		transform: scale(1.04);
+	.more-list a:hover .more-photo :global(img),
+	.more-list a:focus-visible .more-photo :global(img) {
+		transform: scale(1.03);
 	}
 
-	.built-card-scrim {
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(0deg, rgba(0, 0, 0, 0.76) 0%, rgba(0, 0, 0, 0.16) 36%, rgba(0, 0, 0, 0) 68%);
-	}
-
-	.built-card-body {
-		position: absolute;
-		inset: auto 0 0;
+	.more-caption {
 		display: flex;
-		align-items: center;
-		padding: 1rem 1.25rem 1.1rem;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		align-items: baseline;
+		gap: 0.15rem 1rem;
+		margin-top: 0.875rem;
 	}
 
-	.built-card-copy {
-		display: block;
-	}
-
-	.built-card-name {
-		display: block;
-		font-size: clamp(1rem, 1.8vw, 1.25rem);
-		font-weight: 700;
+	.more-name {
+		white-space: nowrap;
+		font-size: 1.0625rem;
+		font-weight: 650;
 		letter-spacing: -0.01em;
-		color: #fff;
-		line-height: 1.2;
 	}
 
-	.built-card-descriptor {
-		display: block;
+	.more-role {
+		white-space: nowrap;
 		font-size: 0.8125rem;
-		font-weight: 400;
-		color: rgba(255, 255, 255, 0.72);
-		margin-top: 0.2rem;
+		color: var(--color-ink-faint);
 	}
 
-	@media (min-width: 860px) {
-		.built-card {
-			aspect-ratio: 1.5;
+	@media (max-width: 559px) {
+		.tally {
+			flex-direction: column;
+			gap: 0.75rem;
+		}
+	}
+
+	@media (max-width: 959px) {
+		.feature {
+			grid-template-columns: 1fr;
+			row-gap: 2rem;
 		}
 
-		.built-feature {
-			flex-direction: row;
-			align-items: center;
-			gap: clamp(2rem, 3vw, 3rem);
-		}
-		.built-media {
-			flex: 2;
-			margin-right:0;
-		}
-		.built-info {
-			flex: 1;
-			align-self: flex-start;
+		.feature-media {
+			margin-inline: calc(-1 * var(--gutter));
 		}
 
-		.built-pager {
-			position: absolute;
-			right: var(--gutter);
-			bottom: -2.75rem;
+		.more-list {
+			flex-direction: column;
+			gap: 2rem;
 		}
 
-		.built-cards {
-			grid-template-columns: repeat(3, 1fr);
-			gap: 1.35rem;
+		.more-list li {
+			flex: none;
 		}
 	}
 </style>
-
-<script define:vars={{ slides }}>
-	(function () {
-		var i = 0;
-		var media = document.getElementById('built-media');
-		var mediaImg = document.getElementById('built-media-img');
-		var mediaTag = document.getElementById('built-media-tag');
-		var mediaCaption = document.getElementById('built-media-caption');
-		var name = document.getElementById('built-name');
-		var role = document.getElementById('built-role');
-		var copy = document.getElementById('built-copy');
-		var stats = document.getElementById('built-stats');
-		var cta = document.getElementById('built-cta');
-		var current = document.getElementById('pager-current');
-		var prevBtn = document.getElementById('pager-prev');
-		var nextBtn = document.getElementById('pager-next');
-
-		function render() {
-			var s = slides[i];
-			media.classList.toggle('is-poster', i === 0);
-			media.style.setProperty('--built-media-ratio', s.ratio);
-			mediaImg.src = s.img;
-			mediaImg.alt = s.alt;
-			mediaImg.style.objectPosition = i === 2 ? 'center 68%' : 'center top';
-			mediaTag.innerHTML = s.tagHtml;
-			mediaCaption.textContent = s.caption;
-			name.textContent = s.name;
-			role.textContent = s.role;
-			copy.textContent = s.copy;
-			cta.setAttribute('href', s.href);
-			stats.style.visibility = s.stats ? 'visible' : 'hidden';
-			current.textContent = String(i + 1).padStart(2, '0');
-			prevBtn.disabled = i === 0;
-			nextBtn.disabled = i === slides.length - 1;
-		}
-
-		prevBtn.addEventListener('click', function () {
-			if (i > 0) {
-				i--;
-				render();
-			}
-		});
-		nextBtn.addEventListener('click', function () {
-			if (i < slides.length - 1) {
-				i++;
-				render();
-			}
-		});
-	})();
-</script>

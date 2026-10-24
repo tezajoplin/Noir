@@ -1,36 +1,41 @@
 ---
+import Wordmark from '../assets/noir-wordmark.svg';
+
 const year = new Date().getFullYear();
 ---
 
 <footer class="site-footer">
 	<div class="container footer-top">
 		<div class="footer-brand">
-			<a href="/" class="wordmark">NOIR</a>
+			<a href="/" class="wordmark" aria-label="NOIR — home"><Wordmark aria-hidden="true" /></a>
 			<p>We build team identities, not just jerseys.</p>
 		</div>
 
 		<nav aria-label="Products">
 			<p class="footer-col-title">Products</p>
 			<ul>
-				<li><a href="#noir-football">Football</a></li>
-				<li><a href="#noir-futsal">Futsal</a></li>
-				<li><a href="#noir-basketball">Basketball</a></li>
-				<li><a href="#what-we-make">More sports</a></li>
+				<li><a href="/#noir-football">Football</a></li>
+				<li><a href="/#noir-futsal">Futsal</a></li>
+				<li><a href="/#noir-basketball">Basketball</a></li>
+				<li><a href="/#what-we-make">More sports</a></li>
 			</ul>
 		</nav>
 
 		<nav aria-label="Company">
 			<p class="footer-col-title">Company</p>
 			<ul>
-				<li><a href="#built">Our Teams</a></li>
-				<li><a href="#how-it-works">How It Works</a></li>
+				<li><a href="/#built">Our Teams</a></li>
+				<li><a href="/#how-it-works">How It Works</a></li>
+				<li><a href="/about/">About</a></li>
 			</ul>
 		</nav>
 
 		<nav aria-label="Contact">
 			<p class="footer-col-title">Contact</p>
 			<ul>
-				<li><a href="https://wa.me/628977200741">Get a Quote</a></li>
+				<li><a href="/get-a-quote/">Get a Quote</a></li>
+				<li><a href="https://wa.me/628977200741">WhatsApp</a></li>
+				<li><a href="https://www.instagram.com/noir.jersey/" rel="noopener">Instagram</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -43,6 +48,7 @@ const year = new Date().getFullYear();
 <style>
 	.site-footer {
 		background: var(--color-bg);
+		border-top: 1px solid var(--color-border);
 	}
 
 	.footer-top {
@@ -53,9 +59,13 @@ const year = new Date().getFullYear();
 	}
 
 	.footer-brand .wordmark {
-		font-size: 1.125rem;
-		font-weight: 800;
-		letter-spacing: 0.06em;
+		display: inline-flex;
+		color: var(--color-ink);
+	}
+
+	.footer-brand .wordmark :global(svg) {
+		width: auto;
+		height: 1.75rem;
 	}
 
 	.footer-brand p {

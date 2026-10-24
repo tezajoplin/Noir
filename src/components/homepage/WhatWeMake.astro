@@ -5,14 +5,13 @@ import JerseyComposition from './JerseyComposition.astro';
 import football from '../../assets/football.jpg';
 import futsal from '../../assets/futsal-clean.png';
 import basketball from '../../assets/basket.jpg';
-import teza from '../../assets/teza.jpg';
 
 const sports = [
  {name:'Football', image:football, alt:'Football players celebrating together in their NOIR kits.'},
  {name:'Futsal', image:futsal, alt:'BERKAT futsal players in turquoise NOIR jerseys.'},
  {name:'Basketball', image:basketball, alt:'Basketball player in a blue NOIR kit driving toward the basket.'},
 ];
-const more = ['Padel', 'T-Shirts', 'Polo Shirts', 'Training Wear'];
+const more = ['Padel', 'Badminton', 'T-Shirts', 'Polo Shirts', 'Jackets', 'Training Wear', 'Lifestyle', 'Accessories'];
 ---
 <section id="what-we-make" class="what-we-make" aria-labelledby="wwm-heading">
  <div class="container">
@@ -29,7 +28,6 @@ const more = ['Padel', 'T-Shirts', 'Polo Shirts', 'Training Wear'];
   </div>
 
   <div class="catalogue">
-   <div class="environment" aria-hidden="true"><Image src={teza} alt="" widths={[768,1290]} sizes="65vw" loading="lazy" /></div>
    {sports.map((sport, index) => <div class={`sport sport-${sport.name.toLowerCase()}`} id={`noir-${sport.name.toLowerCase()}`}>
     <article aria-labelledby={`heading-${sport.name.toLowerCase()}`}>
     <div class="collection">
@@ -60,9 +58,7 @@ const more = ['Padel', 'T-Shirts', 'Polo Shirts', 'Training Wear'];
  .collection-index a { display:inline-flex; gap:.65rem; align-items:center; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; padding-block:.5rem; }
  .collection-index a:hover { text-decoration:underline; text-underline-offset:5px; }
 
- .catalogue { position:relative; isolation:isolate; display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); grid-template-areas:'football futsal' 'football basketball'; column-gap:clamp(2rem,4vw,4rem); row-gap:clamp(2rem,3vw,3rem); align-items:start; margin-top:1.25rem; }
- .environment { position:absolute; z-index:-1; inset:6rem auto -2rem -8%; width:70%; overflow:hidden; opacity:.045; pointer-events:none; mask-image:linear-gradient(to bottom,transparent,#000 25%,#000 65%,transparent); }
- .environment :global(img) { width:100%; height:100%; object-fit:cover; object-position:38% center; transform:scale(1.23); mask-image:linear-gradient(to right,transparent,#000 22%,#000 65%,transparent); }
+ .catalogue { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); grid-template-areas:'football futsal' 'football basketball'; column-gap:clamp(2rem,4vw,4rem); row-gap:clamp(2rem,3vw,3rem); align-items:start; margin-top:1.25rem; }
  .sport { min-width:0; scroll-margin-top:calc(var(--header-h) + 2rem); }
  .sport-football { grid-area:football; }
  .sport-futsal { grid-area:futsal; margin-top:clamp(1.5rem,3vw,3rem); }
@@ -71,7 +67,7 @@ const more = ['Padel', 'T-Shirts', 'Polo Shirts', 'Training Wear'];
  .collection-heading { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin-bottom:1.25rem; }
  .collection-name { display:flex; gap:.8rem; align-items:baseline; }
  .collection-number { font-size:.58rem; color:var(--color-ink-faint); letter-spacing:.1em; }
- .collection-name h3 { font-size:clamp(1.45rem,2.35vw,2.3rem); font-weight:550; line-height:1; letter-spacing:-.045em; }
+ .collection-name h3 { font-size:clamp(1.45rem,2.35vw,2.3rem); font-weight:600; line-height:1; letter-spacing:-.015em; }
  .sport-football .collection-name h3 { font-size:clamp(2.5rem,4.3vw,4rem); }
  .collection-photo { position:relative; overflow:hidden; }
  .sport-football .collection-photo { aspect-ratio:1.08; }
@@ -98,8 +94,7 @@ const more = ['Padel', 'T-Shirts', 'Polo Shirts', 'Training Wear'];
   .sport-football .collection-name h3 { font-size:2.6rem; }
   .sport-football .collection-photo { aspect-ratio:1.16; }
   .sport-basketball .collection-photo { aspect-ratio:.92; }
-  .environment { display:none; }
- }
+  }
  @media (min-width:900px) and (max-width:1100px) {
   .sport-basketball .collection-heading { align-items:flex-start; flex-direction:column; gap:.6rem; }
  }

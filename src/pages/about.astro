@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionMarker from '../components/homepage/SectionMarker.astro';
+import FinalCTA from '../components/homepage/FinalCTA.astro';
+
+const facts = [
+	{ label: 'Founded', value: 'July 2022' },
+	{ label: 'Founder', value: 'Miguel Tjondro' },
+	{ label: 'Based in', value: 'Pontianak, West Kalimantan' },
+	{ label: 'Teams', value: 'Hundreds' },
+	{ label: 'Pieces made', value: '30,000+' },
+];
+const values = [
+	{ name: 'Identity first', copy: 'Every product should strengthen a team’s identity, not just fulfil an order.' },
+	{ name: 'Quality matters', copy: 'Materials, craftsmanship and finishing matter.' },
+	{ name: 'Customer partnership', copy: 'NOIR works together with customers to bring their vision to life.' },
+	{ name: 'Continuous improvement', copy: 'Products, services and processes keep improving through feedback and innovation.' },
+];
+---
+
+<BaseLayout
+	title="About — NOIR"
+	description="NOIR is a custom sportswear brand from Pontianak, West Kalimantan, founded in July 2022 by Miguel Tjondro for amateur sports and community teams."
+>
+	<section class="about container" aria-labelledby="about-heading">
+		<SectionMarker label="About" />
+		<h1 id="about-heading">Pontianak,<br />since 2022.</h1>
+
+		<div class="about-body">
+			<dl class="about-facts">
+				{facts.map((fact) => (
+					<div>
+						<dt>{fact.label}</dt>
+						<dd>{fact.value}</dd>
+					</div>
+				))}
+			</dl>
+
+			<div class="about-copy">
+				<p class="about-lead">NOIR was created in July 2022 to meet the specific needs of amateur sports and community teams.</p>
+				<p>West Kalimantan has a deep-rooted football culture. New communities and teams are formed all the time, yet many still wear generic templates with only a team name added.</p>
+				<p>A jersey should represent more than a name. NOIR helps teams build an identity that reflects their character, through thoughtful design, reliable craftsmanship, fast production and competitive pricing.</p>
+			</div>
+		</div>
+
+		<div class="about-values">
+			<h2 class="values-title">What guides the work</h2>
+			<ol>
+				{values.map((value, index) => (
+					<li>
+						<span class="values-index">{String(index + 1).padStart(2, '0')}</span>
+						<h3>{value.name}</h3>
+						<p>{value.copy}</p>
+					</li>
+				))}
+			</ol>
+		</div>
+	</section>
+
+	<FinalCTA number="" />
+</BaseLayout>
+
+<style>
+	.about {
+		padding-block: clamp(3rem, 6vw, 5.5rem) clamp(3rem, 6vw, 5rem);
+	}
+
+	.about h1 {
+		margin-top: clamp(1.75rem, 3vw, 2.5rem);
+		font-size: clamp(3.25rem, 9.2vw, 9.25rem);
+		font-weight: 700;
+		line-height: 0.9;
+		letter-spacing: var(--tracking-display);
+		text-transform: uppercase;
+	}
+
+	.about-body {
+		display: grid;
+		grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
+		column-gap: clamp(2rem, 6vw, 6rem);
+		margin-top: clamp(2.5rem, 5vw, 4.5rem);
+		padding-top: clamp(1.5rem, 3vw, 2.5rem);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.about-facts {
+		display: grid;
+		gap: 1.5rem;
+		align-content: start;
+	}
+
+	.about-facts dt,
+	.values-title,
+	.values-index {
+		font-size: 0.6875rem;
+		font-weight: 500;
+		font-stretch: 100%;
+		letter-spacing: var(--tracking-label);
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
+	}
+
+	.about-facts dd {
+		margin-top: 0.5rem;
+		font-size: clamp(1.25rem, 1.9vw, 1.75rem);
+		font-weight: 600;
+		letter-spacing: -0.015em;
+	}
+
+	.about-copy {
+		max-width: 38rem;
+	}
+
+	.about-copy p {
+		font-size: 1.0625rem;
+		line-height: 1.7;
+		color: var(--color-ink-muted);
+	}
+
+	.about-copy p + p {
+		margin-top: 1.25rem;
+	}
+
+	.about-copy .about-lead {
+		margin-bottom: 1.75rem;
+		font-size: clamp(1.5rem, 2.4vw, 2.125rem);
+		font-weight: 500;
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		color: var(--color-ink);
+	}
+
+	.about-values {
+		margin-top: clamp(3rem, 6vw, 5.5rem);
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.about-values ol {
+		list-style: none;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: clamp(1.5rem, 3vw, 3rem);
+		margin-top: 1.75rem;
+	}
+
+	.about-values h3 {
+		margin-top: 0.75rem;
+		font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+		letter-spacing: -0.015em;
+	}
+
+	.about-values li p {
+		max-width: 22rem;
+		margin-top: 0.6rem;
+		font-size: 0.9375rem;
+		line-height: 1.6;
+		color: var(--color-ink-muted);
+	}
+
+	@media (max-width: 899px) {
+		.about-body {
+			grid-template-columns: 1fr;
+			row-gap: 2.5rem;
+		}
+
+		.about-values ol {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media (max-width: 559px) {
+		.about-values ol {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
