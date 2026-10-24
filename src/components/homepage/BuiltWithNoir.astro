@@ -75,6 +75,10 @@ const moreProjects = [
 				}
 			</ul>
 		</div>
+		<p class="tally">
+			<span class="tally-number">30,000+</span>
+			<span class="tally-copy">pieces made for hundreds of teams<br />since 2022.</span>
+		</p>
 	</div>
 </section>
 
@@ -159,6 +163,31 @@ const moreProjects = [
 		line-height: 1.4;
 	}
 
+	/* ---- Tally ---- */
+	.tally {
+		display: flex;
+		align-items: baseline;
+		gap: clamp(1rem, 3vw, 2.5rem);
+		margin-top: clamp(3rem, 6vw, 4.5rem);
+		padding-top: clamp(1.5rem, 3vw, 2.25rem);
+		border-top: 1px solid var(--color-border);
+	}
+
+	.tally-number {
+		font-size: clamp(3rem, 8vw, 7rem);
+		font-weight: 700;
+		font-stretch: var(--stretch-display);
+		line-height: 0.9;
+		letter-spacing: var(--tracking-display);
+	}
+
+	.tally-copy {
+		font-size: clamp(1rem, 1.5vw, 1.25rem);
+		line-height: 1.4;
+		letter-spacing: -0.01em;
+		color: var(--color-ink-muted);
+	}
+
 	/* ---- More projects ---- */
 	.more {
 		margin-top: clamp(3rem, 6vw, 4.5rem);
@@ -226,6 +255,13 @@ const moreProjects = [
 		white-space: nowrap;
 		font-size: 0.8125rem;
 		color: var(--color-ink-faint);
+	}
+
+	@media (max-width: 559px) {
+		.tally {
+			flex-direction: column;
+			gap: 0.75rem;
+		}
 	}
 
 	@media (max-width: 959px) {
