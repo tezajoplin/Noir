@@ -43,6 +43,10 @@ const designOptions = [
 					<dd><a href={`https://wa.me/${whatsappNumber}`}>+62 897 7200 741</a></dd>
 				</div>
 				<div>
+					<dt>Instagram</dt>
+					<dd><a href="https://www.instagram.com/noir.jersey/" rel="noopener">@noir.jersey</a></dd>
+				</div>
+				<div>
 					<dt>Booth</dt>
 					<dd>Jalan Paris 1, Gang Perwira No. 16 A<br />Pontianak, West Kalimantan</dd>
 				</div>
@@ -228,7 +232,8 @@ const designOptions = [
 
 	.quote-contact {
 		display: grid;
-		grid-template-columns: auto 1fr;
+		grid-template-columns: repeat(3, auto);
+		justify-content: start;
 		gap: 2.5rem;
 		margin-top: 1.5rem;
 		padding-top: 1.5rem;
