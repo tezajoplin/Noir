@@ -1,0 +1,430 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionMarker from '../components/homepage/SectionMarker.astro';
+
+const whatsappNumber = '628977200741';
+const sports = ['Football', 'Futsal', 'Basketball', 'Badminton', 'Padel', 'Other'];
+// Supplied by NOIR (Oct 2026).
+const facts = [
+	{ label: 'Minimum order', value: '10 pcs' },
+	{ label: 'Production', value: '3–14 days' },
+	{ label: 'Price per set', value: 'From IDR 135K' },
+];
+const designOptions = [
+	{ value: 'design', label: 'Yes, we have a design' },
+	{ value: 'reference', label: 'We have references' },
+	{ value: 'none', label: 'Not yet, we need NOIR to design it' },
+];
+---
+
+<BaseLayout
+	title="Get a Quote — NOIR"
+	description="Tell NOIR about your team: sport, quantity, deadline and design references. Your request opens as a WhatsApp message to the NOIR team."
+>
+	<section class="quote container" aria-labelledby="quote-heading">
+		<div class="quote-intro">
+			<SectionMarker label="Get a Quote" />
+			<h1 id="quote-heading">Tell us<br />about your<br />team.</h1>
+			<p class="quote-lede">Five quick questions. When you send, the answers open as a WhatsApp message to the NOIR team, so you can add photos or references in the same chat.</p>
+
+			<dl class="quote-facts">
+				{facts.map((fact) => (
+					<div>
+						<dt>{fact.label}</dt>
+						<dd>{fact.value}</dd>
+					</div>
+				))}
+			</dl>
+			<p class="quote-facts-note">Design included. Production time counts from the day your order comes in. Options such as long sleeves cost extra.</p>
+
+			<dl class="quote-contact">
+				<div>
+					<dt>WhatsApp</dt>
+					<dd><a href={`https://wa.me/${whatsappNumber}`}>+62 897 7200 741</a></dd>
+				</div>
+				<div>
+					<dt>Instagram</dt>
+					<dd><a href="https://www.instagram.com/noir.jersey/" rel="noopener">@noir.jersey</a></dd>
+				</div>
+				<div>
+					<dt>Booth</dt>
+					<dd>Jalan Paris 1, Gang Perwira No. 16 A<br />Pontianak, West Kalimantan</dd>
+				</div>
+			</dl>
+		</div>
+
+		<form class="quote-form" id="quote-form" data-whatsapp={whatsappNumber} action={`https://wa.me/${whatsappNumber}`} method="get">
+			<div class="field">
+				<label for="team">
+					<span class="field-index">01</span>
+					Team name
+				</label>
+				<input id="team" name="team" type="text" autocomplete="organization" required />
+			</div>
+
+			<fieldset class="field">
+				<legend>
+					<span class="field-index">02</span>
+					Sport
+				</legend>
+				<div class="choices">
+					{sports.map((sport, index) => (
+						<label class="choice">
+							<input type="radio" name="sport" value={sport} required={index === 0} />
+							<span>{sport}</span>
+						</label>
+					))}
+				</div>
+			</fieldset>
+
+			<div class="field-row">
+				<div class="field">
+					<label for="quantity">
+						<span class="field-index">03</span>
+						Quantity
+					</label>
+					<input id="quantity" name="quantity" type="number" inputmode="numeric" min="10" placeholder="Minimum 10 pcs" required />
+				</div>
+
+				<div class="field">
+					<label for="deadline">
+						<span class="field-index">04</span>
+						Needed by
+					</label>
+					<input id="deadline" name="deadline" type="date" required />
+				</div>
+			</div>
+
+			<fieldset class="field">
+				<legend>
+					<span class="field-index">05</span>
+					Design or references
+				</legend>
+				<div class="choices choices-stacked">
+					{designOptions.map((option, index) => (
+						<label class="choice">
+							<input type="radio" name="design" value={option.value} required={index === 0} />
+							<span>{option.label}</span>
+						</label>
+					))}
+				</div>
+			</fieldset>
+
+			<div class="field">
+				<label for="notes">
+					<span class="field-index">—</span>
+					Anything else <span class="optional">(optional)</span>
+				</label>
+				<textarea id="notes" name="notes" rows="3" placeholder="Colours, sponsors, sizes, or what your team stands for"></textarea>
+			</div>
+
+			<div class="quote-submit">
+				<button class="btn" type="submit">
+					Send via WhatsApp
+					<span class="btn-arrow" aria-hidden="true">→</span>
+				</button>
+				<p class="submit-note">Opens WhatsApp with your answers filled in. Nothing is sent until you press send there.</p>
+			</div>
+		</form>
+	</section>
+</BaseLayout>
+
+<script>
+	const form = document.querySelector<HTMLFormElement>('#quote-form');
+
+	// Labels for the message the NOIR admin receives, written in Indonesian.
+	const designLabels: Record<string, string> = {
+		design: 'Sudah ada desain',
+		reference: 'Ada referensi',
+		none: 'Belum, minta didesainkan NOIR',
+	};
+
+	const formatDate = (value: string) => {
+		if (!value) return '-';
+		const date = new Date(`${value}T00:00:00`);
+		return date.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+	};
+
+	form?.addEventListener('submit', (event) => {
+		event.preventDefault();
+		const data = new FormData(form);
+		const value = (key: string) => String(data.get(key) ?? '').trim();
+
+		const lines = [
+			'Halo NOIR, saya mau minta penawaran jersey.',
+			'',
+			`Nama tim: ${value('team')}`,
+			`Olahraga: ${value('sport')}`,
+			`Jumlah: ${value('quantity')}`,
+			`Deadline: ${formatDate(value('deadline'))}`,
+			`Desain/referensi: ${designLabels[value('design')] ?? '-'}`,
+		];
+		if (value('notes')) lines.push(`Catatan: ${value('notes')}`);
+
+		const url = `https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(lines.join('\n'))}`;
+		window.open(url, '_blank', 'noopener');
+	});
+</script>
+
+<style>
+	.quote {
+		display: grid;
+		grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+		column-gap: clamp(2rem, 6vw, 6rem);
+		align-items: start;
+		padding-block: clamp(3rem, 6vw, 5.5rem) clamp(4rem, 7vw, 6rem);
+	}
+
+	.quote-intro {
+		position: sticky;
+		top: calc(var(--header-h) + 2.5rem);
+	}
+
+	.quote-intro h1 {
+		margin-top: clamp(1.75rem, 3vw, 2.5rem);
+		font-size: clamp(3rem, 6.4vw, 6rem);
+		font-weight: 700;
+		line-height: 0.9;
+		letter-spacing: var(--tracking-display);
+		text-transform: uppercase;
+	}
+
+	.quote-lede {
+		max-width: 34ch;
+		margin-top: 1.75rem;
+		font-size: 1rem;
+		line-height: 1.65;
+		color: var(--color-ink-muted);
+	}
+
+	.quote-facts {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1.5rem;
+		margin-top: clamp(2rem, 4vw, 3rem);
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.quote-facts dt {
+		font-size: 0.6875rem;
+		font-weight: 500;
+		letter-spacing: var(--tracking-label);
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
+	}
+
+	.quote-facts dd {
+		margin-top: 0.5rem;
+		font-size: clamp(1.125rem, 1.7vw, 1.5rem);
+		font-weight: 600;
+		letter-spacing: -0.015em;
+		white-space: nowrap;
+	}
+
+	.quote-facts-note {
+		max-width: 44ch;
+		margin-top: 1rem;
+		font-size: 0.8125rem;
+		line-height: 1.55;
+		color: var(--color-ink-faint);
+	}
+
+	.quote-contact {
+		display: grid;
+		grid-template-columns: repeat(3, auto);
+		justify-content: start;
+		gap: 2.5rem;
+		margin-top: 1.5rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--color-border);
+	}
+
+	.quote-contact dt,
+	.field label,
+	.field legend {
+		font-size: 0.6875rem;
+		font-weight: 500;
+		letter-spacing: var(--tracking-label);
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
+	}
+
+	.quote-contact dt {
+		margin-bottom: 0.5rem;
+	}
+
+	.quote-contact dd {
+		font-size: 0.9375rem;
+		line-height: 1.55;
+		color: var(--color-ink-muted);
+	}
+
+	.quote-contact a {
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	/* ---- Form: hairline fields, no boxes ---- */
+	.quote-form {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.field {
+		display: block;
+		min-width: 0;
+		border: 0;
+		padding: 1.5rem 0 1.25rem;
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.field label,
+	.field legend {
+		display: flex;
+		gap: 1rem;
+		padding: 0;
+	}
+
+	.field-index {
+		width: 1.5rem;
+		color: var(--color-ink-faint);
+	}
+
+	.optional {
+		letter-spacing: 0.04em;
+		text-transform: none;
+	}
+
+	.field input[type='text'],
+	.field input[type='number'],
+	.field input[type='date'],
+	.field textarea {
+		display: block;
+		width: 100%;
+		margin-top: 0.75rem;
+		padding: 0.25rem 0 0.25rem 2.5rem;
+		border: 0;
+		background: transparent;
+		font: inherit;
+		font-size: clamp(1.25rem, 2vw, 1.625rem);
+		font-weight: 500;
+		letter-spacing: -0.015em;
+		color: var(--color-ink);
+		border-radius: 0;
+		appearance: none;
+	}
+
+	.field textarea {
+		resize: vertical;
+		font-size: 1.0625rem;
+		line-height: 1.5;
+	}
+
+	.field input::placeholder,
+	.field textarea::placeholder {
+		color: #a3a3a0;
+		font-weight: 400;
+	}
+
+	.field input:focus-visible,
+	.field textarea:focus-visible {
+		outline: none;
+	}
+
+	.field:focus-within {
+		border-bottom-color: var(--color-ink);
+	}
+
+	.field-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		column-gap: 2rem;
+	}
+
+	.choices {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.75rem;
+		margin-top: 1rem;
+		padding-left: 2.5rem;
+	}
+
+	.choices-stacked {
+		flex-direction: column;
+	}
+
+	.field .choice {
+		display: inline-flex;
+		text-transform: none;
+		align-items: center;
+		gap: 0.6rem;
+		cursor: pointer;
+		font-size: clamp(1.0625rem, 1.5vw, 1.25rem);
+		font-weight: 500;
+		letter-spacing: -0.01em;
+		color: var(--color-ink-muted);
+	}
+
+	.choice input {
+		width: 0.875rem;
+		height: 0.875rem;
+		margin: 0;
+		accent-color: var(--color-ink);
+	}
+
+	.field .choice:has(input:checked) {
+		color: var(--color-ink);
+	}
+
+	.quote-submit {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 1rem 1.5rem;
+		margin-top: 2rem;
+	}
+
+	.submit-note {
+		max-width: 32ch;
+		font-size: 0.8125rem;
+		line-height: 1.5;
+		color: var(--color-ink-faint);
+	}
+
+	@media (max-width: 899px) {
+		.quote {
+			grid-template-columns: 1fr;
+			row-gap: 2.5rem;
+		}
+
+		.quote-intro {
+			position: static;
+		}
+
+		.quote-contact {
+			display: none;
+		}
+	}
+
+	@media (max-width: 559px) {
+		.quote-facts {
+			gap: 1rem;
+		}
+
+		.quote-facts dd {
+			font-size: 1.0625rem;
+			white-space: normal;
+		}
+
+		.field-row {
+			grid-template-columns: 1fr;
+		}
+
+		.field input[type='text'],
+		.field input[type='number'],
+		.field input[type='date'],
+		.field textarea,
+		.choices {
+			padding-left: 0;
+		}
+	}
+</style>

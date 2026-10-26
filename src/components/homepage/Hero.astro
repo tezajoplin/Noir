@@ -35,7 +35,7 @@ import heroImage from '../../../images/perngabong-jersey-cutout.png';
 		</p>
 
 		<div class="hero-actions">
-			<a class="btn" href="https://wa.me/628977200741">
+			<a class="btn" href="/get-a-quote/">
 				Start a Project
 				<span class="btn-arrow" aria-hidden="true">→</span>
 			</a>
@@ -44,10 +44,6 @@ import heroImage from '../../../images/perngabong-jersey-cutout.png';
 				Our Work
 			</a>
 		</div>
-
-		<p class="hero-mark">
-			NOIR / <span class="accent-index">01</span>
-		</p>
 	</div>
 </section>
 
@@ -141,39 +137,30 @@ import heroImage from '../../../images/perngabong-jersey-cutout.png';
 		opacity: 0.65;
 	}
 
-	.hero-mark {
-		width: min(28rem, 100%);
-		margin-top: clamp(3rem, 9vw, 6rem);
-		padding-top: 0.875rem;
-		border-top: 1px solid var(--color-border);
-
-		font-size: 0.6875rem;
-		font-weight: 500;
-		letter-spacing: 0.1em;
-		text-transform: uppercase;
-		color: var(--color-ink-faint);
-	}
 
 	@media (max-width: 899px) {
 		.hero {
 			min-height: auto;
 		}
 
+		/* Keep the headline and CTA inside the first screen on phones. */
 		.hero-media {
 			position: relative;
-			height: min(58svh, 34rem);
+			height: min(44svh, 26rem);
 		}
 
 		.hero-image {
-			top: -2%;
-			right: 0;
-			height: 104%;
+			top: 2%;
+			right: auto;
+			left: 50%;
+			height: 100%;
+			transform: translateX(-50%);
 		}
 
 		.hero-content {
 			min-height: auto;
-			padding-top: 2rem;
-			padding-bottom: 4rem;
+			padding-top: 1.25rem;
+			padding-bottom: 3rem;
 		}
 
 		.hero-content h1 {
