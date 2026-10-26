@@ -20,3 +20,8 @@ export function pathForLang(pathname: string, lang: Lang): string {
 	const bare = pathname === '/en' ? '/' : pathname.replace(/^\/en(?=\/)/, '');
 	return lp(lang, bare);
 }
+
+// Inline picker for page copy: const t = pick(lang); t('English', 'Indonesia').
+export function pick(lang: Lang) {
+	return (en: string, id: string) => (lang === 'id' ? id : en);
+}

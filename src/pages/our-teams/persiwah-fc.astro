@@ -1,19 +1,23 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FinalCTA from '../../components/homepage/FinalCTA.astro';
+import { langFromUrl, lp, pick } from '../../i18n';
+
+const lang = langFromUrl(Astro.url);
+const t = pick(lang);
 
 const designBoards = [
-	{ name: 'Player home · Green & yellow', image: '/images/projects/persiwah-player-home-design.webp', alt: 'NOIR Persiwah player home design board with green jersey, yellow details, front and back views, shorts and socks' },
-	{ name: 'Player away · Black & turquoise', image: '/images/projects/persiwah-player-away-design.webp', alt: 'NOIR Persiwah player away design board with black jersey, turquoise details, front and back views, shorts and socks' },
-	{ name: 'Keeper home · Yellow & green', image: '/images/projects/persiwah-keeper-home-design.webp', alt: 'NOIR Persiwah keeper home design board with yellow jersey, green details, front and back views, shorts and socks' },
-	{ name: 'Keeper away · Red & turquoise', image: '/images/projects/persiwah-keeper-away-design.webp', alt: 'NOIR Persiwah keeper away design board with red jersey, turquoise details, front and back views, shorts and socks' },
+	{ name: t('Player home · Green & yellow', 'Pemain kandang · Hijau & kuning'), image: '/images/projects/persiwah-player-home-design.webp', alt: t('NOIR Persiwah player home design board with green jersey, yellow details, front and back views, shorts and socks', 'Papan desain NOIR kit kandang pemain Persiwah: jersey hijau, detail kuning, tampak depan dan belakang, celana, dan kaos kaki') },
+	{ name: t('Player away · Black & turquoise', 'Pemain tandang · Hitam & tosca'), image: '/images/projects/persiwah-player-away-design.webp', alt: t('NOIR Persiwah player away design board with black jersey, turquoise details, front and back views, shorts and socks', 'Papan desain NOIR kit tandang pemain Persiwah: jersey hitam, detail tosca, tampak depan dan belakang, celana, dan kaos kaki') },
+	{ name: t('Keeper home · Yellow & green', 'Kiper kandang · Kuning & hijau'), image: '/images/projects/persiwah-keeper-home-design.webp', alt: t('NOIR Persiwah keeper home design board with yellow jersey, green details, front and back views, shorts and socks', 'Papan desain NOIR kit kandang kiper Persiwah: jersey kuning, detail hijau, tampak depan dan belakang, celana, dan kaos kaki') },
+	{ name: t('Keeper away · Red & turquoise', 'Kiper tandang · Merah & tosca'), image: '/images/projects/persiwah-keeper-away-design.webp', alt: t('NOIR Persiwah keeper away design board with red jersey, turquoise details, front and back views, shorts and socks', 'Papan desain NOIR kit tandang kiper Persiwah: jersey merah, detail tosca, tampak depan dan belakang, celana, dan kaos kaki') },
 ];
 
 const kits = [
-	{ name: 'Player Home', image: '/images/persiwah/kits/player-home.webp', alt: 'Green Persiwah player home jersey, front and back' },
-	{ name: 'Player Away', image: '/images/persiwah/kits/player-away.webp', alt: 'Black Persiwah player away jersey, front and back' },
-	{ name: 'Keeper Home', image: '/images/persiwah/kits/keeper-home.webp', alt: 'Yellow Persiwah keeper home jersey, front and back' },
-	{ name: 'Keeper Away', image: '/images/persiwah/kits/keeper-away.webp', alt: 'Red Persiwah keeper away jersey, front and back' },
+	{ name: t('Player Home', 'Pemain Kandang'), image: '/images/persiwah/kits/player-home.webp', alt: t('Green Persiwah player home jersey, front and back', 'Jersey kandang pemain Persiwah warna hijau, tampak depan dan belakang') },
+	{ name: t('Player Away', 'Pemain Tandang'), image: '/images/persiwah/kits/player-away.webp', alt: t('Black Persiwah player away jersey, front and back', 'Jersey tandang pemain Persiwah warna hitam, tampak depan dan belakang') },
+	{ name: t('Keeper Home', 'Kiper Kandang'), image: '/images/persiwah/kits/keeper-home.webp', alt: t('Yellow Persiwah keeper home jersey, front and back', 'Jersey kandang kiper Persiwah warna kuning, tampak depan dan belakang') },
+	{ name: t('Keeper Away', 'Kiper Tandang'), image: '/images/persiwah/kits/keeper-away.webp', alt: t('Red Persiwah keeper away jersey, front and back', 'Jersey tandang kiper Persiwah warna merah, tampak depan dan belakang') },
 ];
 
 const moments = {
@@ -27,23 +31,23 @@ const moments = {
 
 <BaseLayout
 	title="Persiwah FC — NOIR"
-	description="A closer look at Persiwah FC's custom home, away and goalkeeper kits by NOIR."
+	description={t('A closer look at Persiwah FC\'s custom home, away and goalkeeper kits by NOIR.', 'Lihat lebih dekat kit kandang, tandang, dan kiper custom Persiwah FC buatan NOIR.')}
 >
 	<article class="project-page">
 		<header class="project-intro container">
-			<a class="back-link" href="/#built"><span aria-hidden="true">←</span> All projects</a>
+			<a class="back-link" href={lp(lang, '/#built')}><span aria-hidden="true">←</span> {t('All projects', 'Semua proyek')}</a>
 			<div class="intro-grid">
 				<div class="intro-copy">
-					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Featured project <span class="project-index">/ 01</span></p>
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('Featured project', 'Proyek unggulan')} <span class="project-index">/ 01</span></p>
 					<h1>Persiwah<br />FC.</h1>
-					<p class="project-summary">A kit made for the team, the town, and every person standing behind them.</p>
+					<p class="project-summary">{t('A kit made for the team, the town, and every person standing behind them.', 'Sebuah kit untuk tim, untuk kota, dan untuk semua orang yang berdiri di belakang mereka.')}</p>
 					<div class="project-meta">
 						<span>Official Jersey Partner</span>
 						<span>Pontianak · 2026</span>
 					</div>
 				</div>
 				<figure class="champion-poster">
-					<img src="/images/persiwah-fc-champions.webp" alt="Persiwah FC Champions poster for Liga 4 Kalbar 2026" loading="eager" />
+					<img src="/images/persiwah-fc-champions.webp" alt={t('Persiwah FC Champions poster for Liga 4 Kalbar 2026', 'Poster juara Persiwah FC Liga 4 Kalbar 2026')} loading="eager" />
 				</figure>
 			</div>
 		</header>
@@ -51,10 +55,10 @@ const moments = {
 		<section class="kit-section container" aria-labelledby="kit-heading">
 			<div class="section-heading">
 				<div>
-					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> The collection</p>
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('The collection', 'Koleksi')}</p>
 					<h2 id="kit-heading">Four kits.<br />One identity.</h2>
 				</div>
-				<p class="section-note">Home, away, and goalkeeper jerseys — shaped around Persiwah’s colours and crest.</p>
+				<p class="section-note">{t('Home, away, and goalkeeper jerseys — shaped around Persiwah’s colours and crest.', 'Jersey kandang, tandang, dan kiper — dibentuk dari warna dan lambang Persiwah.')}</p>
 			</div>
 			<div class="kit-grid kit-render-grid">
 				{kits.map((kit, index) => (
@@ -65,7 +69,7 @@ const moments = {
 				))}
 			</div>
 			<div class="render-overview">
-				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> NOIR design mockups</p>
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('NOIR design mockups', 'Mockup desain NOIR')}</p>
 				<h3>Details,<br /><span>in full.</span></h3>
 			</div>
 			<div class="kit-grid">
@@ -76,54 +80,54 @@ const moments = {
 					</figure>
 				))}
 			</div>
-			<p class="render-note">Supplied NOIR design mockups for Persiwah’s complete player and goalkeeper kit collection.</p>
+			<p class="render-note">{t('Supplied NOIR design mockups for Persiwah’s complete player and goalkeeper kit collection.', 'Mockup desain NOIR untuk koleksi lengkap kit pemain dan kiper Persiwah.')}</p>
 		</section>
 
 		<section class="moments-section" aria-labelledby="moments-heading">
 			<div class="container moments-head">
 				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Persiwah · Mempawah</p>
 				<h2 id="moments-heading">Made for their city.<br /><span>Worn through every challenge.</span></h2>
-				<p class="moments-intro">The Dayak motif and colours are chosen to represent Mempawah — the city Persiwah calls home.</p>
+				<p class="moments-intro">{t('The Dayak motif and colours are chosen to represent Mempawah — the city Persiwah calls home.', 'Motif Dayak dan warna dipilih untuk mewakili Mempawah — kota yang menjadi rumah Persiwah.')}</p>
 			</div>
 			<div class="story-beats container">
 				<section class="story-beat story-pitch" aria-labelledby="story-pitch-heading">
 					<div class="story-copy">
-						<p class="story-step">01 <span>On the pitch</span></p>
+						<p class="story-step">01 <span>{t('On the pitch', 'Di lapangan')}</span></p>
 						<h3 id="story-pitch-heading">Rooted in Mempawah.</h3>
-						<p>Dayak-inspired patterning and the city’s colours give the kit a sense of place. It represents where the team comes from.</p>
+						<p>{t('Dayak-inspired patterning and the city’s colours give the kit a sense of place. It represents where the team comes from.', 'Motif bernuansa Dayak dan warna kota memberi kit ini rasa tempat. Kit ini mewakili asal tim.')}</p>
 					</div>
 					<figure class="story-image story-image-pitch">
-						<img src={moments.pitch} alt="Persiwah player wearing the green home jersey during a match" loading="lazy" />
-						<figcaption>Persiwah FC · Matchday</figcaption>
+						<img src={moments.pitch} alt={t('Persiwah player wearing the green home jersey during a match', 'Pemain Persiwah berjersey kandang hijau saat pertandingan')} loading="lazy" />
+						<figcaption>{t('Persiwah FC · Matchday', 'Persiwah FC · Hari pertandingan')}</figcaption>
 					</figure>
 				</section>
 
 				<section class="story-beat story-supporters" aria-labelledby="story-supporters-heading">
 					<figure class="story-image story-image-crowd">
-						<img src={moments.crowd} alt="Persiwah supporters celebrating together in the stands" loading="lazy" />
+						<img src={moments.crowd} alt={t('Persiwah supporters celebrating together in the stands', 'Suporter Persiwah merayakan bersama di tribun')} loading="lazy" />
 					</figure>
 					<div class="supporters-caption">
-						<p class="story-step">02 <span>In the stands</span></p>
+						<p class="story-step">02 <span>{t('In the stands', 'Di tribun')}</span></p>
 						<h3 id="story-supporters-heading">A demanding road through Liga 4.</h3>
-						<p>Hot days, fierce matches, and opponents from across the region tested the team. Their spirit held through it all.</p>
+						<p>{t('Hot days, fierce matches, and opponents from across the region tested the team. Their spirit held through it all.', 'Hari panas, laga sengit, dan lawan dari seluruh wilayah menguji tim. Semangat mereka bertahan sampai akhir.')}</p>
 					</div>
 				</section>
 
 				<section class="story-beat story-together" aria-labelledby="story-together-heading">
 					<div class="together-copy">
-						<p class="story-step">03 <span>The final · Liga 4 Kalbar</span></p>
+						<p class="story-step">03 <span>{t('The final · Liga 4 Kalbar', 'Final · Liga 4 Kalbar')}</span></p>
 						<h3 id="story-together-heading"><span>2–0</span><br />Champions.</h3>
-						<p>Persiwah beat PS Kubu Raya in the final. After hot days, fierce matches, and opponents from across the region, they finished their run as champions.</p>
+						<p>{t('Persiwah beat PS Kubu Raya in the final. After hot days, fierce matches, and opponents from across the region, they finished their run as champions.', 'Persiwah mengalahkan PS Kubu Raya di final. Setelah hari-hari panas, laga sengit, dan lawan dari seluruh wilayah, mereka menutup perjalanan sebagai juara.')}</p>
 					</div>
 					<div class="together-images">
 						<figure class="story-image story-image-team">
-							<img src={moments.team} alt="Persiwah team lined up together on the pitch" loading="lazy" />
+							<img src={moments.team} alt={t('Persiwah team lined up together on the pitch', 'Tim Persiwah berbaris bersama di lapangan')} loading="lazy" />
 						</figure>
 						<figure class="story-image story-image-embrace">
-							<img src={moments.embrace} alt="Persiwah teammates embracing on the pitch" loading="lazy" />
+							<img src={moments.embrace} alt={t('Persiwah teammates embracing on the pitch', 'Para pemain Persiwah berpelukan di lapangan')} loading="lazy" />
 						</figure>
 						<figure class="story-image story-image-celebration">
-							<img src={moments.celebration} alt="Persiwah players celebrating together on the pitch" loading="lazy" />
+							<img src={moments.celebration} alt={t('Persiwah players celebrating together on the pitch', 'Para pemain Persiwah merayakan bersama di lapangan')} loading="lazy" />
 						</figure>
 					</div>
 				</section>
@@ -131,7 +135,7 @@ const moments = {
 		</section>
 		<footer class="project-outro container">
 			<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Made with NOIR</p>
-			<a class="outro-link" href="/#built">Explore more projects <span aria-hidden="true">→</span></a>
+			<a class="outro-link" href={lp(lang, '/#built')}>{t('Explore more projects', 'Lihat proyek lainnya')} <span aria-hidden="true">→</span></a>
 		</footer>
 	</article>
 	<FinalCTA number="" />
