@@ -1,21 +1,57 @@
 ---
 import Wordmark from '../assets/noir-wordmark.svg';
+import { langFromUrl, languages, lp, pathForLang, type Lang } from '../i18n';
 
-const navItems = [
-	{ label: 'Home', href: '/#hero' },
-	{ label: 'Products', href: '/#what-we-make' },
-	{ label: 'Our Teams', href: '/#built' },
-	{ label: 'How It Works', href: '/#how-it-works' },
-	{ label: 'About', href: '/about/' },
-];
-const quoteHref = '/get-a-quote/';
+const lang = langFromUrl(Astro.url);
+
+const copy = {
+	id: {
+		nav: [
+			{ label: 'Beranda', path: '/#hero' },
+			{ label: 'Produk', path: '/#what-we-make' },
+			{ label: 'Tim Kami', path: '/#built' },
+			{ label: 'Cara Kerja', path: '/#how-it-works' },
+			{ label: 'Tentang', path: '/about/' },
+		],
+		quote: 'Minta Penawaran',
+		home: 'NOIR — beranda',
+		menu: 'Buka/tutup menu',
+		primary: 'Navigasi utama',
+		mobile: 'Navigasi seluler',
+		language: 'Bahasa',
+	},
+	en: {
+		nav: [
+			{ label: 'Home', path: '/#hero' },
+			{ label: 'Products', path: '/#what-we-make' },
+			{ label: 'Our Teams', path: '/#built' },
+			{ label: 'How It Works', path: '/#how-it-works' },
+			{ label: 'About', path: '/about/' },
+		],
+		quote: 'Get a Quote',
+		home: 'NOIR — home',
+		menu: 'Toggle menu',
+		primary: 'Primary',
+		mobile: 'Mobile',
+		language: 'Language',
+	},
+}[lang];
+
+const navItems = copy.nav.map((item) => ({ label: item.label, href: lp(lang, item.path) }));
+const quoteHref = lp(lang, '/get-a-quote/');
+const switcher = (Object.keys(languages) as Lang[]).map((code) => ({
+	code,
+	label: languages[code].label,
+	href: pathForLang(Astro.url.pathname, code),
+	current: code === lang,
+}));
 ---
 
 <header class="site-header">
 	<div class="site-header-inner container">
-		<a href="/" class="wordmark" aria-label="NOIR — home"><Wordmark aria-hidden="true" /></a>
+		<a href={lp(lang, '/')} class="wordmark" aria-label={copy.home}><Wordmark aria-hidden="true" /></a>
 
-		<nav class="primary-nav" aria-label="Primary">
+		<nav class="primary-nav" aria-label={copy.primary}>
 			<ul>
 				{
 					navItems.map((item) => (
@@ -28,11 +64,18 @@ const quoteHref = '/get-a-quote/';
 		</nav>
 
 		<div class="header-actions">
-			<a href={quoteHref} class="btn header-cta">Get a Quote</a>
+			<ul class="lang-switch" aria-label={copy.language}>
+				{switcher.map((item) => (
+					<li>
+						<a href={item.href} hreflang={item.code} lang={item.code} aria-current={item.current ? 'true' : undefined}>{item.label}</a>
+					</li>
+				))}
+			</ul>
+			<a href={quoteHref} class="btn header-cta">{copy.quote}</a>
 			<button
 				class="nav-toggle"
 				type="button"
-				aria-label="Toggle menu"
+				aria-label={copy.menu}
 				aria-expanded="false"
 				aria-controls="mobile-nav"
 			>
@@ -41,7 +84,7 @@ const quoteHref = '/get-a-quote/';
 		</div>
 	</div>
 
-	<nav class="mobile-nav" id="mobile-nav" aria-label="Mobile" hidden>
+	<nav class="mobile-nav" id="mobile-nav" aria-label={copy.mobile} hidden>
 		<ul>
 			{
 				navItems.map((item) => (
@@ -51,7 +94,7 @@ const quoteHref = '/get-a-quote/';
 				))
 			}
 			<li>
-				<a href={quoteHref} class="btn btn-mobile-cta">Get a Quote</a>
+				<a href={quoteHref} class="btn btn-mobile-cta">{copy.quote}</a>
 			</li>
 		</ul>
 	</nav>
@@ -146,6 +189,25 @@ const quoteHref = '/get-a-quote/';
 		display: flex;
 		align-items: center;
 		gap: 1rem;
+	}
+
+	.lang-switch {
+		display: flex;
+		gap: 0.75rem;
+		font-size: 0.6875rem;
+		font-weight: 500;
+		letter-spacing: var(--tracking-label);
+	}
+
+	.lang-switch a {
+		color: var(--color-ink-faint);
+		transition: color 0.2s ease;
+	}
+
+	.lang-switch a:hover,
+	.lang-switch a:focus-visible,
+	.lang-switch a[aria-current='true'] {
+		color: var(--color-ink);
 	}
 
 	.header-cta {

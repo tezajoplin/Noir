@@ -1,5 +1,21 @@
 ---
+import { langFromUrl, lp } from '../../i18n';
 import SectionMarker from './SectionMarker.astro';
+
+const lang = langFromUrl(Astro.url);
+const copy = {
+	id: {
+		one: 'Sebuah jersey bisa membawa nama.',
+		two: 'Tapi jersey yang tepat membawa sesuatu yang lebih.',
+		payoff: ['Identitas.', 'Kebanggaan.', 'Rasa memiliki.'],
+	},
+	en: {
+		one: 'A jersey can carry a name.',
+		two: 'But the right jersey carries something more.',
+		payoff: ['Identity.', 'Pride.', 'Belonging.'],
+	},
+}[lang];
+
 ---
 <section id="story" class="story" aria-labelledby="story-heading">
 	<div class="story-copy">
@@ -8,15 +24,15 @@ import SectionMarker from './SectionMarker.astro';
 		<h2 id="story-heading">Every team<br />has a story.</h2>
 
 		<p class="story-message">
-			<span>A jersey can carry a name.</span>
-			<span>But the right jersey carries something more.</span>
+			<span>{copy.one}</span>
+			<span>{copy.two}</span>
 		</p>
 
 		<div class="story-signoff">
 			<p class="story-payoff">
-				Identity.<br />
-				Pride.<br />
-				Belonging.
+				{copy.payoff[0]}<br />
+				{copy.payoff[1]}<br />
+				{copy.payoff[2]}
 			</p>
 			<p class="story-tagline">#NOIRJAK</p>
 		</div>

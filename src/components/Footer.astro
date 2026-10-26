@@ -1,5 +1,36 @@
 ---
 import Wordmark from '../assets/noir-wordmark.svg';
+import { langFromUrl, lp } from '../i18n';
+
+const lang = langFromUrl(Astro.url);
+const copy = {
+	id: {
+		home: 'NOIR — beranda',
+		tagline: 'We build team identities, not just jerseys.',
+		products: 'Produk',
+		more: 'Olahraga lainnya',
+		company: 'Perusahaan',
+		teams: 'Tim Kami',
+		how: 'Cara Kerja',
+		about: 'Tentang',
+		contact: 'Kontak',
+		quote: 'Minta Penawaran',
+		rights: 'Hak cipta dilindungi.',
+	},
+	en: {
+		home: 'NOIR — home',
+		tagline: 'We build team identities, not just jerseys.',
+		products: 'Products',
+		more: 'More sports',
+		company: 'Company',
+		teams: 'Our Teams',
+		how: 'How It Works',
+		about: 'About',
+		contact: 'Contact',
+		quote: 'Get a Quote',
+		rights: 'All rights reserved.',
+	},
+}[lang];
 
 const year = new Date().getFullYear();
 ---
@@ -7,33 +38,33 @@ const year = new Date().getFullYear();
 <footer class="site-footer">
 	<div class="container footer-top">
 		<div class="footer-brand">
-			<a href="/" class="wordmark" aria-label="NOIR — home"><Wordmark aria-hidden="true" /></a>
-			<p>We build team identities, not just jerseys.</p>
+			<a href={lp(lang, '/')} class="wordmark" aria-label={copy.home}><Wordmark aria-hidden="true" /></a>
+			<p>{copy.tagline}</p>
 		</div>
 
-		<nav aria-label="Products">
-			<p class="footer-col-title">Products</p>
+		<nav aria-label={copy.products}>
+			<p class="footer-col-title">{copy.products}</p>
 			<ul>
-				<li><a href="/#noir-football">Football</a></li>
-				<li><a href="/#noir-futsal">Futsal</a></li>
-				<li><a href="/#noir-basketball">Basketball</a></li>
-				<li><a href="/#what-we-make">More sports</a></li>
+				<li><a href={lp(lang, '/#noir-football')}>Football</a></li>
+				<li><a href={lp(lang, '/#noir-futsal')}>Futsal</a></li>
+				<li><a href={lp(lang, '/#noir-basketball')}>Basketball</a></li>
+				<li><a href={lp(lang, '/#what-we-make')}>{copy.more}</a></li>
 			</ul>
 		</nav>
 
-		<nav aria-label="Company">
-			<p class="footer-col-title">Company</p>
+		<nav aria-label={copy.company}>
+			<p class="footer-col-title">{copy.company}</p>
 			<ul>
-				<li><a href="/#built">Our Teams</a></li>
-				<li><a href="/#how-it-works">How It Works</a></li>
-				<li><a href="/about/">About</a></li>
+				<li><a href={lp(lang, '/#built')}>{copy.teams}</a></li>
+				<li><a href={lp(lang, '/#how-it-works')}>{copy.how}</a></li>
+				<li><a href={lp(lang, '/about/')}>{copy.about}</a></li>
 			</ul>
 		</nav>
 
-		<nav aria-label="Contact">
-			<p class="footer-col-title">Contact</p>
+		<nav aria-label={copy.contact}>
+			<p class="footer-col-title">{copy.contact}</p>
 			<ul>
-				<li><a href="/get-a-quote/">Get a Quote</a></li>
+				<li><a href={lp(lang, '/get-a-quote/')}>{copy.quote}</a></li>
 				<li><a href="https://wa.me/628977200741">WhatsApp</a></li>
 				<li><a href="https://www.instagram.com/noir.jersey/" rel="noopener">Instagram</a></li>
 			</ul>
@@ -41,7 +72,7 @@ const year = new Date().getFullYear();
 	</div>
 
 	<div class="container footer-bottom">
-		<p>&copy; {year} NOIR. All rights reserved.</p>
+		<p>&copy; {year} NOIR. {copy.rights}</p>
 	</div>
 </footer>
 

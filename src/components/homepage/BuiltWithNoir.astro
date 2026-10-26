@@ -1,19 +1,67 @@
 ---
 import { Image } from 'astro:assets';
 import SectionMarker from './SectionMarker.astro';
+import { langFromUrl, lp } from '../../i18n';
 import persiwah from '../../assets/projects/persiwah-liga4-team.jpg';
 import gapdol from '../../assets/projects/gapdol-team.webp';
 import perngabong from '../../assets/projects/perngabong-team.jpg';
 import budakGang from '../../assets/projects/budak-gang-team.jpg';
 import gabsis from '../../assets/projects/gabsis-team.jpg';
 
+const lang = langFromUrl(Astro.url);
+
 // Supporting projects keep each photograph's own proportions: the columns are
 // sized by aspect ratio so the row shares one height without cropping anyone out.
+const copy = {
+	id: {
+		persiwahAlt: 'Skuad inti Persiwah FC berkit NOIR hijau, dengan kiper berbaju merah, di depan banner Liga 4 2025/26 Piala Gubernur Kalbar',
+		kicker: 'Proyek unggulan',
+		body: 'Bersama Persiwah FC, NOIR merancang identitas yang mewakili semangat juang klub, kebanggaan daerah, dan ambisi untuk terus naik lebih tinggi.',
+		partnership: 'Kemitraan',
+		partnershipValue: 'Official Jersey Partner',
+		season: 'Musim',
+		seasonValue: ['Juara Liga 4', 'Piala Gubernur Kalbar 2026'],
+		view: 'Lihat Proyek',
+		more: 'Proyek lainnya',
+		kit: 'Kit kandang & tandang',
+		champions: 'Juara Liga 4 2025',
+		tallyNumber: '30.000+',
+		tally: ['jersey telah dibuat untuk ratusan tim', 'sejak 2022.'],
+		alts: {
+			gapdol: 'Pemain Gapdol 9000 berkit NOIR hijau zaitun berjalan keluar lapangan bersama',
+			perngabong: 'Skuad Perngabong berkit NOIR kuning dan biru dongker berfoto bersama',
+			budak: 'Skuad Budak Gang FC berkit NOIR putih dan merah di belakang banner juara',
+			gabsis: 'Skuad Gabsis Sambas berkit NOIR kuning berbaris di belakang banner Liga 4',
+		},
+	},
+	en: {
+		persiwahAlt: 'Persiwah FC starting eleven in green NOIR kits, with the goalkeeper in red, behind a Liga 4 2025/26 Piala Gubernur Kalbar banner',
+		kicker: 'Featured project',
+		body: 'Together with Persiwah FC, NOIR designed an identity that represents the club’s fighting spirit, regional pride, and ambition to keep climbing higher.',
+		partnership: 'Partnership',
+		partnershipValue: 'Official Jersey Partner',
+		season: 'Season',
+		seasonValue: ['Champions, Liga 4', 'Piala Gubernur Kalbar 2026'],
+		view: 'View Project',
+		more: 'More projects',
+		kit: 'Home & away kit',
+		champions: 'Liga 4 champions 2025',
+		tallyNumber: '30,000+',
+		tally: ['pieces made for hundreds of teams', 'since 2022.'],
+		alts: {
+			gapdol: 'Gapdol 9000 players in olive NOIR kits walking off the pitch together',
+			perngabong: 'Perngabong squad in yellow and navy NOIR kits posing for a team photo',
+			budak: 'Budak Gang FC squad in white and red NOIR kits behind a championship banner',
+			gabsis: 'Gabsis Sambas squad in yellow NOIR home kits lining up behind a Liga 4 banner',
+		},
+	},
+}[lang];
+
 const moreProjects = [
-	{ name: 'Gapdol 9000', image: gapdol, alt: 'Gapdol 9000 players in olive NOIR kits walking off the pitch together', role: 'Home & away kit', href: '/our-teams/gapdol-9000/' },
-	{ name: 'Perngabong', image: perngabong, alt: 'Perngabong squad in yellow and navy NOIR kits posing for a team photo', role: 'Home & away kit', href: '/our-teams/perngabong/' },
-	{ name: 'Budak Gang FC', image: budakGang, alt: 'Budak Gang FC squad in white and red NOIR kits behind a championship banner', role: 'Home & away kit', href: '/our-teams/budak-gang-fc/' },
-	{ name: 'Gabsis Sambas', image: gabsis, alt: 'Gabsis Sambas squad in yellow NOIR home kits lining up behind a Liga 4 banner', role: 'Liga 4 champions 2025', href: '/our-teams/gabsis-sambas/' },
+	{ name: 'Gapdol 9000', image: gapdol, alt: copy.alts.gapdol, role: copy.kit, href: lp(lang, '/our-teams/gapdol-9000/') },
+	{ name: 'Perngabong', image: perngabong, alt: copy.alts.perngabong, role: copy.kit, href: lp(lang, '/our-teams/perngabong/') },
+	{ name: 'Budak Gang FC', image: budakGang, alt: copy.alts.budak, role: copy.kit, href: lp(lang, '/our-teams/budak-gang-fc/') },
+	{ name: 'Gabsis Sambas', image: gabsis, alt: copy.alts.gabsis, role: copy.champions, href: lp(lang, '/our-teams/gabsis-sambas/') },
 ];
 ---
 
@@ -25,7 +73,7 @@ const moreProjects = [
 			<figure class="feature-media">
 				<Image
 					src={persiwah}
-					alt="Persiwah FC starting eleven in green NOIR kits, with the goalkeeper in red, behind a Liga 4 2025/26 Piala Gubernur Kalbar banner"
+					alt={copy.persiwahAlt}
 					widths={[640, 960, 1290]}
 					sizes="(min-width: 960px) 58vw, 100vw"
 					loading="lazy"
@@ -33,30 +81,30 @@ const moreProjects = [
 			</figure>
 
 			<div class="feature-info">
-				<p class="feature-kicker">Featured project</p>
+				<p class="feature-kicker">{copy.kicker}</p>
 				<h2 id="built-heading">Persiwah FC</h2>
-				<p class="feature-copy">Together with Persiwah FC, NOIR designed an identity that represents the club’s fighting spirit, regional pride, and ambition to keep climbing higher.</p>
+				<p class="feature-copy">{copy.body}</p>
 
 				<dl class="feature-meta">
 					<div>
-						<dt>Partnership</dt>
-						<dd>Official Jersey Partner</dd>
+						<dt>{copy.partnership}</dt>
+						<dd>{copy.partnershipValue}</dd>
 					</div>
 					<div>
-						<dt>Season</dt>
-						<dd>Champions, Liga 4<br />Piala Gubernur Kalbar 2026</dd>
+						<dt>{copy.season}</dt>
+						<dd>{copy.seasonValue[0]}<br />{copy.seasonValue[1]}</dd>
 					</div>
 				</dl>
 
-				<a class="link-arrow" href="/our-teams/persiwah-fc/">
-					View Project
+				<a class="link-arrow" href={lp(lang, '/our-teams/persiwah-fc/')}>
+					{copy.view}
 					<span aria-hidden="true">→</span>
 				</a>
 			</div>
 		</div>
 
 		<div class="more">
-			<h3 class="more-title">More projects</h3>
+			<h3 class="more-title">{copy.more}</h3>
 			<ul class="more-list">
 				{
 					moreProjects.map((project) => (
@@ -76,8 +124,8 @@ const moreProjects = [
 			</ul>
 		</div>
 		<p class="tally">
-			<span class="tally-number">30,000+</span>
-			<span class="tally-copy">pieces made for hundreds of teams<br />since 2022.</span>
+			<span class="tally-number">{copy.tallyNumber}</span>
+			<span class="tally-copy">{copy.tally[0]}<br />{copy.tally[1]}</span>
 		</p>
 	</div>
 </section>

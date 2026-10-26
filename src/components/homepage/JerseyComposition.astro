@@ -1,28 +1,54 @@
 ---
+import { langFromUrl, lp } from '../../i18n';
 import { Image } from 'astro:assets';
 import bigreds from '../../assets/jersey-bigreds-studio-v3.png';
 import blackGold from '../../assets/jersey-black-gold-studio-v3.png';
 import red from '../../assets/jersey-red-cutout-v5.png';
 import badminton from '../../assets/jersey-badminton-studio-v2.png';
 import basketball from '../../assets/jersey-basketball-studio-v2.png';
+
+const lang = langFromUrl(Astro.url);
+const copy = {
+	id: {
+		label: 'Lima render produk jersey NOIR yang disusun sebagai satu komposisi studio',
+		alts: [
+			'Jersey sepak bola BIGREDS putih dengan panel samping tosca dan artwork merah.',
+			'Jersey sepak bola Budak Gang hitam dengan garis emas dan artwork SCA.',
+			'Jersey sepak bola Budak Gang merah dengan kerah polo putih, artwork marmer, dan sponsor AKG.',
+			'Render studio jersey Efrayn Badminton Club biru dongker dengan grafis dan kerah putih.',
+			'Render studio jersey basket tanpa lengan putih dan tosca.',
+		],
+	},
+	en: {
+		label: 'Five NOIR jersey product renders arranged as one studio composition',
+		alts: [
+			'White BIGREDS football jersey with teal side panels and red artwork.',
+			'Black Budak Gang football jersey with gold pinstripes and SCA artwork.',
+			'Red Budak Gang football jersey with white polo collar, marbled artwork and AKG sponsor.',
+			'Studio-rendered navy Efrayn Badminton Club jersey with white graphics and collar.',
+			'Studio-rendered white and teal sleeveless basketball jersey.',
+		],
+	},
+}[lang];
+
 ---
 
-<figure class="jersey-composition" aria-label="Five NOIR jersey product renders arranged as one studio composition">
+<figure class="jersey-composition" aria-label={copy.label}>
  <div class="studio-stage">
   <div class="jersey jersey-bigreds">
-   <Image src={bigreds} alt="White BIGREDS football jersey with teal side panels and red artwork." widths={[320,640,1197]} sizes="(min-width: 1440px) 280px, (min-width: 900px) 24vw, 42vw" loading="lazy" />
+   <Image src={bigreds} alt={copy.alts[0]} widths={[320,640,1197]} sizes="(min-width: 1440px) 280px, (min-width: 900px) 24vw, 42vw" loading="lazy" />
   </div>
   <div class="jersey jersey-black-gold">
-   <Image src={blackGold} alt="Black Budak Gang football jersey with gold pinstripes and SCA artwork." widths={[320,640,1213]} sizes="(min-width: 1440px) 270px, (min-width: 900px) 23vw, 40vw" loading="lazy" />
+   <Image src={blackGold} alt={copy.alts[1]} widths={[320,640,1213]} sizes="(min-width: 1440px) 270px, (min-width: 900px) 23vw, 40vw" loading="lazy" />
   </div>
   <div class="jersey jersey-red">
-   <Image src={red} alt="Red Budak Gang football jersey with white polo collar, marbled artwork and AKG sponsor." widths={[480,768,1086]} sizes="(min-width: 1440px) 390px, (min-width: 900px) 34vw, 58vw" loading="lazy" />
+   <Image src={red} alt={copy.alts[2]} widths={[480,768,1086]} sizes="(min-width: 1440px) 390px, (min-width: 900px) 34vw, 58vw" loading="lazy" />
   </div>
   <div class="jersey jersey-badminton">
-   <Image src={badminton} alt="Studio-rendered navy Efrayn Badminton Club jersey with white graphics and collar." widths={[320,640,1245]} sizes="(min-width: 1440px) 210px, (min-width: 900px) 19vw, 31vw" loading="lazy" />
+   <Image src={badminton} alt={copy.alts[3]} widths={[320,640,1245]} sizes="(min-width: 1440px) 210px, (min-width: 900px) 19vw, 31vw" loading="lazy" />
   </div>
   <div class="jersey jersey-basketball">
-   <Image src={basketball} alt="Studio-rendered white and teal sleeveless basketball jersey." widths={[320,640,903]} sizes="(min-width: 1440px) 180px, (min-width: 900px) 14vw, 24vw" loading="lazy" />
+   <Image src={basketball} alt={copy.alts[4]} widths={[320,640,903]} sizes="(min-width: 1440px) 180px, (min-width: 900px) 14vw, 24vw" loading="lazy" />
   </div>
  </div>
 </figure>

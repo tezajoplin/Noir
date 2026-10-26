@@ -1,4 +1,5 @@
 ---
+import { langFromUrl, lp } from '../../i18n';
 import { Image } from 'astro:assets';
 import SectionMarker from './SectionMarker.astro';
 import JerseyComposition from './JerseyComposition.astro';
@@ -7,11 +8,35 @@ import futsal from '../../assets/futsal-clean.png';
 import basketball from '../../assets/basket.jpg';
 
 const sports = [
- {name:'Football', image:football, alt:'Football players celebrating together in their NOIR kits.'},
- {name:'Futsal', image:futsal, alt:'BERKAT futsal players in turquoise NOIR jerseys.'},
- {name:'Basketball', image:basketball, alt:'Basketball player in a blue NOIR kit driving toward the basket.'},
+ {name:'Football', image:football},
+ {name:'Futsal', image:futsal},
+ {name:'Basketball', image:basketball},
 ];
-const more = ['Padel', 'Badminton', 'T-Shirts', 'Polo Shirts', 'Jackets', 'Training Wear', 'Lifestyle', 'Accessories'];
+
+const lang = langFromUrl(Astro.url);
+const copy = {
+	id: {
+		note: 'NOIR dibangun di atas identitas. Standar yang sama berlaku untuk setiap olahraga yang kami garap — sepak bola, futsal, basket, dan lainnya. Setiap produk dirancang dengan tujuan dan dibuat dengan keahlian nyata, bukan diambil dari template generik.',
+		nav: 'Jelajahi olahraga kami',
+		alts: [
+			'Pemain sepak bola merayakan bersama dengan kit NOIR mereka.',
+			'Pemain futsal BERKAT berjersey NOIR warna tosca.',
+			'Pemain basket berkit NOIR biru menggiring bola menuju ring.',
+		],
+		more: ['Padel', 'Bulu tangkis', 'Kaos', 'Kaos polo', 'Jaket', 'Pakaian latihan', 'Lifestyle', 'Aksesori'],
+	},
+	en: {
+		note: 'NOIR is built around identity. The same standard carries across every sport we make for — football, futsal, basketball, and beyond. Every piece is designed with intent and produced with real craftsmanship, not pulled from a generic template.',
+		nav: 'Explore our sports',
+		alts: [
+			'Football players celebrating together in their NOIR kits.',
+			'BERKAT futsal players in turquoise NOIR jerseys.',
+			'Basketball player in a blue NOIR kit driving toward the basket.',
+		],
+		more: ['Padel', 'Badminton', 'T-Shirts', 'Polo Shirts', 'Jackets', 'Training Wear', 'Lifestyle', 'Accessories'],
+	},
+}[lang];
+
 ---
 <section id="what-we-make" class="what-we-make" aria-labelledby="wwm-heading">
  <div class="container">
@@ -19,8 +44,8 @@ const more = ['Padel', 'Badminton', 'T-Shirts', 'Polo Shirts', 'Jackets', 'Train
    <div class="opening-copy">
     <SectionMarker number="06" label="What We Make" />
     <h2 id="wwm-heading"><span>BUILT FOR</span><span>EVERY SPORT</span><span>WE SERVE.</span></h2>
-    <p class="opening-note">NOIR is built around identity. The same standard carries across every sport we make for — football, futsal, basketball, and beyond. Every piece is designed with intent and produced with real craftsmanship, not pulled from a generic template.</p>
-    <nav class="collection-index" aria-label="Explore our sports">
+    <p class="opening-note">{copy.note}</p>
+    <nav class="collection-index" aria-label={copy.nav}>
      {sports.map(sport => <a href={`#noir-${sport.name.toLowerCase()}`}>{sport.name}<span aria-hidden="true">↘</span></a>)}
     </nav>
    </div>
@@ -34,12 +59,12 @@ const more = ['Padel', 'Badminton', 'T-Shirts', 'Polo Shirts', 'Jackets', 'Train
      <div class="collection-heading">
       <div class="collection-name"><span class="collection-number">0{index + 1}</span><h3 id={`heading-${sport.name.toLowerCase()}`}>{sport.name}</h3></div>
      </div>
-     <div class="collection-photo"><Image src={sport.image} alt={sport.alt} widths={[480,800,1124]} sizes={index === 0 ? '(min-width: 900px) 54vw, 90vw' : '(min-width: 900px) 36vw, 90vw'} loading="lazy" /></div>
+     <div class="collection-photo"><Image src={sport.image} alt={copy.alts[index]} widths={[480,800,1124]} sizes={index === 0 ? '(min-width: 900px) 54vw, 90vw' : '(min-width: 900px) 36vw, 90vw'} loading="lazy" /></div>
     </div>
     </article>
     {index === 0 && <div class="more-products" aria-labelledby="more-products-heading">
      <h3 id="more-products-heading">More Products</h3>
-     <ul>{more.map(name => <li>{name}</li>)}</ul>
+     <ul>{copy.more.map(name => <li>{name}</li>)}</ul>
     </div>}
    </div>)}
   </div>

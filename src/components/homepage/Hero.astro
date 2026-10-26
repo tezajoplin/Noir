@@ -1,8 +1,26 @@
 ---
+import { langFromUrl, lp } from '../../i18n';
  import { Image } from 'astro:assets';
 import heroImage from '../../../images/perngabong-jersey-cutout.png';
+
+const lang = langFromUrl(Astro.url);
+const copy = {
+	id: {
+		alt: 'Mockup studio jersey hijau-putih Perngabong, dengan kerah, kain bermotif, dan trim yang terlihat jelas.',
+		subhead: 'Pakaian olahraga custom yang dibangun dari identitas tim Anda.',
+		work: 'Karya Kami',
+		label: 'Pengantar',
+	},
+	en: {
+		alt: 'Studio mockup of Perngabong’s green-and-white jersey, with the collar, patterned fabric and trim visible.',
+		subhead: 'Custom sportswear built around your team\'s identity.',
+		work: 'Our Work',
+		label: 'Introduction',
+	},
+}[lang];
+
 ---
-<section id="hero" class="hero" aria-label="Introduction">
+<section id="hero" class="hero" aria-label={copy.label}>
 	<div class="hero-media">
 		<Image
 			class="hero-image"
@@ -10,7 +28,7 @@ import heroImage from '../../../images/perngabong-jersey-cutout.png';
 			widths={[480, 768, 1024]}
             sizes="100vw"
             quality={85}
-			alt="Studio mockup of Perngabong’s green-and-white jersey, with the collar, patterned fabric and trim visible."
+			alt={copy.alt}
 			width="1086"
 			height="1448"
 			loading="eager"
@@ -31,17 +49,17 @@ import heroImage from '../../../images/perngabong-jersey-cutout.png';
 		</h1>
 
 		<p class="hero-subhead">
-			Custom sportswear built around your team's identity.
+			{copy.subhead}
 		</p>
 
 		<div class="hero-actions">
-			<a class="btn" href="/get-a-quote/">
+			<a class="btn" href={lp(lang, '/get-a-quote/')}>
 				Start a Project
 				<span class="btn-arrow" aria-hidden="true">→</span>
 			</a>
 
 			<a class="hero-secondary-link" href="#built">
-				Our Work
+				{copy.work}
 			</a>
 		</div>
 	</div>
