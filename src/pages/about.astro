@@ -41,6 +41,11 @@ const values = [
 				<p>West Kalimantan has a deep-rooted football culture. New communities and teams are formed all the time, yet many still wear generic templates with only a team name added.</p>
 				<p>A jersey should represent more than a name. NOIR helps teams build an identity that reflects their character, through thoughtful design, reliable craftsmanship, fast production and competitive pricing.</p>
 			</div>
+
+			<figure class="about-photo">
+				<img src="/images/about/workspace.webp" alt="A NOIR team member laying out a kit design on a computer, beside a large-format printer" width="1000" height="1333" loading="lazy" />
+				<figcaption>Behind the jerseys</figcaption>
+			</figure>
 		</div>
 
 		<div class="about-values">
@@ -108,7 +113,32 @@ const values = [
 	}
 
 	.about-copy {
+		grid-column: 2;
+		grid-row: 1 / span 2;
 		max-width: 38rem;
+	}
+
+	.about-facts {
+		grid-column: 1;
+	}
+
+	.about-photo {
+		grid-column: 1;
+		margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+	}
+
+	.about-photo img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.about-photo figcaption {
+		margin-top: 0.7rem;
+		font-size: 0.625rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
 	}
 
 	.about-copy p {
@@ -163,6 +193,18 @@ const values = [
 		.about-body {
 			grid-template-columns: 1fr;
 			row-gap: 2.5rem;
+		}
+
+		.about-facts,
+		.about-copy,
+		.about-photo {
+			grid-column: 1;
+			grid-row: auto;
+		}
+
+		.about-photo {
+			margin-top: 0;
+			max-width: 30rem;
 		}
 
 		.about-values ol {
