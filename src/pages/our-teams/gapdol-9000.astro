@@ -1,35 +1,39 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FinalCTA from '../../components/homepage/FinalCTA.astro';
+import { langFromUrl, lp, pick } from '../../i18n';
+
+const lang = langFromUrl(Astro.url);
+const t = pick(lang);
 
 const gallery = [
-	{ src: '/images/gapdol/gallery/02-linus-action.webp', alt: 'Gapdol player in the lime away kit during a match', className: 'gallery-action', cleanBadge: true },
-	{ src: '/images/gapdol/gallery/03-match-action.webp', alt: 'Gapdol player competing under the lights', className: 'gallery-duel', cleanBadge: true },
-	{ src: '/images/gapdol/gallery/05-team-together.webp', alt: 'Gapdol teammates walking together after a match', className: 'gallery-team' },
-	{ src: '/images/gapdol/gallery/04-matchday.webp', alt: 'Gapdol player carrying the ball in a night match', className: 'gallery-player', cleanBadge: true },
+	{ src: '/images/gapdol/gallery/02-linus-action.webp', alt: t('Gapdol player in the lime away kit during a match', 'Pemain Gapdol berkit tandang hijau limau saat pertandingan'), className: 'gallery-action', cleanBadge: true },
+	{ src: '/images/gapdol/gallery/03-match-action.webp', alt: t('Gapdol player competing under the lights', 'Pemain Gapdol bertanding di bawah lampu sorot'), className: 'gallery-duel', cleanBadge: true },
+	{ src: '/images/gapdol/gallery/05-team-together.webp', alt: t('Gapdol teammates walking together after a match', 'Rekan setim Gapdol berjalan bersama setelah pertandingan'), className: 'gallery-team' },
+	{ src: '/images/gapdol/gallery/04-matchday.webp', alt: t('Gapdol player carrying the ball in a night match', 'Pemain Gapdol membawa bola dalam laga malam'), className: 'gallery-player', cleanBadge: true },
 ];
 ---
 
 <BaseLayout
 	title="Gapdol 9000 — NOIR"
-	description="From fun football in 2016 to one of Pontianak’s competitive clubs, meet Gapdol 9000."
+	description={t('From fun football in 2016 to one of Pontianak’s competitive clubs, meet Gapdol 9000.', 'Dari sepak bola santai di 2016 menjadi salah satu klub kompetitif Pontianak, kenali Gapdol 9000.')}
 >
 	<article class="project-page">
 		<header class="project-intro container">
-			<a class="back-link" href="/#built"><span aria-hidden="true">←</span> All projects</a>
+			<a class="back-link" href={lp(lang, '/#built')}><span aria-hidden="true">←</span> {t('All projects', 'Semua proyek')}</a>
 			<div class="intro-grid">
 				<div class="intro-copy">
-					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Team story <span class="project-index">/ Gapdol 9000</span></p>
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('Team story', 'Kisah tim')} <span class="project-index">/ Gapdol 9000</span></p>
 					<h1>Gapdol<br />9000.</h1>
-					<p class="project-summary">What began as fun football in 2016 has grown into a competitive club with a strong name in Pontianak.</p>
+					<p class="project-summary">{t('What began as fun football in 2016 has grown into a competitive club with a strong name in Pontianak.', 'Yang bermula dari sepak bola santai pada 2016 kini menjadi klub kompetitif dengan nama besar di Pontianak.')}</p>
 					<div class="project-meta">
-						<span>Founded 2016</span>
-						<span>Pontianak · West Kalimantan</span>
+						<span>{t('Founded 2016', 'Berdiri 2016')}</span>
+						<span>{t('Pontianak · West Kalimantan', 'Pontianak · Kalimantan Barat')}</span>
 					</div>
 				</div>
 				<figure class="intro-photo">
-					<img src="/images/gapdol/gallery/01-kuching-friendly.webp" alt="Two Gapdol players in their charcoal kit during a friendly match trip to Kuching, Sarawak" loading="eager" />
-					<figcaption>Kuching, Sarawak · Friendly match</figcaption>
+					<img src="/images/gapdol/gallery/01-kuching-friendly.webp" alt={t('Two Gapdol players in their charcoal kit during a friendly match trip to Kuching, Sarawak', 'Dua pemain Gapdol berkit charcoal saat perjalanan laga persahabatan ke Kuching, Sarawak')} loading="eager" />
+					<figcaption>{t('Kuching, Sarawak · Friendly match', 'Kuching, Sarawak · Laga persahabatan')}</figcaption>
 				</figure>
 			</div>
 		</header>
@@ -37,36 +41,36 @@ const gallery = [
 		<section class="kit-section container" aria-labelledby="kit-heading">
 			<div class="section-heading">
 				<div>
-					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> The kit</p>
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('The kit', 'Kit')}</p>
 					<h2 id="kit-heading">Two looks.<br />One Gapdol.</h2>
 				</div>
-				<p class="section-note">Charcoal and olive home-and-away designs, made for the club’s next chapter.</p>
+				<p class="section-note">{t('Charcoal and olive home-and-away designs, made for the club’s next chapter.', 'Desain kandang dan tandang charcoal dan olive, dibuat untuk babak baru klub.')}</p>
 			</div>
 			<figure class="kit-image">
-				<img src="/images/projects/gapdol-studio-pair.webp" alt="Gapdol 9000 charcoal and olive home and away jerseys in a studio mockup" loading="lazy" />
-				<figcaption>Gapdol 9000 · Home & away</figcaption>
+				<img src="/images/projects/gapdol-studio-pair.webp" alt={t('Gapdol 9000 charcoal and olive home and away jerseys in a studio mockup', 'Mockup studio jersey kandang charcoal dan tandang olive Gapdol 9000')} loading="lazy" />
+				<figcaption>{t('Gapdol 9000 · Home & away', 'Gapdol 9000 · Kandang & tandang')}</figcaption>
 			</figure>
 			<div class="design-board-intro">
-				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> NOIR design mockups</p>
-				<p>Full kit layouts, colours, nameset, and sponsor placement before production.</p>
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('NOIR design mockups', 'Mockup desain NOIR')}</p>
+				<p>{t('Full kit layouts, colours, nameset, and sponsor placement before production.', 'Tata letak kit lengkap, warna, nameset, dan posisi sponsor sebelum produksi.')}</p>
 			</div>
 			<div class="design-board-grid">
 				<figure class="design-board">
-					<img src="/images/projects/gapdol-home.jpeg" alt="NOIR design mockup for Gapdol 9000's charcoal home kit, including front, back, shorts and socks" loading="lazy" />
-					<figcaption><span>01</span> Home kit · Charcoal</figcaption>
+					<img src="/images/projects/gapdol-home.jpeg" alt={t('NOIR design mockup for Gapdol 9000\'s charcoal home kit, including front, back, shorts and socks', 'Mockup desain NOIR kit kandang charcoal Gapdol 9000, termasuk depan, belakang, celana, dan kaos kaki')} loading="lazy" />
+					<figcaption><span>01</span> {t('Home kit · Charcoal', 'Kit kandang · Charcoal')}</figcaption>
 				</figure>
 				<figure class="design-board">
-					<img src="/images/projects/gapdol-away.jpeg" alt="NOIR design mockup for Gapdol 9000's olive away kit, including front, back, shorts and socks" loading="lazy" />
-					<figcaption><span>02</span> Away kit · Olive</figcaption>
+					<img src="/images/projects/gapdol-away.jpeg" alt={t('NOIR design mockup for Gapdol 9000\'s olive away kit, including front, back, shorts and socks', 'Mockup desain NOIR kit tandang olive Gapdol 9000, termasuk depan, belakang, celana, dan kaos kaki')} loading="lazy" />
+					<figcaption><span>02</span> {t('Away kit · Olive', 'Kit tandang · Olive')}</figcaption>
 				</figure>
 			</div>
 		</section>
 
 		<section class="story-section" aria-labelledby="story-heading">
 			<div class="container story-intro">
-				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> A club in motion</p>
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('A club in motion', 'Klub yang terus bergerak')}</p>
 				<h2 id="story-heading">From fun football<br /><span>to a Pontianak name.</span></h2>
-				<p>Gapdol grew more competitive year by year. Today the team regularly enters major tournaments around Pontianak and has become known as a tough side to face.</p>
+				<p>{t('Gapdol grew more competitive year by year. Today the team regularly enters major tournaments around Pontianak and has become known as a tough side to face.', 'Gapdol makin kompetitif dari tahun ke tahun. Kini tim ini rutin mengikuti turnamen besar di sekitar Pontianak dan dikenal sebagai lawan yang sulit dihadapi.')}</p>
 			</div>
 
 			<div class="container story-grid">
@@ -76,45 +80,45 @@ const gallery = [
 							<img src={photo.src} alt={photo.alt} loading="lazy" />
 							{photo.cleanBadge && <span class="badge-cleanup" aria-hidden="true"></span>}
 						</div>
-						<figcaption><span>0{index + 1}</span><span>{index === 2 ? 'Together after the match' : 'Matchday · Gapdol 9000'}</span></figcaption>
+						<figcaption><span>0{index + 1}</span><span>{index === 2 ? t('Together after the match', 'Berkumpul setelah pertandingan') : t('Matchday · Gapdol 9000', 'Hari pertandingan · Gapdol 9000')}</span></figcaption>
 					</figure>
 				))}
 			</div>
 
 			<div class="container story-footnote">
-				<span class="story-step">Built beyond the first team</span>
-				<p>Gapdol also runs a football school for children, giving the next generation a place to learn and play.</p>
+				<span class="story-step">{t('Built beyond the first team', 'Dibangun melampaui tim utama')}</span>
+				<p>{t('Gapdol also runs a football school for children, giving the next generation a place to learn and play.', 'Gapdol juga menjalankan sekolah sepak bola untuk anak-anak, memberi generasi berikutnya tempat untuk belajar dan bermain.')}</p>
 			</div>
 		</section>
 
 		<section class="results-section container" aria-labelledby="results-heading">
 			<div class="results-heading">
-				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Still moving</p>
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('Still moving', 'Masih melaju')}</p>
 				<h2 id="results-heading">Good seasons.<br /><span>More to come.</span></h2>
 			</div>
 			<div class="results-list">
 				<article class="result-row">
 					<span class="result-index">01</span>
-					<h3>Second place</h3>
-					<p>Liga Nusantara Futsal (LINUS), West Kalimantan regional.</p>
+					<h3>{t('Second place', 'Juara kedua')}</h3>
+					<p>{t('Liga Nusantara Futsal (LINUS), West Kalimantan regional.', 'Liga Nusantara Futsal (LINUS), regional Kalimantan Barat.')}</p>
 				</article>
 				<article class="result-row">
 					<span class="result-index">02</span>
 					<h3>Kuching, Sarawak</h3>
-					<p>Runner-up in a four-team mini tournament during a friendly-match trip.</p>
+					<p>{t('Runner-up in a four-team mini tournament during a friendly-match trip.', 'Runner-up di turnamen mini empat tim saat perjalanan laga persahabatan.')}</p>
 				</article>
 				<article class="result-row">
 					<span class="result-index">03</span>
-					<h3>Always in the mix</h3>
-					<p>In Pontianak’s minisoccer leagues, Gapdol often takes the title or reaches the semifinals.</p>
+					<h3>{t('Always in the mix', 'Selalu bersaing')}</h3>
+					<p>{t('In Pontianak’s minisoccer leagues, Gapdol often takes the title or reaches the semifinals.', 'Di liga minisoccer Pontianak, Gapdol sering menjadi juara atau mencapai semifinal.')}</p>
 				</article>
 			</div>
-			<p class="signoff">Let’s go, Gapdol.</p>
+			<p class="signoff">{t('Let’s go, Gapdol.', 'Ayo, Gapdol.')}</p>
 		</section>
 
 		<footer class="project-outro container">
 			<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> Made with NOIR</p>
-			<a class="outro-link" href="/#built">Explore more projects <span aria-hidden="true">→</span></a>
+			<a class="outro-link" href={lp(lang, '/#built')}>{t('Explore more projects', 'Lihat proyek lainnya')} <span aria-hidden="true">→</span></a>
 		</footer>
 	</article>
 	<FinalCTA number="" />

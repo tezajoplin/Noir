@@ -9,11 +9,24 @@ import WhatWeMake from '../components/homepage/WhatWeMake.astro';
 import HowItWorks from '../components/homepage/HowItWorks.astro';
 import FinalCTA from '../components/homepage/FinalCTA.astro';
 import EditorialCanvas from '../components/homepage/EditorialCanvas.astro';
+import { langFromUrl } from '../i18n';
+
+const lang = langFromUrl(Astro.url);
+const meta = {
+	id: {
+		title: 'NOIR — Jersey Custom & Pakaian Olahraga Premium di Pontianak',
+		description: 'NOIR membuat jersey custom yang membangun identitas tim: sepak bola, futsal, basket, dan bulu tangkis untuk komunitas olahraga di Pontianak, Kalimantan Barat.',
+	},
+	en: {
+		title: 'NOIR — Premium Custom Sportswear',
+		description: 'NOIR builds custom team identities — premium sportswear for football, futsal, basketball, and badminton communities from Pontianak, West Kalimantan.',
+	},
+}[lang];
 ---
 
 <BaseLayout
-	title="NOIR — Premium Custom Sportswear"
-	description="NOIR builds custom team identities — premium sportswear for football, futsal, basketball, and badminton communities from Pontianak, West Kalimantan."
+	title={meta.title}
+	description={meta.description}
 >
 	<EditorialCanvas>
 		<Hero />

@@ -1,7 +1,15 @@
 ---
+import { langFromUrl, lp } from '../../i18n';
 import { Image } from 'astro:assets';
 import SectionMarker from './SectionMarker.astro';
 import lifestyle from '../../assets/lifestyle-cafe.jpg';
+
+const lang = langFromUrl(Astro.url);
+const alt = {
+	id: 'Lima orang berjersey NOIR dengan pakaian sehari-hari, berkumpul di dalam kafe.',
+	en: 'Five people wearing NOIR jerseys with everyday clothing, gathered inside a café.',
+}[lang];
+
 ---
 <section id="lifestyle" class="lifestyle" aria-labelledby="lifestyle-heading">
  <div class="container chapter">
@@ -13,7 +21,7 @@ import lifestyle from '../../assets/lifestyle-cafe.jpg';
    </h2>
    <p class="meta">ON THE PITCH / OFF THE PITCH</p>
   </div>
-  <Image src={lifestyle} alt="Five people wearing NOIR jerseys with everyday clothing, gathered inside a café." widths={[480,768,1290]} sizes="(min-width: 1440px) 604px, (min-width: 960px) 44vw, 88vw" loading="lazy" class="lifestyle-image" />
+  <Image src={lifestyle} alt={alt} widths={[480,768,1290]} sizes="(min-width: 1440px) 604px, (min-width: 960px) 44vw, 88vw" loading="lazy" class="lifestyle-image" />
  </div>
 </section>
 <style>

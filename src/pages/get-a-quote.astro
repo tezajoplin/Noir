@@ -1,31 +1,98 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionMarker from '../components/homepage/SectionMarker.astro';
+import { langFromUrl } from '../i18n';
 
 const whatsappNumber = '628977200741';
-const sports = ['Football', 'Futsal', 'Basketball', 'Badminton', 'Padel', 'Other'];
-// Supplied by NOIR (Oct 2026).
-const facts = [
-	{ label: 'Minimum order', value: '10 pcs' },
-	{ label: 'Production', value: '3–14 days' },
-	{ label: 'Price per set', value: 'From IDR 135K' },
-];
-const designOptions = [
-	{ value: 'design', label: 'Yes, we have a design' },
-	{ value: 'reference', label: 'We have references' },
-	{ value: 'none', label: 'Not yet, we need NOIR to design it' },
-];
+const lang = langFromUrl(Astro.url);
+
+// Business facts supplied by NOIR (Oct 2026).
+const copy = {
+	id: {
+		title: 'Minta Penawaran — NOIR',
+		description: 'Ceritakan tim Anda: olahraga, jumlah, tenggat, dan referensi desain. Permintaan Anda terbuka sebagai pesan WhatsApp ke tim NOIR.',
+		lede: 'Lima pertanyaan singkat. Saat Anda kirim, jawabannya terbuka sebagai pesan WhatsApp ke tim NOIR, sehingga Anda bisa menambahkan foto atau referensi di chat yang sama.',
+		facts: [
+			{ label: 'Pesanan minimum', value: '10 pcs' },
+			{ label: 'Produksi', value: '3–14 hari' },
+			{ label: 'Harga per set', value: 'Mulai Rp135K' },
+		],
+		note: 'Sudah termasuk desain. Waktu produksi dihitung sejak pesanan masuk. Opsi seperti lengan panjang dikenakan biaya tambahan.',
+		booth: ['Jalan Paris 1, Gang Perwira No. 16 A', 'Pontianak, Kalimantan Barat'],
+		team: 'Nama tim',
+		sport: 'Olahraga',
+		sports: [
+			['Football', 'Sepak bola'],
+			['Futsal', 'Futsal'],
+			['Basketball', 'Basket'],
+			['Badminton', 'Bulu tangkis'],
+			['Padel', 'Padel'],
+			['Other', 'Lainnya'],
+		],
+		quantity: 'Jumlah',
+		quantityHint: 'Minimal 10 pcs',
+		deadline: 'Dibutuhkan sebelum',
+		design: 'Desain atau referensi',
+		designOptions: [
+			{ value: 'design', label: 'Ya, kami sudah punya desain' },
+			{ value: 'reference', label: 'Kami punya referensi' },
+			{ value: 'none', label: 'Belum, kami butuh NOIR yang mendesainkan' },
+		],
+		more: 'Lainnya',
+		optional: '(opsional)',
+		moreHint: 'Warna, sponsor, ukuran, atau apa yang diperjuangkan tim Anda',
+		send: 'Kirim lewat WhatsApp',
+		submitNote: 'Membuka WhatsApp dengan jawaban Anda sudah terisi. Tidak ada yang terkirim sebelum Anda menekan kirim di sana.',
+	},
+	en: {
+		title: 'Get a Quote — NOIR',
+		description: 'Tell NOIR about your team: sport, quantity, deadline and design references. Your request opens as a WhatsApp message to the NOIR team.',
+		lede: 'Five quick questions. When you send, the answers open as a WhatsApp message to the NOIR team, so you can add photos or references in the same chat.',
+		facts: [
+			{ label: 'Minimum order', value: '10 pcs' },
+			{ label: 'Production', value: '3–14 days' },
+			{ label: 'Price per set', value: 'From IDR 135K' },
+		],
+		note: '{copy.note}',
+		booth: ['Jalan Paris 1, Gang Perwira No. 16 A', 'Pontianak, West Kalimantan'],
+		team: 'Team name',
+		sport: 'Sport',
+		sports: [
+			['Football', 'Football'],
+			['Futsal', 'Futsal'],
+			['Basketball', 'Basketball'],
+			['Badminton', 'Badminton'],
+			['Padel', 'Padel'],
+			['Other', 'Other'],
+		],
+		quantity: 'Quantity',
+		quantityHint: 'Minimum 10 pcs',
+		deadline: 'Needed by',
+		design: 'Design or references',
+		designOptions: [
+			{ value: 'design', label: 'Yes, we have a design' },
+			{ value: 'reference', label: 'We have references' },
+			{ value: 'none', label: 'Not yet, we need NOIR to design it' },
+		],
+		more: 'Anything else',
+		optional: '(optional)',
+		moreHint: 'Colours, sponsors, sizes, or what your team stands for',
+		send: 'Send via WhatsApp',
+		submitNote: 'Opens WhatsApp with your answers filled in. Nothing is sent until you press send there.',
+	},
+}[lang];
+const { facts, sports, designOptions } = copy;
 ---
 
 <BaseLayout
-	title="Get a Quote — NOIR"
-	description="Tell NOIR about your team: sport, quantity, deadline and design references. Your request opens as a WhatsApp message to the NOIR team."
+	title={copy.title}
+	description={copy.description}
 >
 	<section class="quote container" aria-labelledby="quote-heading">
 		<div class="quote-intro">
 			<SectionMarker label="Get a Quote" />
 			<h1 id="quote-heading">Tell us<br />about your<br />team.</h1>
-			<p class="quote-lede">Five quick questions. When you send, the answers open as a WhatsApp message to the NOIR team, so you can add photos or references in the same chat.</p>
+			<p class="quote-lede">{copy.lede}</p>
 
 			<dl class="quote-facts">
 				{facts.map((fact) => (
@@ -48,7 +115,7 @@ const designOptions = [
 				</div>
 				<div>
 					<dt>Booth</dt>
-					<dd>Jalan Paris 1, Gang Perwira No. 16 A<br />Pontianak, West Kalimantan</dd>
+					<dd>{copy.booth[0]}<br />{copy.booth[1]}</dd>
 				</div>
 			</dl>
 		</div>
@@ -57,7 +124,7 @@ const designOptions = [
 			<div class="field">
 				<label for="team">
 					<span class="field-index">01</span>
-					Team name
+					{copy.team}
 				</label>
 				<input id="team" name="team" type="text" autocomplete="organization" required />
 			</div>
@@ -65,13 +132,13 @@ const designOptions = [
 			<fieldset class="field">
 				<legend>
 					<span class="field-index">02</span>
-					Sport
+					{copy.sport}
 				</legend>
 				<div class="choices">
 					{sports.map((sport, index) => (
 						<label class="choice">
-							<input type="radio" name="sport" value={sport} required={index === 0} />
-							<span>{sport}</span>
+							<input type="radio" name="sport" value={sport[0]} required={index === 0} />
+							<span>{sport[1]}</span>
 						</label>
 					))}
 				</div>
@@ -81,15 +148,15 @@ const designOptions = [
 				<div class="field">
 					<label for="quantity">
 						<span class="field-index">03</span>
-						Quantity
+						{copy.quantity}
 					</label>
-					<input id="quantity" name="quantity" type="number" inputmode="numeric" min="10" placeholder="Minimum 10 pcs" required />
+					<input id="quantity" name="quantity" type="number" inputmode="numeric" min="10" placeholder={copy.quantityHint} required />
 				</div>
 
 				<div class="field">
 					<label for="deadline">
 						<span class="field-index">04</span>
-						Needed by
+						{copy.deadline}
 					</label>
 					<input id="deadline" name="deadline" type="date" required />
 				</div>
@@ -98,7 +165,7 @@ const designOptions = [
 			<fieldset class="field">
 				<legend>
 					<span class="field-index">05</span>
-					Design or references
+					{copy.design}
 				</legend>
 				<div class="choices choices-stacked">
 					{designOptions.map((option, index) => (
@@ -113,17 +180,17 @@ const designOptions = [
 			<div class="field">
 				<label for="notes">
 					<span class="field-index">—</span>
-					Anything else <span class="optional">(optional)</span>
+					{copy.more} <span class="optional">{copy.optional}</span>
 				</label>
-				<textarea id="notes" name="notes" rows="3" placeholder="Colours, sponsors, sizes, or what your team stands for"></textarea>
+				<textarea id="notes" name="notes" rows="3" placeholder={copy.moreHint}></textarea>
 			</div>
 
 			<div class="quote-submit">
 				<button class="btn" type="submit">
-					Send via WhatsApp
+					{copy.send}
 					<span class="btn-arrow" aria-hidden="true">→</span>
 				</button>
-				<p class="submit-note">Opens WhatsApp with your answers filled in. Nothing is sent until you press send there.</p>
+				<p class="submit-note">{copy.submitNote}</p>
 			</div>
 		</form>
 	</section>

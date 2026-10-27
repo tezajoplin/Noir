@@ -1,4 +1,5 @@
 ---
+import { langFromUrl, lp } from '../../i18n';
 import SectionMarker from './SectionMarker.astro';
 
 interface Props {
@@ -9,6 +10,19 @@ interface Props {
 const { number = '08' } = Astro.props;
 
 const whatsapp = 'https://wa.me/628977200741';
+
+const lang = langFromUrl(Astro.url);
+const copy = {
+	id: {
+		sub: 'Ceritakan apa yang diperjuangkan tim Anda.',
+		booth: ['Jalan Paris 1, Gang Perwira No. 16 A', 'Pontianak, Kalimantan Barat'],
+	},
+	en: {
+		sub: 'Tell us what your team stands for.',
+		booth: ['Jalan Paris 1, Gang Perwira No. 16 A', 'Pontianak, West Kalimantan'],
+	},
+}[lang];
+
 ---
 
 <section id="final-cta" class="final-cta" aria-labelledby="final-cta-heading">
@@ -19,8 +33,8 @@ const whatsapp = 'https://wa.me/628977200741';
 
 		<div class="final-cta-foot">
 			<div class="final-cta-action">
-				<p class="final-cta-sub">Tell us what your team stands for.</p>
-				<a class="btn" href="/get-a-quote/">
+				<p class="final-cta-sub">{copy.sub}</p>
+				<a class="btn" href={lp(lang, '/get-a-quote/')}>
 					Start a Project
 					<span class="btn-arrow" aria-hidden="true">→</span>
 				</a>
@@ -33,7 +47,7 @@ const whatsapp = 'https://wa.me/628977200741';
 				</div>
 				<div>
 					<dt>Booth</dt>
-					<dd>Jalan Paris 1, Gang Perwira No. 16 A<br />Pontianak, West Kalimantan</dd>
+					<dd>{copy.booth[0]}<br />{copy.booth[1]}</dd>
 				</div>
 			</dl>
 		</div>

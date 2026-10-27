@@ -3,6 +3,7 @@ import '@fontsource-variable/instrument-sans/wdth.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { langFromUrl, languages, pathForLang } from '../i18n';
 
 interface Props {
 	title: string;
@@ -18,23 +19,32 @@ const {
 	description = 'NOIR — premium custom sportswear built around team identity.',
 } = Astro.props;
 
+const lang = langFromUrl(Astro.url);
+const alternates = (Object.keys(languages) as Array<keyof typeof languages>).map((code) => ({
+	code,
+	href: new URL(pathForLang(Astro.url.pathname, code), Astro.site),
+}));
+
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={languages[lang].htmlLang}>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
+		{alternates.map((alt) => <link rel="alternate" hreflang={alt.code} href={alt.href} />)}
+		<link rel="alternate" hreflang="x-default" href={alternates[0].href} />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<meta name="theme-color" content="#fafaf9" />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="NOIR" />
+		<meta property="og:locale" content={languages[lang].ogLocale} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
 		<meta property="og:url" content={canonical} />
@@ -45,7 +55,7 @@ const ogImage = new URL(image, Astro.site);
         {noindex && <meta name="robots" content="noindex, nofollow" />}
 	</head>
 	<body>
-		<a class="skip-link" href="#main">Skip to main content</a>
+		<a class="skip-link" href="#main">{lang === 'en' ? 'Skip to main content' : 'Lewati ke konten utama'}</a>
 		<Header />
 		<main id="main">
 			<slot />

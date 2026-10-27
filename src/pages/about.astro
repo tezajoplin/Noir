@@ -2,25 +2,64 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionMarker from '../components/homepage/SectionMarker.astro';
 import FinalCTA from '../components/homepage/FinalCTA.astro';
+import { langFromUrl } from '../i18n';
 
-const facts = [
-	{ label: 'Founded', value: 'July 2022' },
-	{ label: 'Founder', value: 'Miguel Tjondro' },
-	{ label: 'Based in', value: 'Pontianak, West Kalimantan' },
-	{ label: 'Teams', value: 'Hundreds' },
-	{ label: 'Pieces made', value: '30,000+' },
-];
-const values = [
-	{ name: 'Identity first', copy: 'Every product should strengthen a team’s identity, not just fulfil an order.' },
-	{ name: 'Quality matters', copy: 'Materials, craftsmanship and finishing matter.' },
-	{ name: 'Customer partnership', copy: 'NOIR works together with customers to bring their vision to life.' },
-	{ name: 'Continuous improvement', copy: 'Products, services and processes keep improving through feedback and innovation.' },
-];
+const lang = langFromUrl(Astro.url);
+
+const copy = {
+	id: {
+		title: 'Tentang NOIR — Jersey Custom dari Pontianak',
+		description: 'NOIR adalah brand pakaian olahraga custom dari Pontianak, Kalimantan Barat, berdiri Juli 2022 oleh Miguel Tjondro untuk tim olahraga amatir dan komunitas.',
+		facts: [
+			{ label: 'Berdiri', value: 'Juli 2022' },
+			{ label: 'Pendiri', value: 'Miguel Tjondro' },
+			{ label: 'Berbasis di', value: 'Pontianak, Kalimantan Barat' },
+			{ label: 'Tim', value: 'Ratusan' },
+			{ label: 'Pcs dibuat', value: '30.000+' },
+		],
+		lead: 'NOIR dibuat pada Juli 2022 untuk memenuhi kebutuhan spesifik tim olahraga amatir dan komunitas.',
+		p1: 'Kalimantan Barat punya budaya sepak bola yang mengakar. Komunitas dan tim baru terus bermunculan, tetapi banyak yang masih memakai template jersey generik dengan sekadar tambahan nama tim.',
+		p2: 'Sebuah jersey seharusnya mewakili lebih dari sebuah nama. NOIR membantu tim membangun identitas yang mencerminkan karakter mereka, lewat desain yang matang, pengerjaan yang bisa diandalkan, produksi cepat, dan harga yang kompetitif.',
+		photoAlt: 'Anggota tim NOIR menata desain kit di komputer, di samping printer format besar',
+		photoCaption: 'Di balik jersey',
+		valuesTitle: 'Yang menuntun kerja kami',
+		values: [
+			{ name: 'Identitas lebih dulu', copy: 'Setiap produk harus memperkuat identitas tim, bukan sekadar memenuhi pesanan.' },
+			{ name: 'Kualitas itu penting', copy: 'Bahan, pengerjaan, dan finishing sama-sama penting.' },
+			{ name: 'Kemitraan dengan pelanggan', copy: 'NOIR bekerja bersama pelanggan untuk mewujudkan visi mereka.' },
+			{ name: 'Terus berbenah', copy: 'Produk, layanan, dan proses terus diperbaiki lewat masukan dan inovasi.' },
+		],
+	},
+	en: {
+		title: 'About — NOIR',
+		description: 'NOIR is a custom sportswear brand from Pontianak, West Kalimantan, founded in July 2022 by Miguel Tjondro for amateur sports and community teams.',
+		facts: [
+			{ label: 'Founded', value: 'July 2022' },
+			{ label: 'Founder', value: 'Miguel Tjondro' },
+			{ label: 'Based in', value: 'Pontianak, West Kalimantan' },
+			{ label: 'Teams', value: 'Hundreds' },
+			{ label: 'Pieces made', value: '30,000+' },
+		],
+		lead: 'NOIR was created in July 2022 to meet the specific needs of amateur sports and community teams.',
+		p1: 'West Kalimantan has a deep-rooted football culture. New communities and teams are formed all the time, yet many still wear generic templates with only a team name added.',
+		p2: 'A jersey should represent more than a name. NOIR helps teams build an identity that reflects their character, through thoughtful design, reliable craftsmanship, fast production and competitive pricing.',
+		photoAlt: 'A NOIR team member laying out a kit design on a computer, beside a large-format printer',
+		photoCaption: 'Behind the jerseys',
+		valuesTitle: 'What guides the work',
+		values: [
+			{ name: 'Identity first', copy: 'Every product should strengthen a team’s identity, not just fulfil an order.' },
+			{ name: 'Quality matters', copy: 'Materials, craftsmanship and finishing matter.' },
+			{ name: 'Customer partnership', copy: 'NOIR works together with customers to bring their vision to life.' },
+			{ name: 'Continuous improvement', copy: 'Products, services and processes keep improving through feedback and innovation.' },
+		],
+	},
+}[lang];
+const { facts, values } = copy;
 ---
 
 <BaseLayout
-	title="About — NOIR"
-	description="NOIR is a custom sportswear brand from Pontianak, West Kalimantan, founded in July 2022 by Miguel Tjondro for amateur sports and community teams."
+	title={copy.title}
+	description={copy.description}
 >
 	<section class="about container" aria-labelledby="about-heading">
 		<SectionMarker label="About" />
@@ -37,14 +76,19 @@ const values = [
 			</dl>
 
 			<div class="about-copy">
-				<p class="about-lead">NOIR was created in July 2022 to meet the specific needs of amateur sports and community teams.</p>
-				<p>West Kalimantan has a deep-rooted football culture. New communities and teams are formed all the time, yet many still wear generic templates with only a team name added.</p>
-				<p>A jersey should represent more than a name. NOIR helps teams build an identity that reflects their character, through thoughtful design, reliable craftsmanship, fast production and competitive pricing.</p>
+				<p class="about-lead">{copy.lead}</p>
+				<p>{copy.p1}</p>
+				<p>{copy.p2}</p>
 			</div>
+
+			<figure class="about-photo">
+				<img src="/images/about/workspace.webp" alt={copy.photoAlt} width="1000" height="1333" loading="lazy" />
+				<figcaption>{copy.photoCaption}</figcaption>
+			</figure>
 		</div>
 
 		<div class="about-values">
-			<h2 class="values-title">What guides the work</h2>
+			<h2 class="values-title">{copy.valuesTitle}</h2>
 			<ol>
 				{values.map((value, index) => (
 					<li>
@@ -108,7 +152,32 @@ const values = [
 	}
 
 	.about-copy {
+		grid-column: 2;
+		grid-row: 1 / span 2;
 		max-width: 38rem;
+	}
+
+	.about-facts {
+		grid-column: 1;
+	}
+
+	.about-photo {
+		grid-column: 1;
+		margin: clamp(2rem, 4vw, 3.5rem) 0 0;
+	}
+
+	.about-photo img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
+
+	.about-photo figcaption {
+		margin-top: 0.7rem;
+		font-size: 0.625rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+		color: var(--color-ink-faint);
 	}
 
 	.about-copy p {
@@ -163,6 +232,18 @@ const values = [
 		.about-body {
 			grid-template-columns: 1fr;
 			row-gap: 2.5rem;
+		}
+
+		.about-facts,
+		.about-copy,
+		.about-photo {
+			grid-column: 1;
+			grid-row: auto;
+		}
+
+		.about-photo {
+			margin-top: 0;
+			max-width: 30rem;
 		}
 
 		.about-values ol {

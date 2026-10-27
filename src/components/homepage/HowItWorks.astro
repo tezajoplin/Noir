@@ -1,27 +1,27 @@
 ---
 import SectionMarker from './SectionMarker.astro';
-const steps = [
-	{
-		index: '01',
-		name: 'Share your idea',
-		copy: 'Send a reference image or tell us what kind of design you have in mind.',
+import { langFromUrl } from '../../i18n';
+
+const lang = langFromUrl(Astro.url);
+const copy = {
+	id: {
+		steps: [
+			{ index: '01', name: 'Sampaikan ide Anda', copy: 'Kirim gambar referensi atau ceritakan desain seperti apa yang Anda bayangkan.' },
+			{ index: '02', name: 'Desain & revisi', copy: 'Tim NOIR menyiapkan desain sesuai permintaan Anda. Jika perlu revisi, kabari kami.' },
+			{ index: '03', name: 'Diskusikan waktu', copy: 'Waktu produksi bergantung pada antrean pesanan saat itu. Diskusikan tanggal yang Anda butuhkan dengan admin NOIR.' },
+			{ index: '04', name: 'Ambil jersey Anda', copy: 'Ambil di booth NOIR di Jalan Paris 1, Gang Perwira No. 16 A, Pontianak, atau atur pengiriman. Pengiriman GoSend atau Maxim tersedia di sekitar Pontianak.' },
+		],
 	},
-	{
-		index: '02',
-		name: 'Design & revisions',
-		copy: 'The NOIR team prepares the design you requested. If you need revisions, let us know.',
+	en: {
+		steps: [
+			{ index: '01', name: 'Share your idea', copy: 'Send a reference image or tell us what kind of design you have in mind.' },
+			{ index: '02', name: 'Design & revisions', copy: 'The NOIR team prepares the design you requested. If you need revisions, let us know.' },
+			{ index: '03', name: 'Discuss timing', copy: 'Production timing depends on current orders. Discuss your required date with the NOIR admin.' },
+			{ index: '04', name: 'Pick up your jerseys', copy: 'Collect them at the NOIR booth at Jalan Paris 1, Gang Perwira No. 16 A, Pontianak, or arrange shipping. GoSend or Maxim delivery is available around Pontianak.' },
+		],
 	},
-	{
-		index: '03',
-		name: 'Discuss timing',
-		copy: 'Production timing depends on current orders. Discuss your required date with the NOIR admin.',
-	},
-	{
-		index: '04',
-		name: 'Pick up your jerseys',
-		copy: 'Collect them at the NOIR booth at Jalan Paris 1, Gang Perwira No. 16 A, Pontianak, or arrange shipping. GoSend or Maxim delivery is available around Pontianak.',
-	},
-];
+}[lang];
+const steps = copy.steps;
 ---
 
 <section id="how-it-works" class="how-it-works" aria-labelledby="hiw-heading">
