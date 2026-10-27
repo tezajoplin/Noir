@@ -11,7 +11,7 @@ const copy = {
 	id: {
 		title: 'Minta Penawaran — NOIR',
 		description: 'Ceritakan tim Anda: olahraga, jumlah, tenggat, dan referensi desain. Permintaan Anda terbuka sebagai pesan WhatsApp ke tim NOIR.',
-		lede: 'Lima pertanyaan singkat. Saat Anda kirim, jawabannya terbuka sebagai pesan WhatsApp ke tim NOIR, sehingga Anda bisa menambahkan foto atau referensi di chat yang sama.',
+		lede: 'Lima pertanyaan singkat. Setelah dikirim, jawaban Anda terbuka sebagai pesan WhatsApp ke tim NOIR, jadi foto atau referensi bisa langsung ditambahkan di chat yang sama.',
 		facts: [
 			{ label: 'Pesanan minimum', value: '10 pcs' },
 			{ label: 'Produksi', value: '3–14 hari' },
@@ -102,7 +102,7 @@ const { facts, sports, designOptions } = copy;
 					</div>
 				))}
 			</dl>
-			<p class="quote-facts-note">Design included. Production time counts from the day your order comes in. Options such as long sleeves cost extra.</p>
+			<p class="quote-facts-note">{lang === 'id' ? 'Desain sudah termasuk. Waktu produksi dihitung sejak pesanan masuk. Opsi seperti lengan panjang dikenakan biaya tambahan.' : 'Design included. Production time counts from the day your order comes in. Options such as long sleeves cost extra.'}</p>
 
 			<dl class="quote-contact">
 				<div>
