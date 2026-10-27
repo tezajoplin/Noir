@@ -292,6 +292,14 @@ const moreProjects = [
 		margin-top: 0.875rem;
 	}
 
+	/* Photo widths differ, so a side-by-side caption wraps on some and not others. */
+	@media (min-width: 560px) {
+		.more-caption {
+			flex-direction: column;
+			gap: 0.25rem;
+		}
+	}
+
 	.more-name {
 		white-space: nowrap;
 		font-size: 1.0625rem;

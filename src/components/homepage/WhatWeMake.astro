@@ -23,6 +23,7 @@ const copy = {
 			'Pemain futsal BERKAT berjersey NOIR warna tosca.',
 			'Pemain basket berkit NOIR biru menggiring bola menuju ring.',
 		],
+		moreTitle: 'Produk lainnya',
 		more: ['Padel', 'Bulu tangkis', 'Kaos', 'Kaos polo', 'Jaket', 'Pakaian latihan', 'Lifestyle', 'Aksesori'],
 	},
 	en: {
@@ -33,6 +34,7 @@ const copy = {
 			'BERKAT futsal players in turquoise NOIR jerseys.',
 			'Basketball player in a blue NOIR kit driving toward the basket.',
 		],
+		moreTitle: 'More Products',
 		more: ['Padel', 'Badminton', 'T-Shirts', 'Polo Shirts', 'Jackets', 'Training Wear', 'Lifestyle', 'Accessories'],
 	},
 }[lang];
@@ -63,7 +65,7 @@ const copy = {
     </div>
     </article>
     {index === 0 && <div class="more-products" aria-labelledby="more-products-heading">
-     <h3 id="more-products-heading">More Products</h3>
+     <h3 id="more-products-heading">{copy.moreTitle}</h3>
      <ul>{copy.more.map(name => <li>{name}</li>)}</ul>
     </div>}
    </div>)}
@@ -83,15 +85,15 @@ const copy = {
  .collection-index a { display:inline-flex; gap:.65rem; align-items:center; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; padding-block:.5rem; }
  .collection-index a:hover { text-decoration:underline; text-underline-offset:5px; }
 
- .catalogue { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); grid-template-areas:'football futsal' 'football basketball'; column-gap:clamp(2rem,4vw,4rem); row-gap:clamp(2rem,3vw,3rem); align-items:start; margin-top:1.25rem; }
+ .catalogue { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); grid-template-areas:'football futsal' 'football basketball'; column-gap:clamp(2rem,4vw,4rem); row-gap:clamp(2rem,3vw,3rem); align-items:start; margin-top:clamp(3rem,6vw,6rem); }
  .sport { min-width:0; scroll-margin-top:calc(var(--header-h) + 2rem); }
  .sport-football { grid-area:football; }
  .sport-futsal { grid-area:futsal; margin-top:clamp(1.5rem,3vw,3rem); }
  .sport-basketball { grid-area:basketball; }
  .collection { display:block; }
  .collection-heading { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin-bottom:1.25rem; }
- .collection-name { display:flex; gap:.8rem; align-items:baseline; }
- .collection-number { font-size:.58rem; color:var(--color-ink-faint); letter-spacing:.1em; }
+ .collection-name { display:flex; gap:1rem; align-items:baseline; }
+ .collection-number { font-size:.78rem; font-weight:500; color:var(--color-ink-faint); letter-spacing:.12em; font-variant-numeric:tabular-nums; }
  .collection-name h3 { font-size:clamp(1.45rem,2.35vw,2.3rem); font-weight:600; line-height:1; letter-spacing:-.015em; }
  .sport-football .collection-name h3 { font-size:clamp(2.5rem,4.3vw,4rem); }
  .collection-photo { position:relative; overflow:hidden; }
