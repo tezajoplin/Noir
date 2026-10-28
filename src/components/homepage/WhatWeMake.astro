@@ -24,7 +24,7 @@ const copy = {
 			'Pemain basket berkit NOIR biru menggiring bola menuju ring.',
 		],
 		moreTitle: 'Produk lainnya',
-		view: 'Lihat kit Football',
+		view: 'Lihat kit',
 		more: ['Padel', 'Bulu tangkis', 'Kaos', 'Kaos polo', 'Jaket', 'Pakaian latihan', 'Lifestyle', 'Aksesori'],
 	},
 	en: {
@@ -36,7 +36,7 @@ const copy = {
 			'Basketball player in a blue NOIR kit driving toward the basket.',
 		],
 		moreTitle: 'More Products',
-		view: 'View Football kits',
+		view: 'View kits:',
 		more: ['Padel', 'Badminton', 'T-Shirts', 'Polo Shirts', 'Jackets', 'Training Wear', 'Lifestyle', 'Accessories'],
 	},
 }[lang];
@@ -62,7 +62,7 @@ const copy = {
     <div class="collection">
      <div class="collection-heading">
       <div class="collection-name"><span class="collection-number">0{index + 1}</span><h3 id={`heading-${sport.name.toLowerCase()}`}>{sport.name}</h3></div>
-      {index === 0 && <a class="collection-link" href={lp(lang, '/football/')}>{copy.view}<span aria-hidden="true">→</span></a>}
+      <a class="collection-link" href={lp(lang, `/${sport.name.toLowerCase()}/`)}>{copy.view} {sport.name}<span aria-hidden="true">→</span></a>
      </div>
      <div class="collection-photo"><Image src={sport.image} alt={copy.alts[index]} widths={[480,800,1124]} sizes={index === 0 ? '(min-width: 900px) 54vw, 90vw' : '(min-width: 900px) 36vw, 90vw'} loading="lazy" /></div>
     </div>
