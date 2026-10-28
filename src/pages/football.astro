@@ -1,0 +1,321 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FinalCTA from '../components/homepage/FinalCTA.astro';
+import { langFromUrl, lp } from '../i18n';
+
+const lang = langFromUrl(Astro.url);
+
+const copy = {
+	id: {
+		title: 'Jersey Sepak Bola Custom Pontianak — NOIR',
+		description: 'Kit sepak bola custom dari NOIR: atasan, celana, dan kaos kaki. Pilihan bahan, finishing, kerah, dan 54 font nameset. Pesanan minimum 10 pcs, mulai Rp135K per set.',
+		eyebrow: 'Produk / Sepak bola',
+		intro: 'Kit sepak bola lengkap, atasan, celana, dan kaos kaki, dibuat dari identitas tim Anda.',
+		facts: ['Pesanan minimum 10 pcs', 'Produksi 3–14 hari', 'Mulai Rp135K per set'],
+		altMain: 'Pemain berjersey merah NOIR membawa bola di lapangan sintetis pada malam hari',
+		altBack: 'Pemain dari belakang dengan jersey putih berlist merah NOIR, nama dan nomor 21 di punggung',
+		altPlayer: 'Pemain berjersey biru-putih bergaris NOIR menendang bola saat pertandingan malam',
+		altPair: 'Dua pria berfoto dengan jersey Perngabong, hijau-putih dan merah-biru',
+		tiersEyebrow: 'Finishing',
+		tiersTitle: ['Satu kit.', 'Empat tingkat finishing.'],
+		tiersNote: 'Semakin banyak bagian yang dicetak penuh, semakin tinggi kelasnya. Tanyakan harga tiap kelas ke tim NOIR lewat WhatsApp.',
+		top: 'Atasan',
+		bottom: 'Celana',
+		tiers: [
+			{ name: 'Class C', top: 'Basic non printing. Logo tim, logo apparel, sponsor, dan nameset DTF.', bottom: 'Basic non printing. Logo apparel dan nomor celana DTF.' },
+			{ name: 'Class B', top: 'Badan dan lengan printing. Logo tim, logo apparel, sponsor, dan nameset printing.', bottom: 'Basic non printing. Logo apparel dan nomor celana DTF.' },
+			{ name: 'Class A', top: 'Badan dan lengan printing. Logo tim, logo apparel, sponsor, dan nameset printing.', bottom: 'Printing. Logo apparel dan nomor celana printing.' },
+			{ name: 'Class S', top: 'Badan dan lengan printing. Logo tim, logo apparel, sponsor, dan nameset DTF.', bottom: 'Printing. Logo apparel dan nomor celana DTF.' },
+		],
+		dtf: 'DTF = Direct To Film.',
+		fabricEyebrow: 'Bahan',
+		fabricTitle: ['Pilih bahan', 'yang paling cocok.'],
+		fabrics: [
+			{ key: 'milano', name: 'Drifit Milano', text: 'Pori-pori dengan motif zig-zag.', alt: 'Close-up kain Drifit Milano dengan motif zig-zag' },
+			{ key: 'polymesh', name: 'Drifit Polymesh', text: 'Pori-pori dengan motif waffle.', alt: 'Close-up kain Drifit Polymesh dengan motif waffle' },
+			{ key: 'bintik', name: 'Drifit Bintik', text: 'Pori-pori dengan motif bintik.', alt: 'Close-up kain Drifit Bintik dengan motif bintik' },
+			{ key: 'jacquard', name: 'Jacquard', text: 'Termasuk dalam harga dasar.', alt: 'Close-up kain Jacquard putih dengan motif tenun zig-zag timbul' },
+			{ key: 'emboss', name: 'Emboss', price: '+Rp10.000', text: 'Motif timbul dan mengkilat, cocok untuk jersey non printing.', alt: 'Gulungan kain Emboss berwarna oranye, merah, dan biru dengan motif timbul' },
+		],
+		fabricNote: 'Bahan premium finish sudah anti UV dan anti bakteri.',
+		optionsEyebrow: 'Opsi',
+		optionsTitle: ['Atur detailnya', 'sesuai tim Anda.'],
+		options: [
+			['Lengan panjang', '+Rp10.000'],
+			['Pola raglan', '+Rp10.000'],
+			['Kerah V-Shanghai, V-Inside, Polo, V-Polo, Polo Segi 3', '+Rp10.000'],
+			['Kerah Polo Timnas', '+Rp15.000'],
+			['Ukuran 2XL / 3XL / 4XL', '+Rp5.000 / +Rp10.000 / +Rp15.000'],
+		],
+		optionsIncluded: [
+			['Kerah standar', 'V-Neck, V-Tumpuk, V-Timpak, V-Adidas, Oblong, O-Neck 1/2'],
+			['Font nameset', '54 pilihan'],
+			['Desain', 'Termasuk'],
+		],
+		sizeEyebrow: 'Ukuran',
+		sizeAdult: 'Dewasa, regular fit',
+		sizeKids: 'Anak',
+		size: 'Ukuran',
+		width: 'Lebar',
+		length: 'Panjang',
+		sizeNote: 'Toleransi 1–2 cm. Ukuran dalam cm.',
+		teamsEyebrow: 'Sudah dipakai',
+		teams: [
+			{ name: 'Persiwah FC', note: 'Juara Liga 4 Piala Gubernur Kalbar 2026', href: '/our-teams/persiwah-fc/' },
+			{ name: 'Gabsis Sambas', note: 'Juara Liga 4 Pontianak 2025', href: '/our-teams/gabsis-sambas/' },
+		],
+		allProjects: 'Semua proyek',
+	},
+	en: {
+		title: 'Custom Football Jerseys in Pontianak — NOIR',
+		description: 'Custom football kits from NOIR: shirt, shorts and socks. Choose your fabric, finish, collar and from 54 nameset fonts. Minimum order 10 pcs, from IDR 135K per set.',
+		eyebrow: 'Products / Football',
+		intro: 'Complete football kits, shirt, shorts and socks, built around your team’s identity.',
+		facts: ['Minimum order 10 pcs', 'Production 3–14 days', 'From IDR 135K per set'],
+		altMain: 'Player in a red NOIR jersey carrying the ball on an artificial pitch at night',
+		altBack: 'Player seen from behind in a white NOIR jersey with red trim, name and number 21 on the back',
+		altPlayer: 'Player in a blue-and-white hooped NOIR jersey striking the ball in a night match',
+		altPair: 'Two men posing in Perngabong jerseys, green-and-white and red-and-blue',
+		tiersEyebrow: 'Finish',
+		tiersTitle: ['One kit.', 'Four levels of finish.'],
+		tiersNote: 'The more of the kit is fully printed, the higher the class. Ask the NOIR team for each class’s price on WhatsApp.',
+		top: 'Shirt',
+		bottom: 'Shorts',
+		tiers: [
+			{ name: 'Class C', top: 'Basic non-printed. Team logo, apparel logo, sponsor and nameset in DTF.', bottom: 'Basic non-printed. Apparel logo and shorts number in DTF.' },
+			{ name: 'Class B', top: 'Printed body and sleeves. Team logo, apparel logo, sponsor and nameset printed.', bottom: 'Basic non-printed. Apparel logo and shorts number in DTF.' },
+			{ name: 'Class A', top: 'Printed body and sleeves. Team logo, apparel logo, sponsor and nameset printed.', bottom: 'Printed. Apparel logo and shorts number printed.' },
+			{ name: 'Class S', top: 'Printed body and sleeves. Team logo, apparel logo, sponsor and nameset in DTF.', bottom: 'Printed. Apparel logo and shorts number in DTF.' },
+		],
+		dtf: 'DTF = Direct To Film.',
+		fabricEyebrow: 'Fabric',
+		fabricTitle: ['Choose the fabric', 'that suits your team.'],
+		fabrics: [
+			{ key: 'milano', name: 'Drifit Milano', text: 'Pores with a zig-zag pattern.', alt: 'Close-up of Drifit Milano fabric with a zig-zag pattern' },
+			{ key: 'polymesh', name: 'Drifit Polymesh', text: 'Pores with a waffle pattern.', alt: 'Close-up of Drifit Polymesh fabric with a waffle pattern' },
+			{ key: 'bintik', name: 'Drifit Bintik', text: 'Pores with a dot pattern.', alt: 'Close-up of Drifit Bintik fabric with a dot pattern' },
+			{ key: 'jacquard', name: 'Jacquard', text: 'Included in the base price.', alt: 'Close-up of white Jacquard fabric with a raised woven zig-zag pattern' },
+			{ key: 'emboss', name: 'Emboss', price: '+IDR 10,000', text: 'Raised, glossy motif, suited to non-printed jerseys.', alt: 'Rolls of orange, red and blue Emboss fabric with a raised motif' },
+		],
+		fabricNote: 'Premium fabric finish is already anti-UV and anti-bacterial.',
+		optionsEyebrow: 'Options',
+		optionsTitle: ['Set the details', 'to fit your team.'],
+		options: [
+			['Long sleeves', '+IDR 10,000'],
+			['Raglan pattern', '+IDR 10,000'],
+			['V-Shanghai, V-Inside, Polo, V-Polo, Polo Segi 3 collars', '+IDR 10,000'],
+			['Polo Timnas collar', '+IDR 15,000'],
+			['Sizes 2XL / 3XL / 4XL', '+IDR 5,000 / +IDR 10,000 / +IDR 15,000'],
+		],
+		optionsIncluded: [
+			['Standard collars', 'V-Neck, V-Tumpuk, V-Timpak, V-Adidas, Oblong, O-Neck 1/2'],
+			['Nameset fonts', '54 choices'],
+			['Design', 'Included'],
+		],
+		sizeEyebrow: 'Sizing',
+		sizeAdult: 'Adult, regular fit',
+		sizeKids: 'Kids',
+		size: 'Size',
+		width: 'Width',
+		length: 'Length',
+		sizeNote: 'Tolerance 1–2 cm. Measurements in cm.',
+		teamsEyebrow: 'Worn by',
+		teams: [
+			{ name: 'Persiwah FC', note: 'Liga 4 Piala Gubernur Kalbar champions 2026', href: '/our-teams/persiwah-fc/' },
+			{ name: 'Gabsis Sambas', note: 'Liga 4 Pontianak champions 2025', href: '/our-teams/gabsis-sambas/' },
+		],
+		allProjects: 'All projects',
+	},
+}[lang];
+
+const adult = [['XS', 46, 66], ['S', 48, 68], ['M', 50, 70], ['L', 52, 72], ['XL', 54, 74], ['2XL', 56, 76], ['3XL', 58, 78], ['4XL', 60, 80]];
+const kids = [['S', 35, 52], ['M', 37, 54], ['L', 39, 56], ['XL', 41, 58]];
+---
+
+<BaseLayout title={copy.title} description={copy.description}>
+	<article class="sport-page">
+		<header class="sport-intro container">
+			<div class="intro-copy">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {copy.eyebrow}</p>
+				<h1>Football.</h1>
+				<p class="intro-text">{copy.intro}</p>
+				<ul class="facts">
+					{copy.facts.map((fact) => <li>{fact}</li>)}
+				</ul>
+				<a class="btn" href={lp(lang, '/get-a-quote/')}>Start a Project <span class="btn-arrow" aria-hidden="true">→</span></a>
+			</div>
+			<figure class="intro-photo">
+				<img src="/images/football/kit-red-match.webp" alt={copy.altMain} width="1800" height="1200" loading="eager" fetchpriority="high" />
+			</figure>
+		</header>
+
+		<section class="strip container" aria-hidden="false">
+			<figure class="strip-a"><img src="/images/football/back-view.webp" alt={copy.altBack} width="1100" height="1155" loading="lazy" /></figure>
+			<figure class="strip-b"><img src="/images/football/player-bri-match.webp" alt={copy.altPlayer} width="1100" height="1155" loading="lazy" /></figure>
+			<figure class="strip-c"><img src="/images/football/perngabong-pair.webp" alt={copy.altPair} width="1100" height="985" loading="lazy" /></figure>
+		</section>
+
+		<section class="block container" aria-labelledby="tiers-heading">
+			<div class="block-head">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {copy.tiersEyebrow}</p>
+				<h2 id="tiers-heading">{copy.tiersTitle[0]}<br /><span>{copy.tiersTitle[1]}</span></h2>
+				<p class="block-note">{copy.tiersNote}</p>
+			</div>
+			<ol class="tiers">
+				{copy.tiers.map((tier) => (
+					<li>
+						<h3>{tier.name}</h3>
+						<dl>
+							<div><dt>{copy.top}</dt><dd>{tier.top}</dd></div>
+							<div><dt>{copy.bottom}</dt><dd>{tier.bottom}</dd></div>
+						</dl>
+					</li>
+				))}
+			</ol>
+			<p class="fine">{copy.dtf}</p>
+		</section>
+
+		<section class="block container" aria-labelledby="fabric-heading">
+			<div class="block-head">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {copy.fabricEyebrow}</p>
+				<h2 id="fabric-heading">{copy.fabricTitle[0]}<br /><span>{copy.fabricTitle[1]}</span></h2>
+			</div>
+			<ul class="fabrics">
+				{copy.fabrics.map((fabric) => (
+					<li>
+						<img src={`/images/football/fabric-${fabric.key}.webp`} alt={fabric.alt} width="640" height="430" loading="lazy" />
+						<h3>{fabric.name}{fabric.price && <span>{fabric.price}</span>}</h3>
+						<p>{fabric.text}</p>
+					</li>
+				))}
+			</ul>
+			<p class="fine">{copy.fabricNote}</p>
+		</section>
+
+		<section class="block container" aria-labelledby="options-heading">
+			<div class="block-head">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {copy.optionsEyebrow}</p>
+				<h2 id="options-heading">{copy.optionsTitle[0]}<br /><span>{copy.optionsTitle[1]}</span></h2>
+			</div>
+			<div class="options">
+				<dl>
+					{copy.options.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}
+				</dl>
+				<dl class="included">
+					{copy.optionsIncluded.map(([label, value]) => <div><dt>{label}</dt><dd>{value}</dd></div>)}
+				</dl>
+			</div>
+		</section>
+
+		<section class="block container" aria-labelledby="size-heading">
+			<p class="eyebrow" id="size-heading"><span class="eyebrow-rule" aria-hidden="true"></span> {copy.sizeEyebrow}</p>
+			<div class="sizes">
+				{[[copy.sizeAdult, adult], [copy.sizeKids, kids]].map(([label, rows]) => (
+					<table>
+						<caption>{label}</caption>
+						<thead><tr><th scope="col">{copy.size}</th><th scope="col">{copy.width}</th><th scope="col">{copy.length}</th></tr></thead>
+						<tbody>
+							{(rows as Array<[string, number, number]>).map(([size, w, l]) => <tr><th scope="row">{size}</th><td>{w}</td><td>{l}</td></tr>)}
+						</tbody>
+					</table>
+				))}
+			</div>
+			<p class="fine">{copy.sizeNote}</p>
+		</section>
+
+		<section class="teams container" aria-labelledby="teams-heading">
+			<p class="eyebrow" id="teams-heading"><span class="eyebrow-rule" aria-hidden="true"></span> {copy.teamsEyebrow}</p>
+			<ul>
+				{copy.teams.map((team) => (
+					<li>
+						<a href={lp(lang, team.href)}><strong>{team.name}</strong><span>{team.note}</span><i aria-hidden="true">→</i></a>
+					</li>
+				))}
+			</ul>
+			<a class="link-arrow" href={lp(lang, '/#built')}>{copy.allProjects} <span aria-hidden="true">→</span></a>
+		</section>
+	</article>
+	<FinalCTA number="" />
+</BaseLayout>
+
+<style>
+	.sport-page { overflow: clip; }
+	.sport-intro { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; padding-top: clamp(2.5rem, 5vw, 5rem); }
+	h1 { margin-top: 1.5rem; font-size: clamp(3.4rem, 7.5vw, 8rem); line-height: .88; font-weight: 700; letter-spacing: var(--tracking-display); text-transform: uppercase; }
+	.intro-text { max-width: 26rem; margin-top: 2rem; font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.5; color: var(--color-ink-muted); }
+	.facts { display: flex; flex-wrap: wrap; gap: .6rem 1.6rem; margin-block: 2rem; padding-top: 1.1rem; border-top: 1px solid var(--color-border); font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; color: var(--color-ink-faint); }
+	.intro-photo { margin: 0; }
+	.intro-photo img { display: block; width: 100%; height: auto; }
+
+	.strip { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(1rem, 2.5vw, 2.5rem); align-items: start; margin-top: clamp(3rem, 6vw, 6rem); }
+	.strip figure { margin: 0; min-width: 0; }
+	.strip img { display: block; width: 100%; height: auto; }
+	.strip-a { grid-column: 1 / span 4; }
+	.strip-b { grid-column: 5 / span 4; margin-top: clamp(2rem, 6vw, 6rem); }
+	.strip-c { grid-column: 9 / span 4; margin-top: clamp(1rem, 3vw, 3rem); }
+
+	.block { padding-top: clamp(4.5rem, 8vw, 8rem); }
+	.block-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 22rem); gap: 1rem 3rem; align-items: end; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+	.block-head .eyebrow { grid-column: 1 / -1; }
+	.block-head h2 { font-size: clamp(2.4rem, 5vw, 5rem); line-height: .94; letter-spacing: var(--tracking-display); text-transform: uppercase; }
+	.block-head h2 span { color: var(--color-ink-faint); }
+	.block-note { padding-bottom: .4rem; color: var(--color-ink-muted); font-size: .95rem; }
+	.fine { margin-top: 1.25rem; color: var(--color-ink-faint); font-size: .75rem; letter-spacing: .04em; }
+
+	.tiers { border-top: 1px solid var(--color-border); }
+	.tiers li { display: grid; grid-template-columns: minmax(0, .35fr) minmax(0, 1fr); gap: 1rem 3rem; padding-block: 1.5rem; border-bottom: 1px solid var(--color-border); }
+	.tiers h3 { font-size: clamp(1.4rem, 2.2vw, 2rem); letter-spacing: -.02em; }
+	.tiers dl { display: grid; gap: .9rem; }
+	.tiers dl div { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 1rem; }
+	dt { color: var(--color-ink-faint); font-size: .67rem; letter-spacing: .12em; text-transform: uppercase; padding-top: .3rem; }
+	dd { color: var(--color-ink-muted); font-size: .95rem; line-height: 1.55; }
+
+	.fabrics { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(1rem, 2vw, 2rem); }
+	.fabrics img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+	.fabrics h3 { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .1rem .75rem; margin-top: .9rem; font-size: 1.05rem; letter-spacing: -.01em; }
+	.fabrics h3 span { color: var(--color-ink-faint); font-size: .8rem; font-weight: 500; }
+	.fabrics p { margin-top: .35rem; color: var(--color-ink-muted); font-size: .85rem; line-height: 1.5; }
+
+	.options { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 2rem clamp(2rem, 6vw, 6rem); }
+	.options dl { border-top: 1px solid var(--color-border); }
+	.options dl div { display: flex; justify-content: space-between; align-items: baseline; gap: 2rem; padding-block: 1rem; border-bottom: 1px solid var(--color-border); }
+	.options dt { padding: 0; color: var(--color-ink); font-size: .95rem; letter-spacing: 0; text-transform: none; }
+	.options dd { text-align: right; white-space: nowrap; }
+	.options .included dd { white-space: normal; max-width: 18rem; }
+
+	.sizes { display: grid; align-items: start; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem clamp(2rem, 6vw, 6rem); margin-top: 1.75rem; }
+	table { width: 100%; border-collapse: collapse; font-size: .95rem; font-variant-numeric: tabular-nums; }
+	caption { padding-bottom: .9rem; text-align: left; font-weight: 600; }
+	thead th { padding-block: .7rem; border-block: 1px solid var(--color-border); color: var(--color-ink-faint); font-size: .67rem; font-weight: 500; letter-spacing: .12em; text-align: left; text-transform: uppercase; }
+	tbody th, tbody td { padding-block: .6rem; border-bottom: 1px solid var(--color-border); text-align: left; font-weight: 400; color: var(--color-ink-muted); }
+	tbody th { color: var(--color-ink); font-weight: 600; }
+
+	.teams { padding-top: clamp(4.5rem, 8vw, 8rem); padding-bottom: clamp(1rem, 2vw, 2rem); }
+	.teams ul { margin-block: 1.5rem 2rem; border-top: 1px solid var(--color-border); }
+	.teams li a { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: baseline; padding-block: 1.25rem; border-bottom: 1px solid var(--color-border); }
+	.teams strong { font-size: clamp(1.3rem, 2.4vw, 2.1rem); letter-spacing: -.02em; }
+	.teams li span { color: var(--color-ink-muted); font-size: .9rem; }
+	.teams i { font-style: normal; color: var(--color-ink-faint); transition: transform .2s ease; }
+	.teams li a:hover i { transform: translateX(.3rem); }
+
+	@media (max-width: 899px) {
+		.sport-intro { grid-template-columns: 1fr; }
+		.strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.strip-a { grid-column: 1; }
+		.strip-b { grid-column: 2; margin-top: 2.5rem; }
+		.strip-c { grid-column: 1 / -1; margin-top: 0; }
+		.block-head { grid-template-columns: 1fr; }
+		.tiers li { grid-template-columns: 1fr; }
+		.fabrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.options { grid-template-columns: 1fr; }
+		.sizes { grid-template-columns: 1fr; }
+		.teams li a { grid-template-columns: 1fr auto; }
+		.teams li span { grid-column: 1; }
+		.teams i { grid-row: 1; grid-column: 2; }
+	}
+	@media (max-width: 520px) {
+		.tiers dl div { grid-template-columns: 1fr; gap: .2rem; }
+		.options dl div { flex-direction: column; gap: .2rem; }
+		.options dd { text-align: left; white-space: normal; }
+	}
+</style>
