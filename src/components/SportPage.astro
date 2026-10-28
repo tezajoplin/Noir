@@ -4,7 +4,7 @@ import FinalCTA from './homepage/FinalCTA.astro';
 import { langFromUrl, lp } from '../i18n';
 
 interface Props {
-	sport: 'football' | 'futsal' | 'basketball';
+	sport: 'football' | 'padel' | 'basketball';
 }
 
 const { sport } = Astro.props;
@@ -157,27 +157,35 @@ const sports = {
 			] as Team[],
 		},
 	},
-	futsal: {
-		h1: 'Futsal.',
-		ratio: '5 / 2',
+	padel: {
+		h1: 'Padel.',
+		ratio: '4 / 3',
 		h1Size: '7.5vw',
-		hero: { src: '/images/futsal/team-high-five.webp', w: 1254, h: 499 },
-		strip: [] as Array<Omit<Photo, 'alt'>>,
+		hero: { src: '/images/padel/team-omg.webp', w: 1290, h: 970 },
+		strip: [
+			{ src: '/images/padel/community.webp', w: 1290, h: 1367, cls: 'strip-f' },
+		],
 		sleeves: true,
 		id: {
-			title: 'Jersey Futsal Custom Pontianak — NOIR',
-			description: 'Kit futsal custom dari NOIR. Pilihan bahan, finishing, kerah, dan 54 font nameset. Pesanan minimum 10 pcs, mulai Rp135K per set.',
-			eyebrow: 'Produk / Futsal',
-			intro: 'Kit futsal lengkap, dibuat dari identitas tim Anda.',
-			alts: ['Pemain futsal BERKAT berjersey NOIR warna tosca saling bertos tangan'],
+			title: 'Jersey Padel Custom Pontianak — NOIR',
+			description: 'Jersey padel custom dari NOIR. Pilihan bahan, finishing, kerah, dan 54 font nameset. Pesanan minimum 10 pcs, mulai Rp135K per set.',
+			eyebrow: 'Produk / Padel',
+			intro: 'Atasan padel custom, dibuat dari identitas tim Anda. Set lengkap juga tersedia.',
+			alts: [
+				'Empat pemain padel berjersey oranye NOIR memegang raket di lapangan biru, berdiri di dekat net',
+				'Pemain padel berjersey merah NOIR saling bertos di dekat net lapangan biru',
+			],
 			teams: [] as Team[],
 		},
 		en: {
-			title: 'Custom Futsal Jerseys in Pontianak — NOIR',
-			description: 'Custom futsal kits from NOIR. Choose your fabric, finish, collar and from 54 nameset fonts. Minimum order 10 pcs, from IDR 135K per set.',
-			eyebrow: 'Products / Futsal',
-			intro: 'Complete futsal kits, built around your team’s identity.',
-			alts: ['BERKAT futsal players in turquoise NOIR jerseys high-fiving'],
+			title: 'Custom Padel Jerseys in Pontianak — NOIR',
+			description: 'Custom padel jerseys from NOIR. Choose your fabric, finish, collar and from 54 nameset fonts. Minimum order 10 pcs, from IDR 135K per set.',
+			eyebrow: 'Products / Padel',
+			intro: 'Custom padel shirts, built around your team’s identity. Full sets are available too.',
+			alts: [
+				'Four padel players in orange NOIR jerseys holding rackets on a blue court near the net',
+				'Padel players in red NOIR jerseys high-fiving near the net on a blue court',
+			],
 			teams: [] as Team[],
 		},
 	},
@@ -346,6 +354,7 @@ const kids = [['S', 35, 52], ['M', 37, 54], ['L', 39, 56], ['XL', 41, 58]];
 	.strip-a { grid-column: 1 / span 4; }
 	.strip-b { grid-column: 5 / span 4; margin-top: clamp(2rem, 6vw, 6rem); }
 	.strip-c { grid-column: 9 / span 4; margin-top: clamp(1rem, 3vw, 3rem); }
+	.strip-f { grid-column: 4 / span 6; }
 	.strip-d { grid-column: 2 / span 5; }
 	.strip-e { grid-column: 8 / span 4; margin-top: clamp(2rem, 6vw, 6rem); }
 
@@ -399,6 +408,7 @@ const kids = [['S', 35, 52], ['M', 37, 54], ['L', 39, 56], ['XL', 41, 58]];
 		.strip-a { grid-column: 1; }
 		.strip-b { grid-column: 2; margin-top: 2.5rem; }
 		.strip-c { grid-column: 1 / -1; margin-top: 0; }
+		.strip-f { grid-column: 1 / -1; }
 		.strip-d { grid-column: 1; }
 		.strip-e { grid-column: 2; margin-top: 2.5rem; }
 		.block-head { grid-template-columns: 1fr; }

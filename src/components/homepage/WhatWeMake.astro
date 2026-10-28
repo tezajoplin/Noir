@@ -4,12 +4,12 @@ import { Image } from 'astro:assets';
 import SectionMarker from './SectionMarker.astro';
 import JerseyComposition from './JerseyComposition.astro';
 import football from '../../assets/football.jpg';
-import futsal from '../../assets/futsal-clean.png';
+import padel from '../../assets/padel-team-wide.jpg';
 import basketball from '../../assets/basket.jpg';
 
 const sports = [
  {name:'Football', image:football},
- {name:'Futsal', image:futsal},
+ {name:'Padel', image:padel},
  {name:'Basketball', image:basketball},
 ];
 
@@ -20,24 +20,24 @@ const copy = {
 		nav: 'Jelajahi olahraga kami',
 		alts: [
 			'Pemain sepak bola merayakan bersama dengan kit NOIR mereka.',
-			'Pemain futsal BERKAT berjersey NOIR warna tosca.',
+			'Empat pemain padel berjersey oranye NOIR memegang raket di dekat net.',
 			'Pemain basket berkit NOIR biru menggiring bola menuju ring.',
 		],
 		moreTitle: 'Produk lainnya',
 		view: 'Lihat kit',
-		more: ['Padel', 'Bulu tangkis', 'Kaos', 'Kaos polo', 'Jaket', 'Pakaian latihan', 'Lifestyle', 'Aksesori'],
+		more: ['Futsal', 'Bulu tangkis', 'Kaos', 'Kaos polo', 'Jaket', 'Pakaian latihan', 'Lifestyle', 'Aksesori'],
 	},
 	en: {
 		note: 'NOIR is built around identity. The same standard carries across every sport we make for — football, futsal, basketball, and beyond. Every piece is designed with intent and produced with real craftsmanship, not pulled from a generic template.',
 		nav: 'Explore our sports',
 		alts: [
 			'Football players celebrating together in their NOIR kits.',
-			'BERKAT futsal players in turquoise NOIR jerseys.',
+			'Four padel players in orange NOIR jerseys holding rackets near the net.',
 			'Basketball player in a blue NOIR kit driving toward the basket.',
 		],
 		moreTitle: 'More Products',
 		view: 'View kits:',
-		more: ['Padel', 'Badminton', 'T-Shirts', 'Polo Shirts', 'Jackets', 'Training Wear', 'Lifestyle', 'Accessories'],
+		more: ['Futsal', 'Badminton', 'T-Shirts', 'Polo Shirts', 'Jackets', 'Training Wear', 'Lifestyle', 'Accessories'],
 	},
 }[lang];
 
@@ -88,10 +88,10 @@ const copy = {
  .collection-index a { display:inline-flex; gap:.65rem; align-items:center; font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; padding-block:.5rem; }
  .collection-index a:hover { text-decoration:underline; text-underline-offset:5px; }
 
- .catalogue { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); grid-template-areas:'football futsal' 'football basketball'; column-gap:clamp(2rem,4vw,4rem); row-gap:clamp(2rem,3vw,3rem); align-items:start; margin-top:clamp(3rem,6vw,6rem); }
+ .catalogue { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); grid-template-areas:'football padel' 'football basketball'; column-gap:clamp(2rem,4vw,4rem); row-gap:clamp(2rem,3vw,3rem); align-items:start; margin-top:clamp(3rem,6vw,6rem); }
  .sport { min-width:0; scroll-margin-top:calc(var(--header-h) + 2rem); }
  .sport-football { grid-area:football; }
- .sport-futsal { grid-area:futsal; margin-top:clamp(1.5rem,3vw,3rem); }
+ .sport-padel { grid-area:padel; margin-top:clamp(1.5rem,3vw,3rem); }
  .sport-basketball { grid-area:basketball; }
  .collection { display:block; }
  .collection-heading { display:flex; justify-content:space-between; align-items:baseline; gap:1rem; margin-bottom:1.25rem; }
@@ -102,11 +102,11 @@ const copy = {
  .sport-football .collection-name h3 { font-size:clamp(2.5rem,4.3vw,4rem); }
  .collection-photo { position:relative; overflow:hidden; }
  .sport-football .collection-photo { aspect-ratio:1.08; }
- .sport-futsal .collection-photo { aspect-ratio:2.5; }
+ .sport-padel .collection-photo { aspect-ratio:2.5; }
  .sport-basketball .collection-photo { aspect-ratio:.96; }
  .sport .collection-photo :global(img) { position:absolute; inset:0; display:block; width:100%; height:100%; object-fit:cover; }
  .sport-football .collection-photo :global(img) { object-position:48% center; }
- .sport-futsal .collection-photo :global(img) { object-position:center 51.5%; }
+ .sport-padel .collection-photo :global(img) { object-position:center 51.5%; }
  .sport-basketball .collection-photo :global(img) { object-position:59% 60%; }
 
  .more-products { margin-top:1.5rem; }
@@ -119,8 +119,8 @@ const copy = {
   h2 { font-size:clamp(2.8rem,10vw,4.5rem); margin-top:1.75rem; }
   .opening-note { margin-top:1.75rem; }
   .collection-index { margin-top:1.25rem; }
-  .catalogue { grid-template-columns:1fr; grid-template-areas:'football' 'futsal' 'basketball'; gap:2.5rem; margin-top:1.25rem; }
-  .sport-futsal { margin-top:0; }
+  .catalogue { grid-template-columns:1fr; grid-template-areas:'football' 'padel' 'basketball'; gap:2.5rem; margin-top:1.25rem; }
+  .sport-padel { margin-top:0; }
   .collection-name h3 { font-size:1.7rem; }
   .sport-football .collection-name h3 { font-size:2.6rem; }
   .sport-football .collection-photo { aspect-ratio:1.16; }
