@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404 — NOIR" description="Halaman tidak ditemukan. Page not found." noindex>
+	<section class="not-found container" aria-labelledby="nf-heading">
+		<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> 404</p>
+		<h1 id="nf-heading">OFFSIDE.</h1>
+		<p class="nf-copy">Halaman yang Anda cari tidak ada atau sudah pindah.<br /><span>This page doesn’t exist or has moved.</span></p>
+		<div class="nf-actions">
+			<a class="btn" href="/">Kembali ke beranda <span class="btn-arrow" aria-hidden="true">→</span></a>
+			<a class="nf-link" href="/en/">Back to home (EN)</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.not-found { padding-block: clamp(5rem, 14vw, 11rem); }
+	h1 { margin-top: 1.5rem; font-size: clamp(4rem, 14vw, 12rem); line-height: .88; font-weight: 700; letter-spacing: var(--tracking-display); }
+	.nf-copy { max-width: 28rem; margin-top: 2rem; font-size: 1.125rem; line-height: 1.6; }
+	.nf-copy span { color: var(--color-ink-muted); }
+	.nf-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.25rem 1.75rem; margin-top: 2.25rem; }
+	.nf-link { padding-bottom: .3em; border-bottom: 1px solid var(--color-ink); font-size: .75rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+</style>

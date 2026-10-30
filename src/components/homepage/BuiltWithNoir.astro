@@ -26,7 +26,7 @@ const copy = {
 		kit: 'Kit kandang & tandang',
 		champions: 'Juara Liga 4 2025',
 		tallyNumber: '30.000+',
-		tally: ['jersey telah dibuat untuk ratusan tim', 'sejak 2022.'],
+		tally: ['jersey sudah dibuat untuk ratusan tim', 'sejak 2022.'],
 		alts: {
 			gapdol: 'Pemain Gapdol 9000 berkit NOIR hijau zaitun berjalan keluar lapangan bersama',
 			perngabong: 'Skuad Perngabong berkit NOIR kuning dan biru dongker berfoto bersama',
@@ -290,6 +290,14 @@ const moreProjects = [
 		align-items: baseline;
 		gap: 0.15rem 1rem;
 		margin-top: 0.875rem;
+	}
+
+	/* Photo widths differ, so a side-by-side caption wraps on some and not others. */
+	@media (min-width: 560px) {
+		.more-caption {
+			flex-direction: column;
+			gap: 0.25rem;
+		}
 	}
 
 	.more-name {
