@@ -10,12 +10,14 @@ interface Props {
 	description?: string;
 	image?: string;
     noindex?: boolean;
+	schema?: object[];
 }
 
 const {
 	title,
 	image = '/og-image.jpg',
     noindex = false,
+	schema: extraSchema = [],
 	description = 'NOIR — premium custom sportswear built around team identity.',
 } = Astro.props;
 
@@ -27,6 +29,29 @@ const alternates = (Object.keys(languages) as Array<keyof typeof languages>).map
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
+
+// Only facts confirmed by the owner; no ratings, hours, prices or geo.
+const orgSchema = {
+	'@context': 'https://schema.org',
+	'@type': ['Organization', 'LocalBusiness'],
+	'@id': new URL('/#noir', Astro.site).href,
+	name: 'NOIR',
+	url: new URL('/', Astro.site).href,
+	logo: new URL('/apple-touch-icon.png', Astro.site).href,
+	image: ogImage.href,
+	description: 'NOIR — premium custom sportswear built around team identity, from Pontianak, West Kalimantan.',
+	foundingDate: '2022-07',
+	founder: { '@type': 'Person', name: 'Miguel Tjondro' },
+	telephone: '+62 897 7200 741',
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: 'Jalan Paris 1, Gang Perwira No. 16 A',
+		addressLocality: 'Pontianak',
+		addressRegion: 'Kalimantan Barat',
+		addressCountry: 'ID',
+	},
+	sameAs: ['https://www.instagram.com/noir.jersey/'],
+};
 ---
 
 <!doctype html>
@@ -53,6 +78,7 @@ const ogImage = new URL(image, Astro.site);
 		<meta property="og:image:height" content="630" />
 		<meta name="twitter:card" content="summary_large_image" />
         {noindex && <meta name="robots" content="noindex, nofollow" />}
+		{[orgSchema, ...extraSchema].map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
 	</head>
 	<body>
 		<a class="skip-link" href="#main">{lang === 'en' ? 'Skip to main content' : 'Lewati ke konten utama'}</a>
