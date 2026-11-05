@@ -58,6 +58,18 @@ const copy = {
 		sizeNote: 'Toleransi 1–2 cm. Ukuran dalam cm.',
 		teamsEyebrow: 'Sudah dipakai',
 		allProjects: 'Semua proyek',
+		faqEyebrow: 'FAQ',
+		faqTitle: ['Pertanyaan', 'yang sering muncul.'],
+		faqLabel: { football: 'jersey bola', padel: 'jersey padel', basketball: 'jersey basket' },
+		faq: (label: string, rental: boolean) => [
+			[`Berapa harga ${label} custom di NOIR?`, 'Harga mulai Rp135K per set. Harga akhir bergantung pada bahan, finishing, dan opsi tambahan. Tanyakan lewat WhatsApp untuk penawaran sesuai kebutuhan tim Anda.'],
+			['Apakah desain jersey sudah termasuk?', 'Ya. Desain sudah termasuk dalam pesanan dan dibuat dari identitas tim Anda.'],
+			['Berapa minimal pemesanan?', 'Pesanan minimum 10 pcs.'],
+			['Berapa lama produksinya?', 'Produksi 3–14 hari, dihitung dari tanggal pemesanan.'],
+			['Di mana saya bisa memesan?', 'Lewat WhatsApp di +62 897 7200 741, atau datang langsung ke booth NOIR di Jalan Paris 1, Gang Perwira No. 16 A, Pontianak.'],
+			['Apakah NOIR menjual jersey ready stock?', 'Tidak. NOIR hanya membuat jersey custom sesuai desain tim Anda.'],
+			...(rental ? [['Apakah NOIR menyewakan jersey?', 'Ya, NOIR menyewakan jersey sepak bola. Tarif dan syarat disampaikan lewat WhatsApp.']] : []),
+		],
 	},
 	en: {
 		facts: ['Minimum order 10 pcs', 'Production 3–14 days', 'From IDR 135K per set'],
@@ -106,6 +118,18 @@ const copy = {
 		sizeNote: 'Tolerance 1–2 cm. Measurements in cm.',
 		teamsEyebrow: 'Worn by',
 		allProjects: 'All projects',
+		faqEyebrow: 'FAQ',
+		faqTitle: ['Common', 'questions.'],
+		faqLabel: { football: 'football jerseys', padel: 'padel jerseys', basketball: 'basketball jerseys' },
+		faq: (label: string, rental: boolean) => [
+			[`How much do custom ${label} cost at NOIR?`, 'Prices start from IDR 135K per set. The final price depends on fabric, finish and extras. Ask on WhatsApp for a quote that fits your team.'],
+			['Is the jersey design included?', 'Yes. Design is included in your order and is built around your team’s identity.'],
+			['What is the minimum order?', 'The minimum order is 10 pcs.'],
+			['How long does production take?', 'Production takes 3–14 days, counted from the order date.'],
+			['Where can I order?', 'Through WhatsApp at +62 897 7200 741, or in person at the NOIR booth at Jalan Paris 1, Gang Perwira No. 16 A, Pontianak.'],
+			['Does NOIR sell ready-stock jerseys?', 'No. NOIR only makes custom jerseys built around your team’s design.'],
+			...(rental ? [['Does NOIR rent out jerseys?', 'Yes, NOIR rents out football jerseys. Rates and terms are shared over WhatsApp.']] : []),
+		],
 	},
 }[lang];
 
@@ -125,10 +149,10 @@ const sports = {
 		],
 		sleeves: true,
 		id: {
-			title: 'Jersey Sepak Bola Custom Pontianak — NOIR',
-			description: 'Kit sepak bola custom dari NOIR: atasan, celana, dan kaos kaki. Pilihan bahan, finishing, kerah, dan 54 font nameset. Pesanan minimum 10 pcs, mulai Rp135K per set.',
+			title: 'Custom Jersey Bola Pontianak — NOIR',
+			description: 'Custom jersey bola di Pontianak: atasan, celana, dan kaos kaki. Desain sudah termasuk, pesanan minimum 10 pcs, harga mulai Rp135K per set. Pesan lewat WhatsApp atau booth NOIR.',
 			eyebrow: 'Produk / Sepak bola',
-			intro: 'Kit sepak bola lengkap, atasan, celana, dan kaos kaki, dibuat dari identitas tim Anda.',
+			intro: 'Custom jersey bola di Pontianak: kit lengkap, atasan, celana, dan kaos kaki, dibuat dari identitas tim Anda.',
 			alts: [
 				'Pemain berjersey merah NOIR membawa bola di lapangan sintetis pada malam hari',
 				'Pemain dari belakang dengan jersey putih berlist merah NOIR, nama dan nomor 21 di punggung',
@@ -142,7 +166,7 @@ const sports = {
 		},
 		en: {
 			title: 'Custom Football Jerseys in Pontianak — NOIR',
-			description: 'Custom football kits from NOIR: shirt, shorts and socks. Choose your fabric, finish, collar and from 54 nameset fonts. Minimum order 10 pcs, from IDR 135K per set.',
+			description: 'Custom football jerseys in Pontianak: shirt, shorts and socks. Design included, minimum order 10 pcs, from IDR 135K per set. Order via WhatsApp or at the NOIR booth.',
 			eyebrow: 'Products / Football',
 			intro: 'Complete football kits, shirt, shorts and socks, built around your team’s identity.',
 			alts: [
@@ -167,10 +191,10 @@ const sports = {
 		],
 		sleeves: true,
 		id: {
-			title: 'Jersey Padel Custom Pontianak — NOIR',
-			description: 'Jersey padel custom dari NOIR. Pilihan bahan, finishing, kerah, dan 54 font nameset. Pesanan minimum 10 pcs, mulai Rp135K per set.',
+			title: 'Custom Jersey Padel Pontianak — NOIR',
+			description: 'Custom jersey padel di Pontianak. Desain sudah termasuk, pesanan minimum 10 pcs, harga mulai Rp135K per set. Pesan lewat WhatsApp atau booth NOIR.',
 			eyebrow: 'Produk / Padel',
-			intro: 'Atasan padel custom, dibuat dari identitas tim Anda. Set lengkap juga tersedia.',
+			intro: 'Custom jersey padel di Pontianak, dibuat dari identitas tim Anda. Set lengkap juga tersedia.',
 			alts: [
 				'Empat pemain padel berjersey oranye NOIR memegang raket di lapangan biru, berdiri di dekat net',
 				'Pemain padel berjersey merah NOIR saling bertos di dekat net lapangan biru',
@@ -179,7 +203,7 @@ const sports = {
 		},
 		en: {
 			title: 'Custom Padel Jerseys in Pontianak — NOIR',
-			description: 'Custom padel jerseys from NOIR. Choose your fabric, finish, collar and from 54 nameset fonts. Minimum order 10 pcs, from IDR 135K per set.',
+			description: 'Custom padel jerseys in Pontianak. Design included, minimum order 10 pcs, from IDR 135K per set. Order via WhatsApp or at the NOIR booth.',
 			eyebrow: 'Products / Padel',
 			intro: 'Custom padel shirts, built around your team’s identity. Full sets are available too.',
 			alts: [
@@ -226,12 +250,18 @@ const sports = {
 	},
 }[sport];
 const page = sports[lang];
+const faq = copy.faq(copy.faqLabel[sport], sport === 'football');
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+};
 
 const adult = [['XS', 46, 66], ['S', 48, 68], ['M', 50, 70], ['L', 52, 72], ['XL', 54, 74], ['2XL', 56, 76], ['3XL', 58, 78], ['4XL', 60, 80]];
 const kids = [['S', 35, 52], ['M', 37, 54], ['L', 39, 56], ['XL', 41, 58]];
 ---
 
-<BaseLayout title={page.title} description={page.description}>
+<BaseLayout title={page.title} description={page.description} schema={[faqSchema]}>
 	<article class="sport-page">
 		<header class="sport-intro container">
 			<div class="intro-copy">
@@ -324,6 +354,16 @@ const kids = [['S', 35, 52], ['M', 37, 54], ['L', 39, 56], ['XL', 41, 58]];
 			<p class="fine">{copy.sizeNote}</p>
 		</section>
 
+		<section class="block container" aria-labelledby="faq-heading">
+			<div class="block-head">
+				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {copy.faqEyebrow}</p>
+				<h2 id="faq-heading">{copy.faqTitle[0]}<br /><span>{copy.faqTitle[1]}</span></h2>
+			</div>
+			<dl class="faq">
+				{faq.map(([q, a]) => <div><dt>{q}</dt><dd>{a}</dd></div>)}
+			</dl>
+		</section>
+
 		{page.teams.length > 0 && <section class="teams container" aria-labelledby="teams-heading">
 			<p class="eyebrow" id="teams-heading"><span class="eyebrow-rule" aria-hidden="true"></span> {copy.teamsEyebrow}</p>
 			<ul>
@@ -394,6 +434,11 @@ const kids = [['S', 35, 52], ['M', 37, 54], ['L', 39, 56], ['XL', 41, 58]];
 	tbody th, tbody td { padding-block: .6rem; border-bottom: 1px solid var(--color-border); text-align: left; font-weight: 400; color: var(--color-ink-muted); }
 	tbody th { color: var(--color-ink); font-weight: 600; }
 
+	.faq { border-top: 1px solid var(--color-border); }
+	.faq div { display: grid; grid-template-columns: minmax(0, .45fr) minmax(0, 1fr); gap: .6rem 3rem; padding-block: 1.4rem; border-bottom: 1px solid var(--color-border); }
+	.faq dt { padding: 0; color: var(--color-ink); font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; text-transform: none; }
+	.faq dd { max-width: 40rem; }
+
 	.teams { padding-top: clamp(4.5rem, 8vw, 8rem); padding-bottom: clamp(1rem, 2vw, 2rem); }
 	.teams ul { margin-block: 1.5rem 2rem; border-top: 1px solid var(--color-border); }
 	.teams li a { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: baseline; padding-block: 1.25rem; border-bottom: 1px solid var(--color-border); }
@@ -413,6 +458,7 @@ const kids = [['S', 35, 52], ['M', 37, 54], ['L', 39, 56], ['XL', 41, 58]];
 		.strip-e { grid-column: 2; margin-top: 2.5rem; }
 		.block-head { grid-template-columns: 1fr; }
 		.tiers li { grid-template-columns: 1fr; }
+		.faq div { grid-template-columns: 1fr; }
 		.fabrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 		.options { grid-template-columns: 1fr; }
 		.sizes { grid-template-columns: 1fr; }
