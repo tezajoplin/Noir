@@ -1,0 +1,89 @@
+---
+import SectionMarker from './SectionMarker.astro';
+import { langFromUrl } from '../../i18n';
+import { homeFaq } from './faq-data';
+
+const lang = langFromUrl(Astro.url);
+const items = homeFaq(lang);
+---
+
+<section id="faq" class="faq" aria-labelledby="faq-heading">
+	<div class="container faq-grid">
+		<div class="faq-intro">
+			<SectionMarker label="FAQ" />
+			<h2 id="faq-heading">Good questions.<br />Straight answers.</h2>
+		</div>
+
+		<div class="faq-list">
+			{items.map(([question, answer]) => (
+				<div class="faq-item">
+					<h3>{question}</h3>
+					<p>{answer}</p>
+				</div>
+			))}
+		</div>
+	</div>
+</section>
+
+<style>
+	.faq {
+		padding-block: clamp(3rem, 5.5vw, 5rem);
+		scroll-margin-top: calc(var(--header-h) + 1rem);
+	}
+
+	.faq-grid {
+		display: grid;
+		grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+		column-gap: clamp(2rem, 5vw, 5rem);
+		align-items: start;
+	}
+
+	.faq-intro {
+		position: sticky;
+		top: calc(var(--header-h) + 2rem);
+	}
+
+	.faq h2 {
+		margin-top: clamp(1.75rem, 3vw, 2.5rem);
+		font-size: clamp(2.75rem, 5.4vw, 5rem);
+		font-weight: 700;
+		line-height: 0.92;
+		letter-spacing: var(--tracking-display);
+		text-transform: uppercase;
+	}
+
+	.faq-list {
+		border-top: 1px solid var(--color-border);
+	}
+
+	.faq-item {
+		padding-block: clamp(1.25rem, 2.2vw, 1.75rem);
+		border-bottom: 1px solid var(--color-border);
+	}
+
+	.faq-item h3 {
+		font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+		font-weight: 650;
+		letter-spacing: -0.015em;
+		line-height: 1.2;
+	}
+
+	.faq-item p {
+		margin-top: 0.55rem;
+		max-width: 52ch;
+		font-size: 0.9375rem;
+		line-height: 1.6;
+		color: var(--color-ink-muted);
+	}
+
+	@media (max-width: 899px) {
+		.faq-grid {
+			grid-template-columns: 1fr;
+			row-gap: 2.5rem;
+		}
+
+		.faq-intro {
+			position: static;
+		}
+	}
+</style>
