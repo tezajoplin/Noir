@@ -7,8 +7,10 @@ import Community from '../components/homepage/Community.astro';
 import Lifestyle from '../components/homepage/Lifestyle.astro';
 import WhatWeMake from '../components/homepage/WhatWeMake.astro';
 import HowItWorks from '../components/homepage/HowItWorks.astro';
+import Faq from '../components/homepage/Faq.astro';
 import FinalCTA from '../components/homepage/FinalCTA.astro';
 import EditorialCanvas from '../components/homepage/EditorialCanvas.astro';
+import { faqSchema } from '../components/homepage/faq-data';
 import { langFromUrl } from '../i18n';
 
 const lang = langFromUrl(Astro.url);
@@ -27,6 +29,7 @@ const meta = {
 <BaseLayout
 	title={meta.title}
 	description={meta.description}
+	schema={[faqSchema(lang)]}
 >
 	<EditorialCanvas>
 		<Hero />
@@ -36,6 +39,7 @@ const meta = {
 		<Lifestyle />
 		<WhatWeMake />
 		<HowItWorks />
+		<Faq />
 		<FinalCTA />
 	</EditorialCanvas>
 </BaseLayout>
