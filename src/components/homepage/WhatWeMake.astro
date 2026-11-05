@@ -16,7 +16,7 @@ const sports = [
 const lang = langFromUrl(Astro.url);
 const copy = {
 	id: {
-		note: 'Identitas adalah dasar NOIR, dan standar itu sama di setiap olahraga yang kami kerjakan: sepak bola, futsal, basket, dan lainnya. Tiap produk dirancang dengan tujuan yang jelas dan dikerjakan dengan teliti, bukan comotan template.',
+		note: 'Identitas adalah dasar NOIR, dan standar itu sama di setiap olahraga yang kami kerjakan: sepak bola, padel, basket, dan lainnya. Tiap produk dirancang dengan tujuan yang jelas dan dikerjakan dengan teliti, bukan comotan template.',
 		nav: 'Jelajahi olahraga kami',
 		alts: [
 			'Pemain sepak bola merayakan bersama dengan kit NOIR mereka.',
@@ -28,7 +28,7 @@ const copy = {
 		more: ['Futsal', 'Bulu tangkis', 'Kaos', 'Kaos polo', 'Jaket', 'Pakaian latihan', 'Lifestyle', 'Aksesori'],
 	},
 	en: {
-		note: 'NOIR is built around identity. The same standard carries across every sport we make for — football, futsal, basketball, and beyond. Every piece is designed with intent and produced with real craftsmanship, not pulled from a generic template.',
+		note: 'NOIR is built around identity. The same standard carries across every sport we make for — football, padel, basketball, and beyond. Every piece is designed with intent and produced with real craftsmanship, not pulled from a generic template.',
 		nav: 'Explore our sports',
 		alts: [
 			'Football players celebrating together in their NOIR kits.',
@@ -57,8 +57,8 @@ const copy = {
   </div>
 
   <div class="catalogue">
-   {sports.map((sport, index) => <div class={`sport sport-${sport.name.toLowerCase()}`} id={`noir-${sport.name.toLowerCase()}`}>
-    <article aria-labelledby={`heading-${sport.name.toLowerCase()}`}>
+   {sports.map((sport, index) => <div class={`sport sport-${sport.name.toLowerCase()}`}>
+    <article id={`noir-${sport.name.toLowerCase()}`} aria-labelledby={`heading-${sport.name.toLowerCase()}`}>
     <div class="collection">
      <div class="collection-heading">
       <div class="collection-name"><span class="collection-number">0{index + 1}</span><h3 id={`heading-${sport.name.toLowerCase()}`}>{sport.name}</h3></div>
@@ -89,7 +89,8 @@ const copy = {
  .collection-index a:hover { text-decoration:underline; text-underline-offset:5px; }
 
  .catalogue { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); grid-template-areas:'football padel' 'football basketball'; column-gap:clamp(2rem,4vw,4rem); row-gap:clamp(2rem,3vw,3rem); align-items:start; margin-top:clamp(3rem,6vw,6rem); }
- .sport { min-width:0; scroll-margin-top:calc(var(--header-h) + 2rem); }
+ .sport { min-width:0; }
+ .sport article { scroll-margin-top:calc(var(--header-h) + 2rem); }
  .sport-football { grid-area:football; }
  .sport-padel { grid-area:padel; margin-top:clamp(1.5rem,3vw,3rem); }
  .sport-basketball { grid-area:basketball; }
@@ -119,7 +120,10 @@ const copy = {
   h2 { font-size:clamp(2.8rem,10vw,4.5rem); margin-top:1.75rem; }
   .opening-note { margin-top:1.75rem; }
   .collection-index { margin-top:1.25rem; }
-  .catalogue { grid-template-columns:1fr; grid-template-areas:'football' 'padel' 'basketball'; gap:2.5rem; margin-top:1.25rem; }
+  .catalogue { grid-template-columns:1fr; grid-template-areas:'football' 'padel' 'basketball' 'more'; gap:2.5rem; margin-top:1.25rem; }
+  .sport-football { display:contents; }
+  .sport-football article { grid-area:football; }
+  .more-products { grid-area:more; margin-top:0; }
   .sport-padel { margin-top:0; }
   .collection-name h3 { font-size:1.7rem; }
   .sport-football .collection-name h3 { font-size:2.6rem; }
