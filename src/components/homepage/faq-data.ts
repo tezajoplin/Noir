@@ -4,10 +4,10 @@ import type { Lang } from '../../i18n';
 const faq: Record<Lang, Array<[string, string]>> = {
 	id: [
 		['Apa itu NOIR?', 'NOIR adalah brand jersey custom dari Pontianak, berdiri Juli 2022 untuk tim dan komunitas olahraga.'],
-		['Di mana toko jersey custom NOIR di Pontianak?', 'Booth NOIR ada di Jalan Paris 1, Gang Perwira No. 16 A, Pontianak. Datang aja langsung, atau bisa juga WhatsApp.'],
+		['Di mana toko jersey custom NOIR di Pontianak?', 'Booth NOIR ada di Jalan Paris 1, Gang Perwira No. 16 A, Pontianak. Datang langsung saja, atau bisa juga lewat WhatsApp.'],
 		['Berapa harga custom jersey di NOIR?', 'Mulai Rp135K per set. Angka akhirnya tergantung bahan, finishing, dan tambahan. Untuk detail, bisa langsung tanyakan melalui WhatsApp.'],
-		['Berapa minimal pesanan?', 'Minimal 10 pcs. Kalau kamu ada request tersendiri, bisa tanya-tanya aja dulu.'],
-		['Apakah desain sudah termasuk?', 'Sudah, jadi tidak ada biaya jasa desain terpisah. Desainnya dibuat dari keinginan dan identitas tim kamu. We support you.'],
+		['Berapa minimal pesanan?', 'Minimal 10 pcs. Kalau Anda punya request tersendiri, bisa tanya-tanya dulu.'],
+		['Apakah desain sudah termasuk?', 'Sudah, jadi tidak ada biaya jasa desain terpisah. Desainnya dibuat dari keinginan dan identitas tim Anda. We support you.'],
 		['Berapa lama produksinya?', '3–14 hari, dihitung dari tanggal pemesanan.'],
 		['Apakah NOIR menjual jersey ready stock?', 'Tidak. Sesuai dengan pedoman kami, we help you to create your team’s identity.'],
 		['Apakah NOIR menyewakan jersey?', 'Ya, untuk jersey sepak bola. Tarif dan syarat disampaikan lewat WhatsApp.'],
