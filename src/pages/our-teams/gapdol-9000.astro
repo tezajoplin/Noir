@@ -7,7 +7,7 @@ const lang = langFromUrl(Astro.url);
 const t = pick(lang);
 
 const gallery = [
-	{ src: '/images/gapdol/gallery/02-linus-action.webp', alt: t('Gapdol player in the lime away kit during a match', 'Pemain Gapdol berkit tandang hijau limau saat pertandingan'), className: 'gallery-action', cleanBadge: true },
+	{ src: '/images/gapdol/gallery/02-linus-action.webp', alt: t('Gapdol player in the lime away kit during a match', 'Pemain Gapdol berjersey tandang hijau limau saat pertandingan'), className: 'gallery-action', cleanBadge: true },
 	{ src: '/images/gapdol/gallery/03-match-action.webp', alt: t('Gapdol player competing under the lights', 'Pemain Gapdol bertanding di bawah lampu sorot'), className: 'gallery-duel', cleanBadge: true },
 	{ src: '/images/gapdol/gallery/05-team-together.webp', alt: t('Gapdol teammates walking together after a match', 'Rekan setim Gapdol berjalan bersama setelah pertandingan'), className: 'gallery-team' },
 	{ src: '/images/gapdol/gallery/04-matchday.webp', alt: t('Gapdol player carrying the ball in a night match', 'Pemain Gapdol membawa bola dalam laga malam'), className: 'gallery-player', cleanBadge: true },
@@ -32,7 +32,7 @@ const gallery = [
 					</div>
 				</div>
 				<figure class="intro-photo">
-					<img src="/images/gapdol/gallery/01-kuching-friendly.webp" alt={t('Two Gapdol players in their charcoal kit during a friendly match trip to Kuching, Sarawak', 'Dua pemain Gapdol berkit charcoal saat perjalanan laga persahabatan ke Kuching, Sarawak')} loading="eager" />
+					<img src="/images/gapdol/gallery/01-kuching-friendly.webp" alt={t('Two Gapdol players in their charcoal kit during a friendly match trip to Kuching, Sarawak', 'Dua pemain Gapdol berjersey charcoal saat perjalanan laga persahabatan ke Kuching, Sarawak')} loading="eager" />
 					<figcaption>{t('Kuching, Sarawak · Friendly match', 'Kuching, Sarawak · Laga persahabatan')}</figcaption>
 				</figure>
 			</div>
@@ -41,7 +41,7 @@ const gallery = [
 		<section class="kit-section container" aria-labelledby="kit-heading">
 			<div class="section-heading">
 				<div>
-					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('The kit', 'Kit')}</p>
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('The kit', 'Jersey')}</p>
 					<h2 id="kit-heading">Two looks.<br />One Gapdol.</h2>
 				</div>
 				<p class="section-note">{t('Charcoal and olive home and away designs, made for Gapdol’s next chapter.', 'Desain home, away, charcoal dan olive, dibuat untuk babak baru Gapdol.')}</p>
@@ -56,12 +56,12 @@ const gallery = [
 			</div>
 			<div class="design-board-grid">
 				<figure class="design-board">
-					<img src="/images/projects/gapdol-home.jpeg" alt={t('NOIR design mockup for Gapdol 9000\'s charcoal home kit, including front, back, shorts and socks', 'Mockup desain NOIR kit kandang charcoal Gapdol 9000, termasuk depan, belakang, celana, dan kaos kaki')} loading="lazy" />
-					<figcaption><span>01</span> {t('Home kit · Charcoal', 'Kit kandang · Charcoal')}</figcaption>
+					<img src="/images/projects/gapdol-home.jpeg" alt={t('NOIR design mockup for Gapdol 9000\'s charcoal home kit, including front, back, shorts and socks', 'Mockup desain NOIR jersey kandang charcoal Gapdol 9000, termasuk depan, belakang, celana, dan kaos kaki')} loading="lazy" />
+					<figcaption><span>01</span> {t('Home kit · Charcoal', 'Jersey kandang · Charcoal')}</figcaption>
 				</figure>
 				<figure class="design-board">
-					<img src="/images/projects/gapdol-away.jpeg" alt={t('NOIR design mockup for Gapdol 9000\'s olive away kit, including front, back, shorts and socks', 'Mockup desain NOIR kit tandang olive Gapdol 9000, termasuk depan, belakang, celana, dan kaos kaki')} loading="lazy" />
-					<figcaption><span>02</span> {t('Away kit · Olive', 'Kit tandang · Olive')}</figcaption>
+					<img src="/images/projects/gapdol-away.jpeg" alt={t('NOIR design mockup for Gapdol 9000\'s olive away kit, including front, back, shorts and socks', 'Mockup desain NOIR jersey tandang olive Gapdol 9000, termasuk depan, belakang, celana, dan kaos kaki')} loading="lazy" />
+					<figcaption><span>02</span> {t('Away kit · Olive', 'Jersey tandang · Olive')}</figcaption>
 				</figure>
 			</div>
 		</section>

@@ -7,10 +7,10 @@ const lang = langFromUrl(Astro.url);
 const t = pick(lang);
 
 const gallery = [
-	{ src: '/images/perngabong/gallery/01-community.jpg', alt: t('Perngabong players together in their yellow, navy and black-and-white kits', 'Para pemain Perngabong bersama dalam kit kuning, biru dongker, dan hitam-putih'), className: 'gallery-community', caption: t('Perngabong, together', 'Perngabong, bersama') },
-	{ src: '/images/perngabong/gallery/02-match-action.jpg', alt: t('Perngabong players competing in the black-and-white home kit and yellow-and-navy away kit', 'Para pemain Perngabong bertanding dengan kit kandang hitam-putih dan kit tandang kuning-biru dongker'), className: 'gallery-duel', caption: t('A weekly game, always lively', 'Main tiap pekan, selalu seru') },
-	{ src: '/images/perngabong/gallery/03-matchday.jpg', alt: t('Perngabong player striking the ball in the black-and-white striped home kit', 'Pemain Perngabong menendang bola dengan kit kandang belang hitam-putih'), className: 'gallery-strike', caption: t('Home stripes in play', 'Garis kandang saat bermain') },
-	{ src: '/images/perngabong/gallery/04-weekly-game.jpg', alt: t('Perngabong community gathered after a weekly football game', 'Komunitas Perngabong berkumpul setelah main bola mingguan'), className: 'gallery-weekly', caption: t('The community behind the kits', 'Komunitas di balik kit') },
+	{ src: '/images/perngabong/gallery/01-community.jpg', alt: t('Perngabong players together in their yellow, navy and black-and-white kits', 'Para pemain Perngabong bersama dalam jersey kuning, biru dongker, dan hitam-putih'), className: 'gallery-community', caption: t('Perngabong, together', 'Perngabong, bersama') },
+	{ src: '/images/perngabong/gallery/02-match-action.jpg', alt: t('Perngabong players competing in the black-and-white home kit and yellow-and-navy away kit', 'Para pemain Perngabong bertanding dengan jersey kandang hitam-putih dan jersey tandang kuning-biru dongker'), className: 'gallery-duel', caption: t('A weekly game, always lively', 'Main tiap pekan, selalu seru') },
+	{ src: '/images/perngabong/gallery/03-matchday.jpg', alt: t('Perngabong player striking the ball in the black-and-white striped home kit', 'Pemain Perngabong menendang bola dengan jersey kandang belang hitam-putih'), className: 'gallery-strike', caption: t('Home stripes in play', 'Garis kandang saat bermain') },
+	{ src: '/images/perngabong/gallery/04-weekly-game.jpg', alt: t('Perngabong community gathered after a weekly football game', 'Komunitas Perngabong berkumpul setelah main bola mingguan'), className: 'gallery-weekly', caption: t('The community behind the kits', 'Komunitas di balik jersey') },
 ];
 ---
 
@@ -23,17 +23,17 @@ const gallery = [
 			<a class="back-link" href={lp(lang, '/#built')}><span aria-hidden="true">←</span> {t('All projects', 'Semua proyek')}</a>
 			<div class="intro-grid">
 				<div class="intro-copy">
-					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('Kit project', 'Proyek kit')} <span class="project-index">/ Perngabong</span></p>
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('Kit project', 'Proyek jersey')} <span class="project-index">/ Perngabong</span></p>
 					<h1>Perngabong.</h1>
 					<p class="project-summary">{t('Two distinct matchday looks: classic black-and-white stripes at home, and bright yellow with navy accents away.', 'Dua tampilan di hari pertandingan: garis hitam-putih klasik di kandang, dan kuning menyala dengan aksen biru dongker di tandang.')}</p>
 					<div class="project-meta">
 						<span>{t('Home & away', 'Kandang & tandang')}</span>
-						<span>{t('Custom football kits', 'Kit sepak bola custom')}</span>
+						<span>{t('Custom football kits', 'Jersey sepak bola custom')}</span>
 					</div>
 				</div>
 				<figure class="intro-photo">
 					<img src="/images/projects/perngabong-studio-pair-cutout.webp" alt={t('Transparent mockup of Perngabong’s black-and-white striped home jersey and yellow-and-navy away jersey featuring Komodo', 'Mockup transparan jersey kandang belang hitam-putih dan jersey tandang kuning-biru dongker Perngabong dengan Komodo')} loading="eager" />
-					<figcaption>{t('Perngabong · Home & away kit', 'Perngabong · Kit kandang & tandang')}</figcaption>
+					<figcaption>{t('Perngabong · Home & away kit', 'Perngabong · Jersey kandang & tandang')}</figcaption>
 				</figure>
 			</div>
 		</header>
@@ -41,14 +41,14 @@ const gallery = [
 		<section class="kit-section container" aria-labelledby="kit-heading">
 			<div class="section-heading">
 				<div>
-					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('Two kit directions', 'Dua arah kit')}</p>
+					<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('Two kit directions', 'Dua arah jersey')}</p>
 					<h2 id="kit-heading">Same team.<br /><span>Different energy.</span></h2>
 				</div>
-				<p class="section-note">{t('The black-and-white home shirt features SANT Production, while Komodo appears on the yellow-and-navy away kit.', 'Jersey kandang hitam-putih menampilkan SANT Production, sedangkan Komodo muncul di kit tandang kuning-biru dongker.')}</p>
+				<p class="section-note">{t('The black-and-white home shirt features SANT Production, while Komodo appears on the yellow-and-navy away kit.', 'Jersey kandang hitam-putih menampilkan SANT Production, sedangkan Komodo muncul di jersey tandang kuning-biru dongker.')}</p>
 			</div>
 			<div class="kit-notes">
-				<article><span>{t('01 / HOME', '01 / KANDANG')}</span><h3>{t('Black & white', 'Hitam & putih')}</h3><p>{t('Vertical stripes give the home kit its unmistakable, matchday look.', 'Garis vertikalnya membuat kit kandang langsung dikenali di lapangan.')}</p><div class="swatches" aria-label={t('Black and white kit colors', 'Warna kit hitam dan putih')}><i class="swatch-black"></i><i class="swatch-white"></i></div></article>
-				<article><span>{t('02 / AWAY', '02 / TANDANG')}</span><h3>{t('Yellow, navy & Komodo', 'Kuning, biru dongker & Komodo')}</h3><p>{t('Horizontal color bands bring a stronger, brighter contrast to the away shirt.', 'Pita warna horizontal memberi kontras yang lebih tegas dan cerah pada jersey tandang.')}</p><div class="swatches" aria-label={t('Yellow and navy kit colors', 'Warna kit kuning dan biru dongker')}><i class="swatch-yellow"></i><i class="swatch-navy"></i></div></article>
+				<article><span>{t('01 / HOME', '01 / KANDANG')}</span><h3>{t('Black & white', 'Hitam & putih')}</h3><p>{t('Vertical stripes give the home kit its unmistakable, matchday look.', 'Garis vertikalnya membuat jersey kandang langsung dikenali di lapangan.')}</p><div class="swatches" aria-label={t('Black and white kit colors', 'Warna jersey hitam dan putih')}><i class="swatch-black"></i><i class="swatch-white"></i></div></article>
+				<article><span>{t('02 / AWAY', '02 / TANDANG')}</span><h3>{t('Yellow, navy & Komodo', 'Kuning, biru dongker & Komodo')}</h3><p>{t('Horizontal color bands bring a stronger, brighter contrast to the away shirt.', 'Pita warna horizontal memberi kontras yang lebih tegas dan cerah pada jersey tandang.')}</p><div class="swatches" aria-label={t('Yellow and navy kit colors', 'Warna jersey kuning dan biru dongker')}><i class="swatch-yellow"></i><i class="swatch-navy"></i></div></article>
 			</div>
 			<div class="design-board-intro">
 				<p class="eyebrow"><span class="eyebrow-rule" aria-hidden="true"></span> {t('NOIR design mockups', 'Mockup desain NOIR')}</p>
@@ -56,12 +56,12 @@ const gallery = [
 			</div>
 			<div class="design-board-grid">
 				<figure class="design-board">
-					<img src="/images/projects/perngabong-home.jpeg" alt={t('NOIR design mockup for Perngabong\'s black-and-white striped home kit, including front and back views', 'Mockup desain NOIR kit kandang belang hitam-putih Perngabong, tampak depan dan belakang')} loading="lazy" />
-					<figcaption><span>01</span> {t('Home kit · Black & white', 'Kit kandang · Hitam & putih')}</figcaption>
+					<img src="/images/projects/perngabong-home.jpeg" alt={t('NOIR design mockup for Perngabong\'s black-and-white striped home kit, including front and back views', 'Mockup desain NOIR jersey kandang belang hitam-putih Perngabong, tampak depan dan belakang')} loading="lazy" />
+					<figcaption><span>01</span> {t('Home kit · Black & white', 'Jersey kandang · Hitam & putih')}</figcaption>
 				</figure>
 				<figure class="design-board">
-					<img src="/images/projects/perngabong-away.jpeg" alt={t('NOIR design mockup for Perngabong\'s yellow-and-navy away kit, including front and back views', 'Mockup desain NOIR kit tandang kuning-biru dongker Perngabong, tampak depan dan belakang')} loading="lazy" />
-					<figcaption><span>02</span> {t('Away kit · Yellow & navy', 'Kit tandang · Kuning & biru dongker')}</figcaption>
+					<img src="/images/projects/perngabong-away.jpeg" alt={t('NOIR design mockup for Perngabong\'s yellow-and-navy away kit, including front and back views', 'Mockup desain NOIR jersey tandang kuning-biru dongker Perngabong, tampak depan dan belakang')} loading="lazy" />
+					<figcaption><span>02</span> {t('Away kit · Yellow & navy', 'Jersey tandang · Kuning & biru dongker')}</figcaption>
 				</figure>
 			</div>
 		</section>
@@ -72,11 +72,11 @@ const gallery = [
 				<h2 id="story-heading">Persatuan Ngap<br /><span>Ngap Baong.</span></h2>
 				<div class="community-copy">
 					<p>{lang === 'id' ? <>Perngabong atau <em>Persatuan Ngap Ngap Baong</em> adalah tim fun football Pontianak yang terbentuk ketika masa Covid. Tim ini awalnya berisikan anak-anak event ataupun musisi, beserta pemilik-pemilik kafe di Pontianak. Setelah Covid selesai pun mereka tidak berhenti di situ, tim ini tetap ada hingga sekarang. Tim yang benar-benar “fun”, setiap laga selalu berjalan dan berakhir dengan tawa.</> : <>Perngabong, or <em>Persatuan Ngap Ngap Baong</em>, is a Pontianak fun football team formed during the Covid period. It began with people from the event and music scene, along with café owners in Pontianak. When Covid ended they did not stop there, and the team is still going today. A team that is genuinely “fun”: every match runs, and ends, with laughter.</>}</p>
-					<p>{lang === 'id' ? <>Lima atau enam tahun kemudian, mereka masih bermain bersama setiap pekan. Perngabong juga sudah kembali ke NOIR untuk dua atau tiga pesanan kit; pasangan yang ditampilkan di sini adalah yang terbaru.</> : <>Five or six years on, they still meet to play every week. Perngabong has also returned to NOIR for two or three kit orders; the pair shown here is their latest.</>}</p>
+					<p>{lang === 'id' ? <>Lima atau enam tahun kemudian, mereka masih bermain bersama setiap pekan. Perngabong juga sudah kembali ke NOIR untuk dua atau tiga pesanan jersey; pasangan yang ditampilkan di sini adalah yang terbaru.</> : <>Five or six years on, they still meet to play every week. Perngabong has also returned to NOIR for two or three kit orders; the pair shown here is their latest.</>}</p>
 				</div>
 				<div class="story-facts">
 					<div><span>01</span><strong>{t('Weekly games', 'Main tiap pekan')}</strong></div>
-					<div><span>02</span><strong>{t('2–3 kit orders with NOIR', '2–3 pesanan kit di NOIR')}</strong></div>
+					<div><span>02</span><strong>{t('2–3 kit orders with NOIR', '2–3 pesanan jersey di NOIR')}</strong></div>
 				</div>
 			</div>
 
