@@ -1,6 +1,8 @@
 ---
 import { langFromUrl, lp } from '../../i18n';
+import { Image } from 'astro:assets';
 import SectionMarker from './SectionMarker.astro';
+import player from '../../assets/story-player.jpg';
 
 const lang = langFromUrl(Astro.url);
 const copy = {
@@ -18,6 +20,15 @@ const copy = {
 
 ---
 <section id="story" class="story" aria-labelledby="story-heading">
+	<Image
+		class="story-photo"
+		src={player}
+		widths={[640, 960, 1280]}
+		sizes="(min-width: 900px) 50vw, 100vw"
+		quality={80}
+		alt=""
+		loading="lazy"
+	/>
 	<div class="story-copy">
 		<SectionMarker number="02" label="The Story" />
 
@@ -30,9 +41,9 @@ const copy = {
 
 		<div class="story-signoff">
 			<p class="story-payoff">
-				{copy.payoff[0]}<br />
-				{copy.payoff[1]}<br />
-				{copy.payoff[2]}
+				<span>{copy.payoff[0]}</span>
+				<span>{copy.payoff[1]}</span>
+				<span>{copy.payoff[2]}</span>
 			</p>
 			<p class="story-tagline">#NOIRJAK</p>
 		</div>
@@ -42,30 +53,36 @@ const copy = {
 <style>
 	.story {
 		position: relative;
+		overflow: hidden;
 		color: var(--color-ink);
 		scroll-margin-top: var(--header-h);
 	}
 
-	/* Typography only: the headline carries the section, the message steps
-	   diagonally down and to the right, and the payoff closes it. */
+	/* A grey-scale photograph held back to a quiet 27%, so the type stays the voice
+	   of the section. The photo is already black and white. */
+	.story-photo {
+		position: absolute;
+		inset: 0 0 0 auto;
+		width: 50%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 58% 22%;
+		opacity: 0.27;
+	}
+
 	.story-copy {
+		position: relative;
 		width: min(var(--container-max), 100%);
 		margin-inline: auto;
 		padding: clamp(3rem, 6vw, 5.5rem) var(--gutter);
-		display: grid;
-		grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr);
-		align-items: end;
-		column-gap: clamp(2rem, 4vw, 4rem);
-	}
-
-	.story-copy > :global(.eyebrow) {
-		grid-column: 1 / -1;
+		min-height: clamp(36rem, 62vw, 51rem);
+		display: flex;
+		flex-direction: column;
 	}
 
 	.story-copy h2 {
-		grid-column: 1 / -1;
 		margin-top: clamp(1.75rem, 3vw, 2.5rem);
-		font-size: clamp(3.25rem, 9.2vw, 9.25rem);
+		font-size: clamp(3rem, 6.8vw, 7.2rem);
 		font-weight: 700;
 		line-height: 0.9;
 		letter-spacing: var(--tracking-display);
@@ -73,11 +90,11 @@ const copy = {
 	}
 
 	.story-message {
-		grid-column: 2;
-		margin-top: clamp(2rem, 4vw, 3.5rem);
-		font-size: clamp(1.375rem, 2.2vw, 2rem);
+		max-width: 21ch;
+		margin-top: clamp(2rem, 3.5vw, 2.75rem);
+		font-size: clamp(1.2rem, 1.7vw, 1.6rem);
 		font-weight: 500;
-		line-height: 1.25;
+		line-height: 1.3;
 		letter-spacing: -0.02em;
 	}
 
@@ -86,26 +103,36 @@ const copy = {
 	}
 
 	.story-message span + span {
-		margin-top: 0.35em;
+		margin-top: 0.6em;
+		font-size: 0.82em;
+		font-weight: 400;
 		color: var(--color-ink-muted);
 	}
 
 	.story-signoff {
-		grid-column: 3;
+		margin-top: auto;
+		padding-top: 2.5rem;
 	}
 
 	.story-payoff {
-		border-left: 1px solid var(--color-accent);
-		padding-left: clamp(1.25rem, 2vw, 2rem);
-		font-size: clamp(1.25rem, 1.8vw, 1.625rem);
-		font-weight: 600;
-		line-height: 1.4;
-		letter-spacing: -0.015em;
-		color: var(--color-accent);
+		font-size: clamp(2rem, 3.6vw, 3.4rem);
+		font-weight: 700;
+		line-height: 1.05;
+		letter-spacing: -0.03em;
+	}
+
+	/* Identity and Pride step back; Belonging lands in full ink. */
+	.story-payoff span {
+		display: block;
+		color: var(--color-ink-faint);
+	}
+
+	.story-payoff span:last-child {
+		color: var(--color-ink);
 	}
 
 	.story-tagline {
-		margin-top: 1.25rem;
+		margin-top: 1.4rem;
 		font-size: 0.75rem;
 		font-weight: 600;
 		letter-spacing: 0.16em;
@@ -114,22 +141,26 @@ const copy = {
 	}
 
 	@media (max-width: 899px) {
+		.story {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.story-photo {
+			position: relative;
+			inset: auto;
+			order: -1;
+			width: 100%;
+			height: 62vw;
+		}
+
 		.story-copy {
-			grid-template-columns: 1fr;
-		}
-
-		.story-message,
-		.story-signoff {
-			grid-column: 1;
-		}
-
-		.story-message {
-			margin-top: 2.5rem;
-			max-width: 22ch;
+			min-height: 0;
+			padding-top: 2.5rem;
 		}
 
 		.story-signoff {
-			margin-top: 2.5rem;
+			margin-top: 0;
 		}
 	}
 </style>
