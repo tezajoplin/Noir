@@ -7,13 +7,13 @@ const lang = langFromUrl(Astro.url);
 const copy = {
 	id: {
 		alt: 'Mockup studio jersey hijau-putih Perngabong, dengan kerah, kain bermotif, dan trim yang terlihat jelas.',
-		subhead: 'Custom jersey dari Pontianak.<br />NOIR selalu siap membantu Anda membuat identitas yang kuat untuk tim Anda.',
+		subhead: 'Custom jersey untuk tim dan komunitas Anda. NOIR selalu siap membantu membangun identitas yang kuat.',
 		work: 'Our Teams',
 		label: 'Pengantar',
 	},
 	en: {
 		alt: 'Studio mockup of Perngabong’s green-and-white jersey, with the collar, patterned fabric and trim visible.',
-		subhead: 'Custom jerseys from Pontianak.<br />NOIR is always ready to help you build a strong identity for your team.',
+		subhead: 'NOIR is always ready to help you build a strong identity for your team.',
 		work: 'Our Teams',
 		label: 'Introduction',
 	},
@@ -47,6 +47,8 @@ const copy = {
 			IDENTITIES,<br />
 			NOT JUST JERSEYS.
 		</h1>
+
+		<p class="hero-punchline">Trusted custom jerseys from Pontianak.</p>
 
 		<p class="hero-subhead" set:html={copy.subhead} />
 
@@ -119,9 +121,19 @@ const copy = {
 		letter-spacing: var(--tracking-display);
 	}
 
-	.hero-subhead {
-		max-width: 32ch;
+	.hero-punchline {
 		margin-top: 1.75rem;
+		font-family: var(--font-display);
+		font-size: clamp(1.25rem, 2vw, 1.625rem);
+		font-weight: 600;
+		line-height: 1.25;
+		letter-spacing: -0.01em;
+		color: var(--color-ink);
+	}
+
+	.hero-subhead {
+		max-width: 38ch;
+		margin-top: 0.75rem;
 		font-size: 1.125rem;
 		line-height: 1.65;
 		color: var(--color-ink-muted);
